@@ -1,8 +1,8 @@
 import google.generativeai as genai
 from openai import OpenAI
 import httpx
-from config.settings import settings
-from typing import Dict, Any, Optional
+from backend.config.settings import settings
+from typing import Dict, Any, Optional, List
 import json
 
 # Initialize AI clients
@@ -19,22 +19,18 @@ else:
 
 async def analyze_soil_with_ai(file_path: str) -> Dict[str, Any]:
     """Analyze soil report using Gemini AI"""
-    
+    try:
+        with open(file_path, 'r') as f:
+            file_content = f.read(100)
+    except Exception as e:
+        file_content = f"Error reading file: {e}"
+
     try:
         if gemini_model:
-            prompt = f"""Analyze the soil report and provide detailed recommendations.
-            
-            Provide analysis in the following format:
-            - pH Level: [value and assessment]
-            - Nutrient Levels: N, P, K values
-            - Soil Type: [classification]
-            - Water Retention: [capacity]
-            - Recommendations: [list of actionable suggestions]
-            - Suitable Crops: [recommended crops]
-            """
-            
+            prompt = f"""Analyze the soil report (first 100 characters: {file_content}) and provide detailed recommendations.\n\n            Provide analysis in the following format:\n            - pH Level: [value and assessment]\n            - Nutrient Levels: N, P, K values\n            - Soil Type: [classification]\n            - Water Retention: [capacity]\n            - Recommendations: [list of actionable suggestions]\n            - Suitable Crops: [recommended crops]\n            """
+
             response = gemini_model.generate_content(prompt)
-            
+
             return {
                 "analysis": response.text,
                 "ai_provider": "gemini",
@@ -59,30 +55,18 @@ async def get_crop_recommendation(
     soil_type: str,
     season: str,
     location: str,
-    soil_report_id: Optional[str] = None
+    soil_report_id: Optional[str] = None,
+    daily_market: bool = False,
+    multi_cropping: bool = False
 ) -> list:
     """Get crop recommendations using AI"""
-    
+
     try:
         if gemini_model:
-            prompt = f"""As an agricultural expert, recommend the top 5 crops for:
-            - Soil Type: {soil_type}
-            - Season: {season}
-            - Location: {location}
-            
-            For each crop, provide:
-            1. Crop name
-            2. Suitability score (0-100)
-            3. Expected yield per hectare
-            4. Growth duration
-            5. Water requirements
-            6. Top 3 care tips
-            
-            Return as JSON array.
-            """
-            
+            prompt = f"""As an agricultural expert, recommend the top 5 crops for:\n            - Soil Type: {soil_type}\n            - Season: {season}\n            - Location: {location}\n            - Daily Market: {daily_market}\n            - Multi Cropping: {multi_cropping}\n\n            For each crop, provide:\n            1. Crop name\n            2. Suitability score (0-100)\n            3. Expected yield per hectare\n            4. Growth duration\n            5. Water requirements\n            6. Top 3 care tips\n            7. Daily Market Crop: True/False\n            8. Multi Cropping Strategy: If applicable, which strategy and compatible crops\n            9. Profit Index: High, Medium, Low\n\n            Return as JSON array.\n            """
+
             response = gemini_model.generate_content(prompt)
-            
+
             # Try to parse JSON, fallback to structured text
             try:
                 recommendations = json.loads(response.text)
@@ -94,7 +78,11 @@ async def get_crop_recommendation(
                         "expected_yield": "4-5 tons/hectare",
                         "growth_duration": "120-150 days",
                         "water_requirement": "High",
-                        "care_tips": ["Maintain water level", "Apply fertilizer in stages", "Monitor for pests"]
+                        "care_tips": ["Maintain water level", "Apply fertilizer in stages", "Monitor for pests"],
+                        "daily_market_crop": False,
+                        "multi_cropping_strategy": None,
+                        "compatible_crops": None,
+                         "profit_index": "Medium"
                     },
                     {
                         "name": "Wheat",
@@ -102,10 +90,14 @@ async def get_crop_recommendation(
                         "expected_yield": "3-4 tons/hectare",
                         "growth_duration": "120-130 days",
                         "water_requirement": "Medium",
-                        "care_tips": ["Irrigate at critical stages", "Weed control", "Timely harvesting"]
+                        "care_tips": ["Irrigate at critical stages", "Weed control", "Timely harvesting"],
+                        "daily_market_crop": False,
+                        "multi_cropping_strategy": None,
+                        "compatible_crops": None,
+                        "profit_index": "Medium"
                     }
                 ]
-            
+
             return recommendations
         else:
             # Mock recommendations
@@ -116,7 +108,11 @@ async def get_crop_recommendation(
                     "expected_yield": "4-5 tons/hectare",
                     "growth_duration": "120-150 days",
                     "water_requirement": "High",
-                    "care_tips": ["Maintain water level", "Apply fertilizer in stages", "Monitor for pests"]
+                    "care_tips": ["Maintain water level", "Apply fertilizer in stages", "Monitor for pests"],
+                    "daily_market_crop": False,
+                    "multi_cropping_strategy": None,
+                    "compatible_crops": None,
+                     "profit_index": "Medium"
                 },
                 {
                     "name": "Wheat",
@@ -124,7 +120,11 @@ async def get_crop_recommendation(
                     "expected_yield": "3-4 tons/hectare",
                     "growth_duration": "120-130 days",
                     "water_requirement": "Medium",
-                    "care_tips": ["Irrigate at critical stages", "Weed control", "Timely harvesting"]
+                    "care_tips": ["Irrigate at critical stages", "Weed control", "Timely harvesting"],
+                    "daily_market_crop": False,
+                    "multi_cropping_strategy": None,
+                    "compatible_crops": None,
+                    "profit_index": "Medium"
                 }
             ]
     except Exception as e:
@@ -133,7 +133,7 @@ async def get_crop_recommendation(
 
 async def analyze_crop_health(image_url: str) -> Dict[str, Any]:
     """Analyze crop health from image"""
-    
+
     try:
         if openai_client:
             response = openai_client.chat.completions.create(
@@ -149,7 +149,7 @@ async def analyze_crop_health(image_url: str) -> Dict[str, Any]:
                 ],
                 max_tokens=500
             )
-            
+
             return {
                 "diagnosis": response.choices[0].message.content,
                 "confidence": 0.80,
@@ -170,7 +170,7 @@ async def analyze_crop_health(image_url: str) -> Dict[str, Any]:
 
 async def get_government_schemes(location: str) -> list:
     """Fetch government schemes using Perplexity AI"""
-    
+
     try:
         if settings.PERPLEXITY_API_KEY:
             async with httpx.AsyncClient() as client:
@@ -190,7 +190,7 @@ async def get_government_schemes(location: str) -> list:
                         ]
                     }
                 )
-                
+
                 result = response.json()
                 return [{"schemes": result['choices'][0]['message']['content']}]
         else:

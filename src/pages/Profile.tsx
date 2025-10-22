@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { User, MapPin, Phone, Settings, HelpCircle, LogOut } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
@@ -6,10 +7,20 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 const Profile = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear user token from local storage
+    localStorage.removeItem("token");
+
+    // Redirect to login page
+    navigate("/login");
+  };
+
   const menuItems = [
     { icon: Settings, label: "Settings", path: "/settings" },
     { icon: HelpCircle, label: "Help & Support", path: "/help" },
-    { icon: LogOut, label: "Logout", path: "/logout", variant: "destructive" },
+    { icon: LogOut, label: "Logout", action: handleLogout, variant: "destructive" },
   ];
 
   return (
@@ -79,7 +90,11 @@ const Profile = () => {
         {/* Menu Items */}
         <div className="space-y-2">
           {menuItems.map((item, index) => (
-            <Card key={index} className="cursor-pointer hover:shadow-md transition-shadow">
+            <Card 
+              key={index} 
+              className="cursor-pointer hover:shadow-md transition-shadow"
+              onClick={item.action ? item.action : () => navigate(item.path)}
+            >
               <CardContent className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div

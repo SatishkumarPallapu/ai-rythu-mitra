@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Upload, FileText, Image as ImageIcon } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
@@ -9,13 +10,59 @@ import { useToast } from "@/hooks/use-toast";
 
 const SoilAnalysis = () => {
   const { toast } = useToast();
+  const [file, setFile] = useState<File | null>(null);
+  const [analysisResults, setAnalysisResults] = useState<any>(null);
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile);
       toast({
         title: "File uploaded",
-        description: `${file.name} is ready for analysis`,
+        description: `${selectedFile.name} is ready for analysis`,
+      });
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!file) {
+      toast({
+        title: "No file selected",
+        description: "Please upload a soil report",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("/soil/analyze", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setAnalysisResults(data);
+        toast({
+          title: "Analysis Complete",
+          description: "Soil analysis completed successfully",
+        });
+      } else {
+        const errorData = await response.json();
+        toast({
+          title: "Analysis Failed",
+          description: errorData.detail || "Soil analysis failed. Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "An Error Occurred",
+        description: "Failed to connect to the server. Please try again later.",
+        variant: "destructive",
       });
     }
   };
@@ -23,7 +70,6 @@ const SoilAnalysis = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       <Header />
-      
       <main className="container px-4 py-6 space-y-6 animate-fade-in">
         <div className="space-y-2">
           <h2 className="text-2xl font-bold">Soil Analysis</h2>
@@ -64,11 +110,26 @@ const SoilAnalysis = () => {
                 />
               </Label>
             </div>
-            <Button className="w-full" size="lg">
+            <Button className="w-full" size="lg" onClick={handleSubmit}>
               Analyze with AI
             </Button>
           </CardContent>
         </Card>
+
+        {/* Analysis Results */}
+        {analysisResults && (
+          <Card>
+            <CardHeader>
+              <CardTitle>Analysis Results</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <p>Report ID: {analysisResults.report_id}</p>
+              <p>File URL: {analysisResults.file_url}</p>
+              <p>Analysis: {analysisResults.analysis}</p>
+              <p>Created At: {analysisResults.created_at}</p>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Quick Upload Options */}
         <div className="grid grid-cols-2 gap-4">
@@ -105,7 +166,6 @@ const SoilAnalysis = () => {
           </Card>
         </div>
       </main>
-
       <BottomNav />
     </div>
   );

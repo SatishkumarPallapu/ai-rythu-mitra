@@ -1,29 +1,35 @@
 from fastapi import APIRouter, HTTPException, Depends
+from sqlalchemy.orm import Session
 from datetime import datetime
-from models.iot import IoTDataInput, IoTDataResponse
-from config.firebase_config import get_firestore_db
-from routes.auth import get_current_user
+from typing import List
+import uuid
+from backend.models.iot import IoTData, IoTDataInput, IoTDataResponse
+from backend.routes.auth import get_current_user
+from backend.config.database import get_db
 
 router = APIRouter()
 
-@router.post("/data")
-async def receive_iot_data(data: IoTDataInput):
+@router.post("/data", response_model=IoTDataResponse)
+async def receive_iot_data(
+    data: IoTDataInput,
+    db: Session = Depends(get_db)
+):
     """Receive data from ESP32 sensors"""
-    db = get_firestore_db()
-    
     try:
-        iot_record = {
-            "field_id": data.field_id,
-            "device_id": data.device_id,
-            "moisture": data.moisture,
-            "temperature": data.temperature,
-            "humidity": data.humidity,
-            "timestamp": data.timestamp or datetime.utcnow().isoformat(),
-            "created_at": datetime.utcnow().isoformat()
-        }
-        
-        doc_ref = db.collection('iot_data').add(iot_record)
-        
+        iot_record = IoTData(
+            id=str(uuid.uuid4()),
+            field_id=data.field_id,
+            device_id=data.device_id,
+            moisture=data.moisture,
+            temperature=data.temperature,
+            humidity=data.humidity,
+            timestamp=data.timestamp or datetime.utcnow()
+        )
+
+        db.add(iot_record)
+        db.commit()
+        db.refresh(iot_record)
+
         # Check thresholds and create alerts if needed
         alerts = []
         if data.moisture < 30:
@@ -32,106 +38,82 @@ async def receive_iot_data(data: IoTDataInput):
             alerts.append("High temperature alert")
         if data.humidity < 40:
             alerts.append("Low humidity detected")
-        
-        return {
-            "record_id": doc_ref[1].id,
-            "status": "received",
-            "alerts": alerts,
-            "timestamp": iot_record["created_at"]
-        }
+
+        return IoTDataResponse(
+            record_id=iot_record.id,
+            status="received",
+            alerts=alerts,
+            timestamp=iot_record.timestamp
+        )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to store IoT data: {str(e)}")
 
-@router.get("/data/{field_id}")
+@router.get("/data/{field_id}", response_model=List[IoTDataResponse])
 async def get_iot_data(
     field_id: str,
     limit: int = 100,
-    user_id: str = Depends(get_current_user)
+    db: Session = Depends(get_db),
+    current_user: str = Depends(get_current_user)
 ):
     """Get IoT data for a specific field"""
-    db = get_firestore_db()
-    
-    try:
-        data_ref = db.collection('iot_data').where('field_id', '==', field_id).order_by('timestamp', direction='DESCENDING').limit(limit)
-        data_docs = data_ref.get()
-        
-        result = []
-        for doc in data_docs:
-            data_item = doc.to_dict()
-            data_item['id'] = doc.id
-            result.append(data_item)
-        
-        return {"data": result, "count": len(result)}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    iot_data = db.query(IoTData).filter(IoTData.field_id == field_id).order_by(IoTData.timestamp.desc()).limit(limit).all()
+    return [IoTDataResponse(
+        record_id=item.id,
+        status="success",
+        alerts=[],
+        timestamp=item.timestamp
+    ) for item in iot_data]
 
-@router.get("/latest/{field_id}")
+@router.get("/latest/{field_id}", response_model=IoTDataResponse)
 async def get_latest_reading(
     field_id: str,
-    user_id: str = Depends(get_current_user)
+    db: Session = Depends(get_db),
+    current_user: str = Depends(get_current_user)
 ):
     """Get the latest sensor reading"""
-    db = get_firestore_db()
-    
-    try:
-        data_ref = db.collection('iot_data').where('field_id', '==', field_id).order_by('timestamp', direction='DESCENDING').limit(1)
-        data_docs = data_ref.get()
-        data_list = list(data_docs)
-        
-        if len(data_list) == 0:
-            raise HTTPException(status_code=404, detail="No data found for this field")
-        
-        latest = data_list[0].to_dict()
-        latest['id'] = data_list[0].id
-        
-        return latest
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    iot_data = db.query(IoTData).filter(IoTData.field_id == field_id).order_by(IoTData.timestamp.desc()).first()
+    if iot_data is None:
+        raise HTTPException(status_code=404, detail="No data found for this field")
+    return IoTDataResponse(
+        record_id=iot_data.id,
+        status="success",
+        alerts=[],
+        timestamp=iot_data.timestamp
+    )
 
 @router.get("/stats/{field_id}")
 async def get_field_stats(
     field_id: str,
-    user_id: str = Depends(get_current_user)
+    db: Session = Depends(get_db),
+    current_user: str = Depends(get_current_user)
 ):
     """Get statistical summary of field data"""
-    db = get_firestore_db()
-    
-    try:
-        data_ref = db.collection('iot_data').where('field_id', '==', field_id).order_by('timestamp', direction='DESCENDING').limit(100)
-        data_docs = data_ref.get()
-        
-        data_list = [doc.to_dict() for doc in data_docs]
-        
-        if not data_list:
-            return {"message": "No data available"}
-        
-        # Calculate stats
-        moistures = [d['moisture'] for d in data_list if 'moisture' in d]
-        temps = [d['temperature'] for d in data_list if 'temperature' in d]
-        humidities = [d['humidity'] for d in data_list if 'humidity' in d]
-        
-        stats = {
-            "field_id": field_id,
-            "data_points": len(data_list),
-            "moisture": {
-                "avg": sum(moistures) / len(moistures) if moistures else 0,
-                "min": min(moistures) if moistures else 0,
-                "max": max(moistures) if moistures else 0
-            },
-            "temperature": {
-                "avg": sum(temps) / len(temps) if temps else 0,
-                "min": min(temps) if temps else 0,
-                "max": max(temps) if temps else 0
-            },
-            "humidity": {
-                "avg": sum(humidities) / len(humidities) if humidities else 0,
-                "min": min(humidities) if humidities else 0,
-                "max": max(humidities) if humidities else 0
-            }
+    iot_data = db.query(IoTData).filter(IoTData.field_id == field_id).all()
+    if not iot_data:
+        return {"message": "No data available"}
+
+    moistures = [item.moisture for item in iot_data]
+    temps = [item.temperature for item in iot_data]
+    humidities = [item.humidity for item in iot_data]
+
+    stats = {
+        "field_id": field_id,
+        "data_points": len(iot_data),
+        "moisture": {
+            "avg": sum(moistures) / len(moistures) if moistures else 0,
+            "min": min(moistures) if moistures else 0,
+            "max": max(moistures) if moistures else 0
+        },
+        "temperature": {
+            "avg": sum(temps) / len(temps) if temps else 0,
+            "min": min(temps) if temps else 0,
+            "max": max(temps) if temps else 0
+        },
+        "humidity": {
+            "avg": sum(humidities) / len(humidities) if humidities else 0,
+            "min": min(humidities) if humidities else 0,
+            "max": max(humidities) if humidities else 0
         }
-        
-        return stats
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    }
+
+    return stats

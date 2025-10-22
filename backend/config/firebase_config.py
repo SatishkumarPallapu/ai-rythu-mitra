@@ -1,38 +1,54 @@
 import firebase_admin
-from firebase_admin import credentials, firestore
-from config.settings import settings
-import json
+from firebase_admin import credentials, firestore, auth
+import os
+from dotenv import load_dotenv
 
-db = None
+load_dotenv()
 
 def initialize_firebase():
-    global db
-    
-    if not settings.FIREBASE_PROJECT_ID:
-        print("Firebase not configured. Using mock database.")
-        return None
-    
-    try:
-        # Initialize Firebase Admin SDK
-        cred_dict = {
-            "type": "service_account",
-            "project_id": settings.FIREBASE_PROJECT_ID,
-            "private_key": settings.FIREBASE_PRIVATE_KEY.replace('\\n', '\n') if settings.FIREBASE_PRIVATE_KEY else None,
-            "client_email": settings.FIREBASE_CLIENT_EMAIL,
-        }
-        
-        cred = credentials.Certificate(cred_dict)
-        firebase_admin.initialize_app(cred)
-        
-        db = firestore.client()
-        print("Firebase initialized successfully")
-        return db
-    except Exception as e:
-        print(f"Error initializing Firebase: {e}")
-        return None
+    """
+    Initializes the Firebase Admin SDK.
+    """
+    # Get the base64 encoded service account from the environment variables
+    firebase_service_account_b64 = os.getenv("FIREBASE_SERVICE_ACCOUNT_B64")
 
-def get_firestore_db():
-    global db
-    if db is None:
-        db = initialize_firebase()
-    return db
+    if not firebase_service_account_b64:
+        raise ValueError("FIREBASE_SERVICE_ACCOUNT_B64 environment variable not set.")
+
+    import base64
+    import json
+
+    # Decode the base64 string to a JSON string
+    firebase_service_account_json = base64.b64decode(firebase_service_account_b64).decode('utf-8')
+    
+    # Load the JSON string into a dictionary
+    service_account_info = json.loads(firebase_service_account_json)
+    
+    # Initialize the app with a service account, granting admin privileges
+    cred = credentials.Certificate(service_account_info)
+
+    try:
+        firebase_admin.get_app()
+    except ValueError:
+        firebase_admin.initialize_app(cred)
+
+    print("Firebase initialized successfully.")
+    
+def get_db():
+    """
+    Returns the Firestore database client.
+    """
+    return firestore.client()
+
+def get_auth():
+    """
+    Returns the Firebase Authentication client.
+    """
+    return auth
+
+# Example usage:
+if __name__ == "__main__":
+    initialize_firebase()
+    db = get_db()
+    # Now you can use the db object to interact with Firestore
+    print(db)

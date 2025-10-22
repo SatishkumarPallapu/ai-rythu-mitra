@@ -1,92 +1,90 @@
+
 from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
+from sqlalchemy.orm import Session
 from datetime import datetime
 import os
 import uuid
-from services.ai_service import analyze_soil_with_ai
-from config.firebase_config import get_firestore_db
-from routes.auth import get_current_user
+from typing import List
+from backend.services.ai_service import analyze_soil_with_ai
+from backend.models.soil import SoilReport, SoilAnalysisResponse
+from backend.models.user import User
+from backend.routes.auth import get_current_user
+from backend.config.database import get_db
 
 router = APIRouter()
 
-@router.post("/analyze")
+@router.post("/analyze", response_model=SoilAnalysisResponse)
 async def analyze_soil(
     file: UploadFile = File(...),
-    user_id: str = Depends(get_current_user)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
-    db = get_firestore_db()
-    
     try:
         # Save uploaded file
         file_extension = file.filename.split(".")[-1]
         unique_filename = f"{uuid.uuid4()}.{file_extension}"
         file_path = f"uploads/soil_reports/{unique_filename}"
-        
+
         os.makedirs("uploads/soil_reports", exist_ok=True)
-        
+
         with open(file_path, "wb") as f:
             content = await file.read()
             f.write(content)
-        
+
         # Analyze with AI
         analysis_result = await analyze_soil_with_ai(file_path)
-        
-        # Store in Firestore
-        soil_report = {
-            "user_id": user_id,
-            "file_url": file_path,
-            "analysis": analysis_result,
-            "created_at": datetime.utcnow().isoformat(),
-            "status": "completed"
-        }
-        
-        doc_ref = db.collection('soil_reports').add(soil_report)
-        report_id = doc_ref[1].id
-        
-        return {
-            "report_id": report_id,
-            "analysis": analysis_result,
-            "file_url": file_path,
-            "created_at": soil_report["created_at"]
-        }
+
+        # Create SoilReport instance
+        report_id = str(uuid.uuid4())
+        soil_report = SoilReport(
+            id=report_id,
+            user_id=current_user.id,
+            file_url=file_path,
+            analysis=analysis_result,
+            created_at=datetime.utcnow()
+        )
+        db.add(soil_report)
+        db.commit()
+        db.refresh(soil_report)
+
+        return SoilAnalysisResponse(
+            report_id=report_id,
+            user_id=current_user.id,
+            analysis=analysis_result,
+            file_url=file_path,
+            created_at=soil_report.created_at
+        )
+
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Soil analysis failed: {str(e)}")
 
-@router.get("/reports")
-async def get_soil_reports(user_id: str = Depends(get_current_user)):
-    db = get_firestore_db()
-    
-    try:
-        reports_ref = db.collection('soil_reports').where('user_id', '==', user_id).order_by('created_at', direction='DESCENDING').limit(10)
-        reports = reports_ref.get()
-        
-        result = []
-        for report in reports:
-            report_data = report.to_dict()
-            report_data['id'] = report.id
-            result.append(report_data)
-        
-        return {"reports": result}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+@router.get("/reports", response_model=List[SoilAnalysisResponse])
+async def get_soil_reports(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    reports = db.query(SoilReport).filter(SoilReport.user_id == current_user.id).all()
+    return [SoilAnalysisResponse(
+            report_id=report.id,
+            user_id=report.user_id,
+            analysis=report.analysis,
+            file_url=report.file_url,
+            created_at=report.created_at
+        ) for report in reports]
 
-@router.get("/reports/{report_id}")
-async def get_soil_report(report_id: str, user_id: str = Depends(get_current_user)):
-    db = get_firestore_db()
-    
-    try:
-        report_doc = db.collection('soil_reports').document(report_id).get()
-        
-        if not report_doc.exists:
-            raise HTTPException(status_code=404, detail="Report not found")
-        
-        report_data = report_doc.to_dict()
-        
-        if report_data['user_id'] != user_id:
-            raise HTTPException(status_code=403, detail="Unauthorized access")
-        
-        report_data['id'] = report_id
-        return report_data
-    except HTTPException:
-        raise
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+@router.get("/reports/{report_id}", response_model=SoilAnalysisResponse)
+async def get_soil_report(
+    report_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    report = db.query(SoilReport).filter(SoilReport.id == report_id, SoilReport.user_id == current_user.id).first()
+    if report is None:
+        raise HTTPException(status_code=404, detail="Report not found")
+    return SoilAnalysisResponse(
+            report_id=report.id,
+            user_id=report.user_id,
+            analysis=report.analysis,
+            file_url=report.file_url,
+            created_at=report.created_at
+        )

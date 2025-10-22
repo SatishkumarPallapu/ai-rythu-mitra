@@ -1,17 +1,23 @@
 from fastapi import APIRouter, HTTPException, Depends
+from sqlalchemy.orm import Session
 from datetime import datetime
-from models.notification import CalendarEvent, WhatsAppMessage
-from services.whatsapp_service import send_whatsapp_message
-from utils.calendar_helper import create_calendar_event
-from config.firebase_config import get_firestore_db
-from routes.auth import get_current_user
+import uuid
+from typing import List
+from backend.models.notification import CalendarEvent, WhatsAppMessage, CalendarEventModel, WhatsAppMessageModel
+from backend.services.whatsapp_service import send_whatsapp_message
+from backend.utils.calendar_helper import create_calendar_event
+from backend.routes.auth import get_current_user
+from backend.config.database import get_db
+from backend.models.user import User
+
 
 router = APIRouter()
 
 @router.post("/calendar")
 async def create_event(
     event: CalendarEvent,
-    user_id: str = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
     """Create a Google Calendar event"""
     try:
@@ -22,23 +28,23 @@ async def create_event(
             end_time=event.end_time,
             location=event.location
         )
-        
-        db = get_firestore_db()
-        
-        # Store notification record
-        notification_data = {
-            "user_id": user_id,
-            "type": "calendar",
-            "event_id": event_result.get("id", ""),
-            "title": event.title,
-            "created_at": datetime.utcnow().isoformat()
-        }
-        
-        db.collection('notifications').add(notification_data)
-        
+
+        db_event = CalendarEventModel(
+            id=str(uuid.uuid4()),
+            user_id=current_user.id,
+            title=event.title,
+            description=event.description,
+            start_time=datetime.fromisoformat(event.start_time),
+            end_time=datetime.fromisoformat(event.end_time),
+            location=event.location
+        )
+        db.add(db_event)
+        db.commit()
+        db.refresh(db_event)
+
         return {
             "status": "created",
-            "event": event_result,
+            "event": {"id": db_event.id, "title": db_event.title},
             "message": "Calendar event created successfully"
         }
     except Exception as e:
@@ -47,7 +53,8 @@ async def create_event(
 @router.post("/whatsapp")
 async def send_whatsapp(
     message: WhatsAppMessage,
-    user_id: str = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
     """Send WhatsApp notification"""
     try:
@@ -55,21 +62,18 @@ async def send_whatsapp(
             phone_number=message.phone_number,
             message=message.message
         )
-        
-        db = get_firestore_db()
-        
-        # Store notification record
-        notification_data = {
-            "user_id": user_id,
-            "type": "whatsapp",
-            "phone_number": message.phone_number,
-            "message": message.message,
-            "status": result.get("status", "sent"),
-            "created_at": datetime.utcnow().isoformat()
-        }
-        
-        db.collection('notifications').add(notification_data)
-        
+
+        db_message = WhatsAppMessageModel(
+            id=str(uuid.uuid4()),
+            user_id=current_user.id,
+            phone_number=message.phone_number,
+            message=message.message,
+            status="sent" if result.get("status") == "sent" else "pending"
+        )
+        db.add(db_message)
+        db.commit()
+        db.refresh(db_message)
+
         return {
             "status": "sent",
             "result": result,
@@ -79,47 +83,31 @@ async def send_whatsapp(
         raise HTTPException(status_code=500, detail=f"Failed to send WhatsApp message: {str(e)}")
 
 @router.get("/history")
-async def get_notification_history(user_id: str = Depends(get_current_user)):
+async def get_notification_history(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
     """Get notification history for the user"""
-    db = get_firestore_db()
-    
     try:
-        notifications_ref = db.collection('notifications').where('user_id', '==', user_id).order_by('created_at', direction='DESCENDING').limit(50)
-        notifications = notifications_ref.get()
-        
-        result = []
-        for notif in notifications:
-            notif_data = notif.to_dict()
-            notif_data['id'] = notif.id
-            result.append(notif_data)
-        
-        return {"notifications": result, "count": len(result)}
+        calendar_events = db.query(CalendarEventModel).filter(CalendarEventModel.user_id == current_user.id).all()
+        whatsapp_messages = db.query(WhatsAppMessageModel).filter(WhatsAppMessageModel.user_id == current_user.id).all()
+
+        history = []
+        for event in calendar_events:
+            history.append({"type": "calendar", "data": event})
+        for message in whatsapp_messages:
+            history.append({"type": "whatsapp", "data": message})
+
+        return {"notifications": history, "count": len(history)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/schedule-daily-report")
 async def schedule_daily_report(
     phone_number: str,
-    user_id: str = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
 ):
     """Schedule daily WhatsApp reports"""
-    db = get_firestore_db()
-    
-    try:
-        schedule_data = {
-            "user_id": user_id,
-            "phone_number": phone_number,
-            "type": "daily_report",
-            "enabled": True,
-            "created_at": datetime.utcnow().isoformat()
-        }
-        
-        doc_ref = db.collection('scheduled_notifications').add(schedule_data)
-        
-        return {
-            "status": "scheduled",
-            "schedule_id": doc_ref[1].id,
-            "message": "Daily reports scheduled successfully"
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    # TODO: Implement scheduling logic (e.g., using Celery)
+    return {"message": "Scheduling not yet implemented"}
