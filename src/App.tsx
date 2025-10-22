@@ -9,9 +9,11 @@ import MoistureMonitor from "./pages/MoistureMonitor";
 import Marketplace from "./pages/Marketplace";
 import Profile from "./pages/Profile";
 import CropHealth from "./pages/CropHealth";
+import CropRecommendations from "./pages/CropRecommendations";
+import CropRoadmap from "./pages/CropRoadmap";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Signup from "./pages/Signup";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
@@ -24,7 +26,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/signup" element={<Signup />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/soil" element={<SoilAnalysis />} />
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/marketplace" element={<Marketplace />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/crop-health" element={<CropHealth />} />
+            <Route path="/crop-recommendations" element={<CropRecommendations />} />
+            <Route path="/crop-roadmap/:cropId" element={<CropRoadmap />} />
           </Route>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -8,87 +8,108 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 90 40% 98%;
-    --foreground: 152 45% 15%;
-
+    --background: 0 0% 100%;
+    --foreground: 142 47% 12%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 152 45% 15%;
-
+    --card-foreground: 142 47% 12%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 152 45% 15%;
-
-    --primary: 152 64% 30%;
+    --popover-foreground: 142 47% 12%;
+    
+    /* Rich green color palette for farming */
+    --primary: 130 60% 40%;
+    --primary-light: 130 55% 55%;
+    --primary-dark: 130 65% 25%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 30 30% 45%;
+    
+    /* Warm earth tones */
+    --secondary: 25 70% 55%;
+    --secondary-light: 25 65% 70%;
     --secondary-foreground: 0 0% 100%;
-
-    --muted: 90 30% 95%;
-    --muted-foreground: 152 15% 40%;
-
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 90 25% 88%;
-    --input: 90 25% 88%;
-    --ring: 152 64% 30%;
-
+    
+    /* Profit/success green */
     --success: 142 76% 36%;
+    --success-light: 142 70% 50%;
     --success-foreground: 0 0% 100%;
-
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-
+    
+    /* Warning/alert colors */
+    --warning: 39 100% 50%;
+    --warning-light: 39 100% 65%;
+    --warning-foreground: 0 0% 10%;
+    
+    /* Danger/error */
+    --destructive: 0 84% 60%;
+    --destructive-light: 0 80% 75%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Muted backgrounds */
+    --muted: 130 30% 94%;
+    --muted-foreground: 142 47% 40%;
+    
+    /* Accent gold */
+    --accent: 45 90% 55%;
+    --accent-light: 45 85% 70%;
+    --accent-foreground: 0 0% 10%;
+    
+    --border: 130 25% 88%;
+    --input: 130 25% 88%;
+    --ring: 130 60% 40%;
+    
     --radius: 1rem;
-
+    
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 152 30% 8%;
-    --foreground: 90 40% 95%;
-
-    --card: 152 25% 12%;
-    --card-foreground: 90 40% 95%;
-
-    --popover: 152 25% 12%;
-    --popover-foreground: 90 40% 95%;
-
-    --primary: 152 64% 35%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 30 30% 35%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 152 20% 18%;
-    --muted-foreground: 90 20% 60%;
-
-    --accent: 38 92% 45%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 72% 50%;
+    --background: 130 40% 8%;
+    --foreground: 0 0% 98%;
+    
+    --card: 130 30% 12%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 130 30% 12%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 130 55% 50%;
+    --primary-light: 130 50% 65%;
+    --primary-dark: 130 60% 35%;
+    --primary-foreground: 130 40% 8%;
+    
+    --secondary: 25 65% 60%;
+    --secondary-light: 25 60% 75%;
+    --secondary-foreground: 130 40% 8%;
+    
+    --success: 142 70% 45%;
+    --success-light: 142 65% 60%;
+    --success-foreground: 130 40% 8%;
+    
+    --warning: 39 95% 55%;
+    --warning-light: 39 90% 70%;
+    --warning-foreground: 0 0% 10%;
+    
+    --destructive: 0 80% 65%;
+    --destructive-light: 0 75% 80%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 152 20% 20%;
-    --input: 152 20% 20%;
-    --ring: 152 64% 40%;
+    
+    --muted: 130 30% 16%;
+    --muted-foreground: 130 25% 70%;
+    
+    --accent: 45 85% 60%;
+    --accent-light: 45 80% 75%;
+    --accent-foreground: 0 0% 10%;
+    
+    --border: 130 25% 20%;
+    --input: 130 25% 20%;
+    --ring: 130 55% 50%;
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -116,20 +137,72 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+  /* Enhanced Animations */
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
   }
 
-  .animate-slide-up {
+  .animate-slideUp {
     animation: slideUp 0.4s ease-out;
+  }
+
+  .animate-scaleIn {
+    animation: scaleIn 0.3s ease-out;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary-light) / 0.1), transparent);
+    background-size: 1000px 100%;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(130 60% 40%), hsl(130 55% 55%));
+  }
+
+  .gradient-success {
+    background: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 70% 50%));
+  }
+
+  .gradient-accent {
+    background: linear-gradient(135deg, hsl(45 90% 55%), hsl(39 100% 50%));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(180deg, hsl(130 55% 98%), hsl(130 50% 95%));
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: hsl(var(--background) / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px -16px hsl(130 60% 40% / 0.2);
+  }
+
+  /* Glow effect */
+  .glow {
+    box-shadow: 0 0 24px hsl(var(--primary) / 0.3);
   }
 
   @keyframes fadeIn {
     from {
       opacity: 0;
+      transform: translateY(10px);
     }
     to {
       opacity: 1;
+      transform: translateY(0);
     }
   }
 
@@ -141,6 +214,26 @@ All colors MUST be HSL.
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
     }
   }
 }
