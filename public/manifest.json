@@ -1,0 +1,49 @@
+{
+  "name": "Smart Farming Assistant",
+  "short_name": "FarmAI",
+  "description": "AI-powered farming assistant for crop recommendations, health diagnosis, and farm management",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#10b981",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/placeholder.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/placeholder.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["agriculture", "productivity", "business"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "AI Recommendations",
+      "short_name": "Recommendations",
+      "description": "Get AI-powered crop recommendations",
+      "url": "/crop-recommendations",
+      "icons": [{ "src": "/placeholder.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Crop Health Check",
+      "short_name": "Health Check",
+      "description": "Diagnose crop health with AI",
+      "url": "/crop-health",
+      "icons": [{ "src": "/placeholder.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Marketplace",
+      "short_name": "Market",
+      "description": "Buy and sell crops",
+      "url": "/marketplace",
+      "icons": [{ "src": "/placeholder.svg", "sizes": "192x192" }]
+    }
+  ]
+}

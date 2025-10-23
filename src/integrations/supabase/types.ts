@@ -14,6 +14,47 @@ export type Database = {
   }
   public: {
     Tables: {
+      crop_cultivation_instructions: {
+        Row: {
+          created_at: string | null
+          crop_id: string | null
+          cultivation_phase: string
+          day_range: string
+          id: string
+          instructions: string
+          tips: string[] | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          crop_id?: string | null
+          cultivation_phase: string
+          day_range: string
+          id?: string
+          instructions: string
+          tips?: string[] | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          crop_id?: string | null
+          cultivation_phase?: string
+          day_range?: string
+          id?: string
+          instructions?: string
+          tips?: string[] | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "crop_cultivation_instructions_crop_id_fkey"
+            columns: ["crop_id"]
+            isOneToOne: false
+            referencedRelation: "crops_master"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       crop_diagnostics: {
         Row: {
           confidence_score: number | null
@@ -225,13 +266,19 @@ export type Database = {
           created_at: string | null
           daily_market_crop: boolean | null
           duration_days: number
+          health_benefits: string | null
+          home_growable: boolean | null
           id: string
+          intercropping_possibility: string | null
           market_demand_index: number | null
+          medical_benefits: string | null
           name: string
           profit_index: string | null
+          proteins: string | null
           restaurant_usage_index: number | null
           season: string | null
           soil_type: string[] | null
+          vitamins: string | null
           water_requirement: string | null
         }
         Insert: {
@@ -240,13 +287,19 @@ export type Database = {
           created_at?: string | null
           daily_market_crop?: boolean | null
           duration_days: number
+          health_benefits?: string | null
+          home_growable?: boolean | null
           id?: string
+          intercropping_possibility?: string | null
           market_demand_index?: number | null
+          medical_benefits?: string | null
           name: string
           profit_index?: string | null
+          proteins?: string | null
           restaurant_usage_index?: number | null
           season?: string | null
           soil_type?: string[] | null
+          vitamins?: string | null
           water_requirement?: string | null
         }
         Update: {
@@ -255,16 +308,60 @@ export type Database = {
           created_at?: string | null
           daily_market_crop?: boolean | null
           duration_days?: number
+          health_benefits?: string | null
+          home_growable?: boolean | null
           id?: string
+          intercropping_possibility?: string | null
           market_demand_index?: number | null
+          medical_benefits?: string | null
           name?: string
           profit_index?: string | null
+          proteins?: string | null
           restaurant_usage_index?: number | null
           season?: string | null
           soil_type?: string[] | null
+          vitamins?: string | null
           water_requirement?: string | null
         }
         Relationships: []
+      }
+      marketplace_crop_prices: {
+        Row: {
+          created_at: string | null
+          crop_id: string | null
+          id: string
+          price_per_kg: number
+          region: string
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          crop_id?: string | null
+          id?: string
+          price_per_kg: number
+          region: string
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          crop_id?: string | null
+          id?: string
+          price_per_kg?: number
+          region?: string
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marketplace_crop_prices_crop_id_fkey"
+            columns: ["crop_id"]
+            isOneToOne: false
+            referencedRelation: "crops_master"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       multi_crop_strategies: {
         Row: {
@@ -553,6 +650,48 @@ export type Database = {
           severity?: string | null
           start_date?: string | null
           user_id?: string | null
+        }
+        Relationships: []
+      }
+      weather_forecasts: {
+        Row: {
+          condition: string | null
+          created_at: string | null
+          farming_precautions: string[] | null
+          forecast_date: string
+          humidity: number | null
+          id: string
+          location: string
+          precipitation_chance: number | null
+          temperature_high: number | null
+          temperature_low: number | null
+          wind_speed: number | null
+        }
+        Insert: {
+          condition?: string | null
+          created_at?: string | null
+          farming_precautions?: string[] | null
+          forecast_date: string
+          humidity?: number | null
+          id?: string
+          location: string
+          precipitation_chance?: number | null
+          temperature_high?: number | null
+          temperature_low?: number | null
+          wind_speed?: number | null
+        }
+        Update: {
+          condition?: string | null
+          created_at?: string | null
+          farming_precautions?: string[] | null
+          forecast_date?: string
+          humidity?: number | null
+          id?: string
+          location?: string
+          precipitation_chance?: number | null
+          temperature_high?: number | null
+          temperature_low?: number | null
+          wind_speed?: number | null
         }
         Relationships: []
       }

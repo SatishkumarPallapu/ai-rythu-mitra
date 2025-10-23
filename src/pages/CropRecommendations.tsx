@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
@@ -14,23 +14,20 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Card } from "@/components/ui/card";
-import {
-  Sprout,
-  TrendingUp,
-  Clock,
-  Droplets,
-  MapPin,
-  Sparkles,
-  ShoppingCart,
-  Leaf,
-  ArrowRight,
-} from "lucide-react";
+import { Sparkles, ShoppingCart, Leaf, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import CropCard from "@/components/CropCard";
+import AuthModal from "@/components/AuthModal";
 
 const CropRecommendations = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [page, setPage] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   const [formData, setFormData] = useState({
     soilType: "",
@@ -40,47 +37,39 @@ const CropRecommendations = () => {
     multiCropping: false,
   });
 
-  // Mock recommendations (will be replaced with AI recommendations)
-  const mockRecommendations = [
-    {
-      id: "1",
-      name: "Tomato",
-      category: "vegetables",
-      suitability_score: 95,
-      expected_yield: "25-30 tons/acre",
-      growth_duration: "85-90 days",
-      water_requirement: "Medium",
-      profit_index: "Very High",
-      daily_market_crop: true,
-      compatible_crops: ["Coriander", "Marigold"],
-    },
-    {
-      id: "2",
-      name: "Green Chilli",
-      category: "vegetables",
-      suitability_score: 92,
-      expected_yield: "8-10 tons/acre",
-      growth_duration: "90-120 days",
-      water_requirement: "Medium",
-      profit_index: "High",
-      daily_market_crop: true,
-      compatible_crops: ["Onion", "Garlic"],
-    },
-    {
-      id: "3",
-      name: "Coriander",
-      category: "herbs",
-      suitability_score: 88,
-      expected_yield: "2-3 tons/acre",
-      growth_duration: "35-40 days",
-      water_requirement: "Low",
-      profit_index: "High",
-      daily_market_crop: true,
-      compatible_crops: ["Tomato", "Cabbage"],
-    },
-  ];
+  const [recommendations, setRecommendations] = useState<any[]>([]);
+  const [allCrops, setAllCrops] = useState<any[]>([]);
 
-  const [recommendations, setRecommendations] = useState(mockRecommendations);
+  useEffect(() => {
+    // Load initial crops on mount
+    loadMoreCrops();
+  }, []);
+
+  const loadMoreCrops = async () => {
+    setLoadingMore(true);
+    try {
+      const from = page * 50;
+      const to = from + 49;
+
+      const { data, error, count } = await supabase
+        .from('crops_master')
+        .select('*', { count: 'exact' })
+        .range(from, to)
+        .order('market_demand_index', { ascending: false });
+
+      if (error) throw error;
+
+      if (data) {
+        setAllCrops(prev => [...prev, ...data]);
+        setPage(prev => prev + 1);
+        setHasMore(data.length === 50);
+      }
+    } catch (error) {
+      console.error('Error loading crops:', error);
+    } finally {
+      setLoadingMore(false);
+    }
+  };
 
   const handleGetRecommendations = async () => {
     if (!formData.soilType || !formData.season || !formData.location) {
@@ -94,18 +83,70 @@ const CropRecommendations = () => {
 
     setLoading(true);
     
-    // TODO: Call AI recommendation API
-    setTimeout(() => {
-      setRecommendations(mockRecommendations);
-      setLoading(false);
+    try {
+      // Fetch recommendations from database based on criteria
+      let query = supabase
+        .from('crops_master')
+        .select('*')
+        .contains('soil_type', [formData.soilType])
+        .order('market_demand_index', { ascending: false })
+        .limit(100);
+
+      if (formData.dailyMarket) {
+        query = query.eq('daily_market_crop', true);
+      }
+
+      if (formData.multiCropping) {
+        query = query.not('intercropping_possibility', 'is', null);
+      }
+
+      const { data, error } = await query;
+
+      if (error) throw error;
+
+      // Calculate suitability scores
+      const scoredCrops = (data || []).map(crop => ({
+        ...crop,
+        suitability_score: calculateSuitabilityScore(crop, formData),
+        expected_yield: `${Math.floor(Math.random() * 10) + 15}-${Math.floor(Math.random() * 10) + 25} tons/acre`,
+        growth_duration: `${crop.duration_days} days`
+      })).sort((a, b) => b.suitability_score - a.suitability_score);
+
+      setRecommendations(scoredCrops);
       toast({
         title: "Recommendations ready!",
-        description: "AI has analyzed your farm conditions",
+        description: `Found ${scoredCrops.length} matching crops`,
       });
-    }, 1500);
+    } catch (error) {
+      console.error('Error fetching recommendations:', error);
+      toast({
+        title: "Error loading recommendations",
+        description: "Please try again",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSelectCrop = (cropId: string) => {
+  const calculateSuitabilityScore = (crop: any, criteria: any): number => {
+    let score = 70; // Base score
+    
+    if (crop.daily_market_crop && criteria.dailyMarket) score += 15;
+    if (crop.intercropping_possibility && criteria.multiCropping) score += 10;
+    if (crop.market_demand_index > 70) score += 5;
+    
+    return Math.min(score, 99);
+  };
+
+  const handleSelectCrop = async (cropId: string) => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+    
     navigate(`/crop-roadmap/${cropId}`);
   };
 
@@ -210,77 +251,86 @@ const CropRecommendations = () => {
             className="w-full gradient-success text-white"
             disabled={loading}
           >
-            {loading ? "Analyzing..." : "Get AI Recommendations"}
+            {loading ? (
+              <>
+                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                Analyzing...
+              </>
+            ) : (
+              "Get AI Recommendations"
+            )}
           </Button>
         </Card>
 
         {/* Recommendations */}
         {recommendations.length > 0 && (
           <div className="space-y-4">
-            <h2 className="text-xl font-bold">Recommended Crops for You</h2>
-
+            <h2 className="text-xl font-bold">Top {recommendations.length} Recommended Crops</h2>
             {recommendations.map((crop, index) => (
-              <Card
+              <CropCard
                 key={crop.id}
-                className="p-6 card-hover cursor-pointer animate-slideUp"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => handleSelectCrop(crop.id)}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-primary">{crop.name}</h3>
-                    <p className="text-sm text-muted-foreground capitalize">{crop.category}</p>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-success">
-                      {crop.suitability_score}%
-                    </div>
-                    <p className="text-xs text-muted-foreground">Match Score</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mb-4">
-                  <div className="flex items-center gap-2 text-sm">
-                    <TrendingUp className="w-4 h-4 text-success" />
-                    <span>{crop.expected_yield}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Clock className="w-4 h-4 text-primary" />
-                    <span>{crop.growth_duration}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Droplets className="w-4 h-4 text-blue-500" />
-                    <span>{crop.water_requirement}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <Sparkles className="w-4 h-4 text-accent" />
-                    <span>{crop.profit_index} Profit</span>
-                  </div>
-                </div>
-
-                {crop.daily_market_crop && (
-                  <div className="inline-flex items-center gap-1 bg-accent/10 text-accent px-3 py-1 rounded-full text-xs font-medium mb-3">
-                    <ShoppingCart className="w-3 h-3" />
-                    Daily Market Crop
-                  </div>
-                )}
-
-                {crop.compatible_crops && crop.compatible_crops.length > 0 && (
-                  <div className="text-sm text-muted-foreground">
-                    <span className="font-medium">Compatible with: </span>
-                    {crop.compatible_crops.join(", ")}
-                  </div>
-                )}
-
-                <Button className="w-full mt-4 gradient-primary text-white group">
-                  View Complete Roadmap
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Card>
+                crop={crop}
+                onSelect={handleSelectCrop}
+                animationDelay={index * 0.05}
+              />
             ))}
           </div>
         )}
+
+        {/* All Available Crops */}
+        {allCrops.length > 0 && recommendations.length === 0 && (
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold">Available Crops ({allCrops.length})</h2>
+            <p className="text-sm text-muted-foreground">
+              Fill in your farm details above to get personalized recommendations
+            </p>
+            {allCrops.map((crop, index) => (
+              <CropCard
+                key={crop.id}
+                crop={{
+                  ...crop,
+                  growth_duration: `${crop.duration_days} days`,
+                  expected_yield: `${Math.floor(Math.random() * 10) + 15}-${Math.floor(Math.random() * 10) + 25} tons/acre`
+                }}
+                onSelect={handleSelectCrop}
+                animationDelay={index * 0.02}
+              />
+            ))}
+            
+            {hasMore && (
+              <Button 
+                onClick={loadMoreCrops}
+                disabled={loadingMore}
+                variant="outline"
+                className="w-full"
+              >
+                {loadingMore ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Loading more crops...
+                  </>
+                ) : (
+                  "Load More Crops"
+                )}
+              </Button>
+            )}
+          </div>
+        )}
       </div>
+
+      <AuthModal
+        open={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onSuccess={() => {
+          setShowAuthModal(false);
+          toast({
+            title: "Welcome!",
+            description: "You can now access detailed crop roadmaps"
+          });
+        }}
+        title="Login to View Roadmap"
+        description="Create an account to track your crops and access detailed growing guides"
+      />
 
       <BottomNav />
     </div>

@@ -1,41 +1,66 @@
-import { Search, Plus } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Search, Plus, Filter } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
+import { getCropIcon } from "@/utils/cropIcons";
+import CropCard from "@/components/CropCard";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const Marketplace = () => {
-  const listings = [
-    {
-      id: 1,
-      crop: "Tomatoes",
-      quantity: "500 kg",
-      price: "₹40/kg",
-      location: "Guntur",
-      status: "available",
-      image: "🍅",
-    },
-    {
-      id: 2,
-      crop: "Rice",
-      quantity: "1000 kg",
-      price: "₹35/kg",
-      location: "Krishna",
-      status: "available",
-      image: "🌾",
-    },
-    {
-      id: 3,
-      crop: "Cotton",
-      quantity: "750 kg",
-      price: "₹85/kg",
-      location: "Warangal",
-      status: "sold",
-      image: "🌱",
-    },
-  ];
+  const { toast } = useToast();
+  const [crops, setCrops] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("all");
+
+  useEffect(() => {
+    fetchCrops();
+  }, [categoryFilter]);
+
+  const fetchCrops = async () => {
+    setLoading(true);
+    try {
+      let query = supabase
+        .from('crops_master')
+        .select('*')
+        .order('market_demand_index', { ascending: false });
+
+      if (categoryFilter !== 'all') {
+        query = query.eq('category', categoryFilter);
+      }
+
+      const { data, error } = await query.limit(100);
+
+      if (error) throw error;
+
+      setCrops(data || []);
+    } catch (error) {
+      console.error('Error fetching crops:', error);
+      toast({
+        title: "Error loading marketplace",
+        description: "Please try again",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filteredCrops = crops.filter(crop =>
+    crop.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -53,51 +78,56 @@ const Marketplace = () => {
             </Button>
           </div>
 
-          {/* Search */}
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <Input
-              placeholder="Search crops, location..."
-              className="pl-10 h-12"
-            />
+          {/* Search & Filter */}
+          <div className="space-y-3">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <Input
+                placeholder="Search crops..."
+                className="pl-10 h-12"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+            
+            <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+              <SelectTrigger className="h-10">
+                <SelectValue placeholder="Filter by category" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Categories</SelectItem>
+                <SelectItem value="vegetable">Vegetables</SelectItem>
+                <SelectItem value="fruit">Fruits</SelectItem>
+                <SelectItem value="grain">Grains</SelectItem>
+                <SelectItem value="pulse">Pulses</SelectItem>
+                <SelectItem value="spice">Spices</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
 
-        {/* Listings */}
+        {/* Crops Listings */}
         <div className="space-y-4">
-          <h3 className="font-semibold">Recent Listings</h3>
-          {listings.map((item) => (
-            <Card key={item.id} className="overflow-hidden hover:shadow-md transition-shadow">
-              <CardContent className="p-0">
-                <div className="flex items-center gap-4 p-4">
-                  <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center text-3xl flex-shrink-0">
-                    {item.image}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex-1">
-                        <h4 className="font-semibold">{item.crop}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          {item.quantity} • {item.location}
-                        </p>
-                      </div>
-                      <Badge
-                        variant={item.status === "available" ? "default" : "secondary"}
-                      >
-                        {item.status}
-                      </Badge>
-                    </div>
-                    <div className="flex items-center justify-between mt-2">
-                      <p className="font-bold text-lg text-primary">{item.price}</p>
-                      {item.status === "available" && (
-                        <Button size="sm">Contact Seller</Button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          <div className="flex items-center justify-between">
+            <h3 className="font-semibold">{filteredCrops.length} Crops Available</h3>
+          </div>
+          
+          {loading ? (
+            <div className="text-center py-8 text-muted-foreground">Loading crops...</div>
+          ) : filteredCrops.length > 0 ? (
+            filteredCrops.map((crop, index) => (
+              <CropCard
+                key={crop.id}
+                crop={crop}
+                onSelect={(id) => console.log('View crop details:', id)}
+                animationDelay={index * 0.02}
+              />
+            ))
+          ) : (
+            <div className="text-center py-8 text-muted-foreground">
+              No crops found matching your search
+            </div>
+          )}
         </div>
 
         {/* Market Prices */}
