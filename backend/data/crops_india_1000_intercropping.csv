@@ -1,0 +1,1051 @@
+Crop_Name,Category,Avg_Harvest_Days,Market_Demand,Home_Growable,Health_Benefit,Intercropping_Possibility
+Potato,Vegetable,101,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cabbage,Vegetable,92,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Rice,Grain,103,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Blueberry,Fruit,217,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cocoa,Cash/Plantation,392,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Sapota,Fruit,309,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cowpea,Pulse,109,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Hybrid Ginger,Spice,206,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Soybean,Oilseed,130,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Ginger,Spice,191,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Dwarf Blueberry,Fruit,178,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Papaya,Fruit,249,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Maize,Grain,100,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant French Bean,Vegetable,88,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Snake Gourd,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Coconut,Fruit,105,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cotton,Cash/Plantation,385,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Okra,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Onion,Vegetable,90,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Capsicum,Vegetable,64,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Ginger,Spice,172,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cotton,Cash/Plantation,464,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cabbage,Vegetable,53,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lemon,Fruit,230,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Pigeon Pea,Vegetable,96,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tomato,Vegetable,82,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Papaya,Fruit,178,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Thyme,Herb/Medicinal,65,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Green Gram,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Parsley,Herb/Medicinal,130,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Garlic,Spice,184,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Sapota,Fruit,254,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Potato,Vegetable,62,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cotton,Cash/Plantation,354,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cold-Tolerant Sapota,Fruit,310,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Ridge Gourd,Vegetable,58,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Mango,Fruit,277,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Turmeric,Spice,263,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Strawberry,Fruit,90,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Cinnamon,Spice,128,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Heat-Tolerant Cauliflower,Vegetable,92,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Wheat,Grain,97,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Heat-Tolerant Fenugreek,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Wheat,Grain,160,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Local Tomato,Vegetable,53,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sapota,Fruit,241,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Barley,Grain,121,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Kidney Bean,Vegetable,74,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Soybean,Oilseed,103,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+High-Yield Green Gram,Vegetable,88,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Rosemary,Herb/Medicinal,145,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Ginger,Spice,224,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cold-Tolerant Aloe Vera,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Horse Gram,Vegetable,65,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Guava,Fruit,282,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Parsley,Herb/Medicinal,37,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+French Bean,Vegetable,48,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Cocoa,Cash/Plantation,387,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Spinach,Vegetable,52,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Barley,Grain,132,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Ginger,Spice,267,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Groundnut,Oilseed,108,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Bottle Gourd,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Gram,Vegetable,62,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rubber,Cash/Plantation,358,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Heat-Tolerant French Bean,Vegetable,120,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Gram,Vegetable,96,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Maize,Grain,128,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Mulberry,Fruit,359,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Oats,Grain,98,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Organic Cardamom,Spice,146,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Jute,Cash/Plantation,457,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cinnamon,Spice,272,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Snake Gourd,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Turmeric,Spice,159,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Sapota,Fruit,148,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Guava,Fruit,252,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Garlic,Spice,137,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Potato,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Blueberry,Fruit,246,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Basil,Herb/Medicinal,80,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Garlic,Spice,256,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Guava,Fruit,268,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Mustard,Oilseed,106,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Bay Leaf,Vegetable,90,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Jute,Cash/Plantation,346,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Parsley,Herb/Medicinal,130,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Cotton,Cash/Plantation,480,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cold-Tolerant Soybean,Oilseed,151,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Tobacco,Cash/Plantation,515,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Strawberry,Fruit,312,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Cowpea,Pulse,154,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Carrot,Vegetable,97,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Bitter Gourd,Vegetable,102,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Finger Millet,Vegetable,115,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Oats,Grain,142,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Dwarf Pearl Millet,Vegetable,61,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dill,Herb/Medicinal,136,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Jute,Cash/Plantation,380,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Peas,Vegetable,61,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Ridge Gourd,Vegetable,58,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Banana,Fruit,252,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Organic Lemongrass,Herb/Medicinal,89,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Garlic,Spice,184,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Soybean,Oilseed,138,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Early-Maturing Maize,Grain,100,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Mustard,Oilseed,118,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Fenugreek Seed,Vegetable,107,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Radish,Vegetable,67,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Clove,Spice,175,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Early-Maturing Garlic,Spice,146,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Potato,Vegetable,73,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Turmeric,Spice,274,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cold-Tolerant Pigeon Pea,Vegetable,84,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Sapota,Fruit,254,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Apple,Fruit,321,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Apple,Fruit,338,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Jute,Cash/Plantation,415,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Late-Maturing Groundnut,Oilseed,108,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Mint,Herb/Medicinal,141,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Mulberry,Fruit,162,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Turmeric,Spice,200,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Bay Leaf,Vegetable,79,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Linseed,Oilseed,115,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Linseed,Oilseed,132,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Cucumber,Vegetable,61,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Rubber,Cash/Plantation,303,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Bay Leaf,Vegetable,90,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Radish,Vegetable,116,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Lime,Fruit,161,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Pear,Fruit,288,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Sorghum,Grain,132,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Organic Turmeric,Spice,245,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Bitter Gourd,Vegetable,51,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Fenugreek,Vegetable,60,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Cinnamon,Spice,268,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cocoa,Cash/Plantation,469,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Turmeric,Spice,132,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Coriander,Herb/Medicinal,107,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Peas,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Okra,Vegetable,100,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bottle Gourd,Vegetable,111,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cowpea,Pulse,155,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Cold-Tolerant Ginger,Spice,163,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Lemongrass,Herb/Medicinal,72,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Cucumber,Vegetable,115,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Barley,Grain,127,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Bitter Gourd,Vegetable,73,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mustard Seed,Vegetable,77,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Clove,Spice,191,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Carrot,Vegetable,55,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lemongrass,Herb/Medicinal,98,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Blueberry,Fruit,185,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dill,Herb/Medicinal,164,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Custard Apple,Fruit,205,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Onion,Vegetable,90,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Banana,Fruit,287,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Mulberry,Fruit,215,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Oats,Grain,139,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Bottle Gourd,Vegetable,110,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Fenugreek,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Capsicum,Vegetable,95,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Parsley,Herb/Medicinal,117,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Cinnamon,Spice,286,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Dill,Herb/Medicinal,80,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Guava,Fruit,94,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Coriander,Herb/Medicinal,74,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Chilli,Vegetable,103,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Mulberry,Fruit,157,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Pearl Millet,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mustard Seed,Vegetable,69,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Soybean,Oilseed,155,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Dwarf Onion,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Mulberry,Fruit,364,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Cucumber,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Lettuce,Vegetable,53,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Bottle Gourd,Vegetable,108,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Turmeric,Spice,196,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cold-Tolerant Pear,Fruit,342,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Custard Apple,Fruit,184,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Blueberry,Fruit,118,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Soybean,Oilseed,107,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Oats,Grain,137,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Hybrid Castor,Oilseed,120,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant French Bean,Vegetable,70,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Orange,Fruit,340,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Spinach,Vegetable,70,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cowpea,Pulse,124,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Soybean,Oilseed,138,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Hybrid Onion,Vegetable,91,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Turmeric,Spice,191,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Dill,Herb/Medicinal,69,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Mint,Herb/Medicinal,107,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lemongrass,Herb/Medicinal,116,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic French Bean,Vegetable,102,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Mulberry,Fruit,185,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Lemon,Fruit,343,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Maize,Grain,103,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Lemon,Fruit,277,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Coriander Seed,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Grapes,Fruit,309,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Guava,Fruit,205,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Organic Papaya,Fruit,106,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Beetroot,Vegetable,72,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Groundnut,Oilseed,108,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Local Tobacco,Cash/Plantation,301,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Late-Maturing Coriander Seed,Vegetable,108,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Sugarcane,Cash/Plantation,323,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Late-Maturing Radish,Vegetable,78,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dill,Herb/Medicinal,111,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Cauliflower,Vegetable,105,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Fenugreek,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Mint,Herb/Medicinal,88,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Parsley,Herb/Medicinal,42,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Castor,Oilseed,129,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Early-Maturing Mustard,Oilseed,126,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Bottle Gourd,Vegetable,53,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Coriander Seed,Vegetable,60,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Jackfruit,Fruit,245,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Thyme,Herb/Medicinal,168,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pearl Millet,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Mint,Herb/Medicinal,75,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Ridge Gourd,Vegetable,87,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dill,Herb/Medicinal,138,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Cowpea,Pulse,143,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Ridge Gourd,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Capsicum,Vegetable,46,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Onion,Vegetable,72,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cowpea,Pulse,96,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Heat-Tolerant Coriander,Herb/Medicinal,72,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Coriander Seed,Vegetable,98,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Radish,Vegetable,48,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Onion,Vegetable,88,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Basil,Herb/Medicinal,54,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Ginger,Spice,234,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Heat-Tolerant Coriander,Herb/Medicinal,41,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Fenugreek,Vegetable,95,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Garlic,Spice,220,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Onion,Vegetable,118,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Pepper,Vegetable,63,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Coriander,Herb/Medicinal,89,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Mulberry,Fruit,159,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Coriander Seed,Vegetable,100,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Gram,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Capsicum,Vegetable,47,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Pineapple,Fruit,241,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Garlic,Spice,249,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Mustard,Oilseed,144,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Castor,Oilseed,109,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Coffee,Cash/Plantation,305,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Organic Mustard,Oilseed,131,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Heat-Tolerant Carrot,Vegetable,110,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sugarcane,Cash/Plantation,521,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Grapes,Fruit,274,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Lime,Fruit,320,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Mulberry,Fruit,217,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Jackfruit,Fruit,345,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Sapota,Fruit,286,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Rice,Grain,146,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Early-Maturing Thyme,Herb/Medicinal,103,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lettuce,Vegetable,84,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Saffron,Spice,172,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Saffron,Spice,219,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Linseed,Oilseed,136,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Orange,Fruit,364,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Saffron,Spice,295,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cold-Tolerant Rice,Grain,128,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Organic Castor,Oilseed,124,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cardamom,Spice,146,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Grapes,Fruit,173,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Fenugreek,Vegetable,71,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Linseed,Oilseed,136,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Hybrid Cucumber,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pomegranate,Fruit,104,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Pineapple,Fruit,148,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Methi,Vegetable,111,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Soybean,Oilseed,153,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Organic Turmeric,Spice,252,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Late-Maturing Mustard,Oilseed,125,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Dwarf Snake Gourd,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Pepper,Vegetable,112,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Jackfruit,Fruit,323,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Kidney Bean,Vegetable,84,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Custard Apple,Fruit,267,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Cowpea,Pulse,93,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Dwarf Castor,Oilseed,105,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Blueberry,Fruit,91,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Finger Millet,Vegetable,79,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Ginger,Spice,221,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Apple,Fruit,136,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Pear,Fruit,96,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Cocoa,Cash/Plantation,463,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Tobacco,Cash/Plantation,389,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Mango,Fruit,295,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Mulberry,Fruit,358,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Ginger,Spice,172,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Guava,Fruit,175,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Barley,Grain,136,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Heat-Tolerant Groundnut,Oilseed,156,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Coriander Seed,Vegetable,106,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rosemary,Herb/Medicinal,107,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Lemongrass,Herb/Medicinal,142,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Aloe Vera,Vegetable,109,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Mustard Seed,Vegetable,72,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Basil,Herb/Medicinal,48,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Soybean,Oilseed,115,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Black Gram,Vegetable,59,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Guava,Fruit,257,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Oats,Grain,151,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Spinach,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Methi,Vegetable,93,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bay Leaf,Vegetable,49,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sesame,Oilseed,129,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cumin,Spice,192,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Sugarcane,Cash/Plantation,401,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Pineapple,Fruit,288,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Rosemary,Herb/Medicinal,147,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coriander Seed,Vegetable,75,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lime,Fruit,280,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Mustard,Oilseed,155,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Basil,Herb/Medicinal,127,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Ginger,Spice,162,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Early-Maturing Cabbage,Vegetable,118,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bottle Gourd,Vegetable,80,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Okra,Vegetable,65,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cauliflower,Vegetable,91,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Green Gram,Vegetable,92,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Pepper,Vegetable,74,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Sapota,Fruit,282,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Mustard Seed,Vegetable,107,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cocoa,Cash/Plantation,399,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Banana,Fruit,162,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cauliflower,Vegetable,49,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cotton,Cash/Plantation,376,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Pear,Fruit,171,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Cardamom,Spice,133,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Lemongrass,Herb/Medicinal,162,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Kidney Bean,Vegetable,120,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Strawberry,Fruit,324,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Tobacco,Cash/Plantation,376,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Local Cumin,Spice,143,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Lime,Fruit,274,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Ginger,Spice,285,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Fenugreek Seed,Vegetable,104,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Lentil,Pulse,72,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Hybrid Mustard Seed,Vegetable,80,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Basil,Herb/Medicinal,111,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dill,Herb/Medicinal,172,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Methi,Vegetable,49,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Lentil,Pulse,131,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Local Lentil,Pulse,132,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Dwarf Cotton,Cash/Plantation,465,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Coconut,Fruit,299,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Lemongrass,Herb/Medicinal,63,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sorghum,Grain,149,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Tulsi,Herb/Medicinal,99,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Barley,Grain,136,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Ginger,Spice,296,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Dwarf Papaya,Fruit,257,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Aloe Vera,Vegetable,115,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Coriander,Herb/Medicinal,170,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tea,Cash/Plantation,394,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Linseed,Oilseed,143,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Banana,Fruit,331,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Clove,Spice,162,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Potato,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lemongrass,Herb/Medicinal,179,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Mustard,Oilseed,151,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Rubber,Cash/Plantation,323,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Chilli,Vegetable,112,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Coriander Seed,Vegetable,113,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Pear,Fruit,274,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Spinach,Vegetable,78,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coriander Seed,Vegetable,118,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Cocoa,Cash/Plantation,465,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Potato,Vegetable,74,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Apple,Fruit,235,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Bottle Gourd,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Clove,Spice,131,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Oats,Grain,135,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Jackfruit,Fruit,231,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Chilli,Vegetable,119,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Turmeric,Spice,244,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Okra,Vegetable,80,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Lemon,Fruit,167,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cumin,Spice,219,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+High-Yield Aloe Vera,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Carrot,Vegetable,100,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Cumin,Spice,137,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+High-Yield Lime,Fruit,239,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Green Gram,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Mustard,Oilseed,131,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Local Custard Apple,Fruit,134,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Sunflower,Oilseed,114,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Beetroot,Vegetable,62,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Turmeric,Spice,183,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Bitter Gourd,Vegetable,60,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Saffron,Spice,179,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Organic Kidney Bean,Vegetable,48,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pomegranate,Fruit,300,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Finger Millet,Vegetable,55,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pigeon Pea,Vegetable,104,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cumin,Spice,181,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Dwarf Cucumber,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sugarcane,Cash/Plantation,487,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cotton,Cash/Plantation,318,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Early-Maturing Brinjal,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Orange,Fruit,222,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Turmeric,Spice,271,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Heat-Tolerant Basil,Herb/Medicinal,36,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Bottle Gourd,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coconut,Fruit,149,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Cowpea,Pulse,100,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Cold-Tolerant Pineapple,Fruit,144,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Dill,Herb/Medicinal,96,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Grapes,Fruit,203,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Sapota,Fruit,161,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Lentil,Pulse,100,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Hybrid Ginger,Spice,239,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Barley,Grain,130,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Turmeric,Spice,163,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Basil,Herb/Medicinal,172,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Ridge Gourd,Vegetable,71,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Apple,Fruit,273,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Sugarcane,Cash/Plantation,315,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Beetroot,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Fenugreek Seed,Vegetable,93,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Pomegranate,Fruit,335,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Garlic,Spice,276,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Organic Castor,Oilseed,111,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Local Soybean,Oilseed,152,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Chilli,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Spinach,Vegetable,103,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Finger Millet,Vegetable,50,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Coriander,Herb/Medicinal,69,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bay Leaf,Vegetable,103,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Saffron,Spice,226,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Late-Maturing Kidney Bean,Vegetable,84,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Garlic,Spice,238,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Early-Maturing Lettuce,Vegetable,50,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mango,Fruit,114,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Mulberry,Fruit,144,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cinnamon,Spice,272,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Ginger,Spice,181,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Tomato,Vegetable,73,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Brinjal,Vegetable,48,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Coriander,Herb/Medicinal,37,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cucumber,Vegetable,108,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coriander,Herb/Medicinal,76,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Cotton,Cash/Plantation,388,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Black Gram,Vegetable,79,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Aloe Vera,Vegetable,95,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Carrot,Vegetable,111,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Finger Millet,Vegetable,102,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Pigeon Pea,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Custard Apple,Fruit,273,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Black Pepper,Vegetable,100,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Papaya,Fruit,214,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Black Gram,Vegetable,59,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Sunflower,Oilseed,131,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Coffee,Cash/Plantation,412,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Thyme,Herb/Medicinal,69,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Wheat,Grain,101,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Coffee,Cash/Plantation,352,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Late-Maturing Pomegranate,Fruit,227,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Garlic,Spice,238,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+High-Yield Fenugreek Seed,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Radish,Vegetable,83,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Castor,Oilseed,120,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cocoa,Cash/Plantation,365,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cold-Tolerant Bay Leaf,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Clove,Spice,218,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Heat-Tolerant Fenugreek,Vegetable,85,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Cotton,Cash/Plantation,512,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cold-Tolerant Cowpea,Pulse,145,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Tomato,Vegetable,63,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Thyme,Herb/Medicinal,147,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Coriander,Herb/Medicinal,98,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Fenugreek,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mint,Herb/Medicinal,100,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Mulberry,Fruit,274,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Ridge Gourd,Vegetable,73,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Garlic,Spice,272,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cabbage,Vegetable,114,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Capsicum,Vegetable,50,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cocoa,Cash/Plantation,390,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Heat-Tolerant Lime,Fruit,120,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Mulberry,Fruit,182,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Pineapple,Fruit,314,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Papaya,Fruit,192,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Rubber,Cash/Plantation,396,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Lettuce,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Blueberry,Fruit,361,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Mulberry,Fruit,136,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Garlic,Spice,200,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+High-Yield Coconut,Fruit,157,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Maize,Grain,124,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Hybrid French Bean,Vegetable,46,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Capsicum,Vegetable,111,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bay Leaf,Vegetable,55,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Carrot,Vegetable,78,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Wheat,Grain,120,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Parsley,Herb/Medicinal,62,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rosemary,Herb/Medicinal,141,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Cocoa,Cash/Plantation,445,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Pineapple,Fruit,129,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Pear,Fruit,288,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Tulsi,Herb/Medicinal,139,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Mustard,Oilseed,120,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Coconut,Fruit,306,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Cowpea,Pulse,160,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Organic Coriander Seed,Vegetable,75,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Gram,Vegetable,67,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sugarcane,Cash/Plantation,395,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Tomato,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Wheat,Grain,154,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Black Pepper,Vegetable,99,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rubber,Cash/Plantation,478,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cold-Tolerant Lime,Fruit,217,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Linseed,Oilseed,135,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Pomegranate,Fruit,292,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Black Gram,Vegetable,107,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Radish,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rice,Grain,100,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+High-Yield Bitter Gourd,Vegetable,82,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Linseed,Oilseed,140,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Fenugreek,Vegetable,108,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Okra,Vegetable,116,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Mustard Seed,Vegetable,72,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coriander Seed,Vegetable,46,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Cinnamon,Spice,267,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Sapota,Fruit,293,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Sugarcane,Cash/Plantation,417,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Aloe Vera,Vegetable,98,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Ginger,Spice,300,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Tobacco,Cash/Plantation,325,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Banana,Fruit,228,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Lemongrass,Herb/Medicinal,121,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Turmeric,Spice,280,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Thyme,Herb/Medicinal,101,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Ridge Gourd,Vegetable,68,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Lemon,Fruit,259,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Papaya,Fruit,363,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Basil,Herb/Medicinal,157,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Clove,Spice,260,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Organic Thyme,Herb/Medicinal,33,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Oats,Grain,135,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Carrot,Vegetable,51,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Aloe Vera,Vegetable,107,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mulberry,Fruit,129,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cumin,Spice,245,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Lettuce,Vegetable,114,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Black Pepper,Vegetable,68,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cardamom,Spice,261,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Chickpea,Pulse,138,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Cowpea,Pulse,125,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Organic Guava,Fruit,179,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cotton,Cash/Plantation,476,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Local Spinach,Vegetable,101,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Barley,Grain,121,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Guava,Fruit,127,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Green Gram,Vegetable,120,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Clove,Spice,299,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Late-Maturing Fenugreek Seed,Vegetable,59,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rosemary,Herb/Medicinal,121,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lime,Fruit,201,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Kidney Bean,Vegetable,88,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Jackfruit,Fruit,312,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Black Gram,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mint,Herb/Medicinal,153,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Mustard Seed,Vegetable,84,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Green Gram,Vegetable,45,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tea,Cash/Plantation,303,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Black Pepper,Vegetable,93,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pineapple,Fruit,247,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Grapes,Fruit,286,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Lemongrass,Herb/Medicinal,37,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Mustard Seed,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Garlic,Spice,259,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Guava,Fruit,164,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Apple,Fruit,142,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Jute,Cash/Plantation,535,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Local Bay Leaf,Vegetable,83,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Fenugreek Seed,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Basil,Herb/Medicinal,64,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Mustard,Oilseed,101,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Basil,Herb/Medicinal,124,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sapota,Fruit,224,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Apple,Fruit,282,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Okra,Vegetable,52,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Grapes,Fruit,286,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Pear,Fruit,322,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Black Gram,Vegetable,50,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Clove,Spice,259,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Chilli,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local French Bean,Vegetable,46,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Lemongrass,Herb/Medicinal,114,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Black Pepper,Vegetable,94,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Rice,Grain,140,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Turmeric,Spice,173,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Turmeric,Spice,256,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cumin,Spice,292,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Heat-Tolerant Sorghum,Grain,155,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Hybrid Black Pepper,Vegetable,78,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Tobacco,Cash/Plantation,329,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Coriander,Herb/Medicinal,64,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Strawberry,Fruit,186,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Coriander,Herb/Medicinal,64,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Chickpea,Pulse,159,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+High-Yield Maize,Grain,104,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Guava,Fruit,193,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Grapes,Fruit,121,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Rubber,Cash/Plantation,349,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Lettuce,Vegetable,99,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Gram,Vegetable,88,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Green Gram,Vegetable,101,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Dill,Herb/Medicinal,132,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Wheat,Grain,115,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Parsley,Herb/Medicinal,81,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Strawberry,Fruit,178,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Linseed,Oilseed,105,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Parsley,Herb/Medicinal,60,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Banana,Fruit,282,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Thyme,Herb/Medicinal,69,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Banana,Fruit,355,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Barley,Grain,147,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Turmeric,Spice,213,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Oats,Grain,127,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Rice,Grain,127,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Banana,Fruit,118,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Jackfruit,Fruit,99,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Carrot,Vegetable,90,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Barley,Grain,152,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Mulberry,Fruit,147,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cocoa,Cash/Plantation,338,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Basil,Herb/Medicinal,99,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tea,Cash/Plantation,491,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Early-Maturing Grapes,Fruit,232,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Tobacco,Cash/Plantation,480,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Jackfruit,Fruit,280,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Custard Apple,Fruit,339,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Garlic,Spice,270,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Early-Maturing Brinjal,Vegetable,49,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cocoa,Cash/Plantation,472,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Garlic,Spice,244,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Tea,Cash/Plantation,427,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Carrot,Vegetable,79,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Lettuce,Vegetable,99,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mint,Herb/Medicinal,51,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Maize,Grain,138,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Mint,Herb/Medicinal,76,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Maize,Grain,125,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Organic Cinnamon,Spice,187,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Late-Maturing Beetroot,Vegetable,60,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pigeon Pea,Vegetable,71,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Parsley,Herb/Medicinal,153,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Apple,Fruit,214,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Beetroot,Vegetable,51,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Soybean,Oilseed,131,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Soybean,Oilseed,136,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Rubber,Cash/Plantation,302,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Jute,Cash/Plantation,371,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Lemon,Fruit,342,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Custard Apple,Fruit,223,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Organic Mustard,Oilseed,120,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Early-Maturing Grapes,Fruit,137,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+French Bean,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Bay Leaf,Vegetable,113,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Rosemary,Herb/Medicinal,172,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Chilli,Vegetable,102,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Lime,Fruit,364,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Sapota,Fruit,222,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield French Bean,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Sugarcane,Cash/Plantation,474,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Hybrid Green Gram,Vegetable,60,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Onion,Vegetable,58,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Tea,Cash/Plantation,326,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Thyme,Herb/Medicinal,39,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Pomegranate,Fruit,251,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Brinjal,Vegetable,82,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Lettuce,Vegetable,102,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Sugarcane,Cash/Plantation,318,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Heat-Tolerant Maize,Grain,107,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Dwarf Radish,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Wheat,Grain,103,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Oats,Grain,132,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Black Pepper,Vegetable,93,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Garlic,Spice,191,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Late-Maturing Horse Gram,Vegetable,60,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Castor,Oilseed,139,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Finger Millet,Vegetable,71,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rubber,Cash/Plantation,504,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Pearl Millet,Vegetable,91,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rubber,Cash/Plantation,311,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Strawberry,Fruit,187,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Sapota,Fruit,255,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Grapes,Fruit,205,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Beetroot,Vegetable,97,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Soybean,Oilseed,115,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Soybean,Oilseed,151,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Bottle Gourd,Vegetable,71,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Apple,Fruit,297,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Carrot,Vegetable,55,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Carrot,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Fenugreek,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Cowpea,Pulse,122,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Heat-Tolerant Cabbage,Vegetable,115,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Ginger,Spice,265,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Early-Maturing Coffee,Cash/Plantation,430,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Mulberry,Fruit,217,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Papaya,Fruit,94,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Finger Millet,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Mint,Herb/Medicinal,108,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Basil,Herb/Medicinal,167,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coriander,Herb/Medicinal,137,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cardamom,Spice,295,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Late-Maturing Castor,Oilseed,126,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Tobacco,Cash/Plantation,312,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Parsley,Herb/Medicinal,111,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sorghum,Grain,144,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Pomegranate,Fruit,288,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Cucumber,Vegetable,83,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Brinjal,Vegetable,108,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rubber,Cash/Plantation,409,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Heat-Tolerant Lettuce,Vegetable,61,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rubber,Cash/Plantation,450,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Barley,Grain,103,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Cucumber,Vegetable,104,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Custard Apple,Fruit,291,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Lentil,Pulse,81,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+High-Yield Coffee,Cash/Plantation,429,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Bottle Gourd,Vegetable,110,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Linseed,Oilseed,110,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+High-Yield Kidney Bean,Vegetable,101,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Snake Gourd,Vegetable,98,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Oats,Grain,118,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Black Gram,Vegetable,46,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Turmeric,Spice,235,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Early-Maturing Cauliflower,Vegetable,112,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Apple,Fruit,317,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Rice,Grain,100,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Ridge Gourd,Vegetable,67,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cabbage,Vegetable,103,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Jackfruit,Fruit,159,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cowpea,Pulse,72,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Apple,Fruit,132,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Basil,Herb/Medicinal,177,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Coriander,Herb/Medicinal,60,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Maize,Grain,142,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Pear,Fruit,290,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Green Gram,Vegetable,78,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Strawberry,Fruit,251,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Rubber,Cash/Plantation,517,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Barley,Grain,158,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Heat-Tolerant Thyme,Herb/Medicinal,164,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Cabbage,Vegetable,74,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Jute,Cash/Plantation,345,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Carrot,Vegetable,98,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Banana,Fruit,285,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Jackfruit,Fruit,243,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Wheat,Grain,143,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Cabbage,Vegetable,106,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rice,Grain,147,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Groundnut,Oilseed,132,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Groundnut,Oilseed,110,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Heat-Tolerant Aloe Vera,Vegetable,106,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Beetroot,Vegetable,120,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Carrot,Vegetable,85,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pigeon Pea,Vegetable,102,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Garlic,Spice,120,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Clove,Spice,193,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Custard Apple,Fruit,346,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Fenugreek,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tulsi,Herb/Medicinal,75,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Tulsi,Herb/Medicinal,163,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Turmeric,Spice,228,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Kidney Bean,Vegetable,102,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mint,Herb/Medicinal,70,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Snake Gourd,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Cabbage,Vegetable,111,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Grapes,Fruit,162,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Carrot,Vegetable,107,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Horse Gram,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Aloe Vera,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Soybean,Oilseed,159,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Dill,Herb/Medicinal,125,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Groundnut,Oilseed,133,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Dwarf Coriander Seed,Vegetable,65,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Blueberry,Fruit,122,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Okra,Vegetable,53,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Turmeric,Spice,247,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Wheat,Grain,112,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Spinach,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Bay Leaf,Vegetable,68,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Finger Millet,Vegetable,82,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Custard Apple,Fruit,103,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Ginger,Spice,266,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Groundnut,Oilseed,125,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Lentil,Pulse,87,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Guava,Fruit,318,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Groundnut,Oilseed,116,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Parsley,Herb/Medicinal,93,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Jackfruit,Fruit,174,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Green Gram,Vegetable,110,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Turmeric,Spice,209,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cinnamon,Spice,204,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cold-Tolerant Papaya,Fruit,119,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Tea,Cash/Plantation,398,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Bottle Gourd,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rosemary,Herb/Medicinal,74,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Sesame,Oilseed,131,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Coffee,Cash/Plantation,479,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Rosemary,Herb/Medicinal,102,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cumin,Spice,170,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Finger Millet,Vegetable,62,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bitter Gourd,Vegetable,67,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pearl Millet,Vegetable,73,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Pepper,Vegetable,45,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Cardamom,Spice,276,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+High-Yield Finger Millet,Vegetable,82,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coconut,Fruit,190,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Oats,Grain,113,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Oats,Grain,102,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Early-Maturing Black Gram,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Radish,Vegetable,53,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Chilli,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Wheat,Grain,105,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Early-Maturing Horse Gram,Vegetable,74,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tea,Cash/Plantation,463,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Heat-Tolerant Wheat,Grain,111,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Blueberry,Fruit,304,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Papaya,Fruit,257,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Cucumber,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Jute,Cash/Plantation,393,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Pearl Millet,Vegetable,56,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bay Leaf,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Groundnut,Oilseed,115,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Pigeon Pea,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Kidney Bean,Vegetable,112,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pomegranate,Fruit,193,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Early-Maturing Sesame,Oilseed,132,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Soybean,Oilseed,110,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cumin,Spice,227,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cold-Tolerant Aloe Vera,Vegetable,82,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Cowpea,Pulse,105,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Heat-Tolerant Barley,Grain,110,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Lentil,Pulse,153,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+High-Yield Cocoa,Cash/Plantation,468,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Late-Maturing Lemongrass,Herb/Medicinal,143,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Green Gram,Vegetable,49,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Gram,Vegetable,101,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Methi,Vegetable,59,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sorghum,Grain,160,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+High-Yield Soybean,Oilseed,112,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Late-Maturing Potato,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Snake Gourd,Vegetable,85,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Strawberry,Fruit,229,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Aloe Vera,Vegetable,93,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lime,Fruit,202,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cowpea,Pulse,101,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Hybrid Rubber,Cash/Plantation,422,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Heat-Tolerant Coriander,Herb/Medicinal,34,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Pomegranate,Fruit,278,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Pineapple,Fruit,248,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Kidney Bean,Vegetable,73,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Coriander,Herb/Medicinal,94,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Coriander,Herb/Medicinal,31,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Ridge Gourd,Vegetable,114,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pearl Millet,Vegetable,65,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Cowpea,Pulse,83,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Wheat,Grain,93,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Cumin,Spice,198,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Garlic,Spice,283,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cold-Tolerant Apple,Fruit,95,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Peas,Vegetable,98,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Ginger,Spice,139,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Lentil,Pulse,88,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Early-Maturing Castor,Oilseed,100,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Local Coriander,Herb/Medicinal,126,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pineapple,Fruit,211,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Onion,Vegetable,87,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Cocoa,Cash/Plantation,502,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cinnamon,Spice,229,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Apple,Fruit,209,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Mango,Fruit,253,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Grapes,Fruit,168,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Local Wheat,Grain,153,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Banana,Fruit,136,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Cotton,Cash/Plantation,495,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Maize,Grain,154,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Chickpea,Pulse,153,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Cold-Tolerant Banana,Fruit,139,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Organic Coriander,Herb/Medicinal,130,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Groundnut,Oilseed,149,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Organic Tulsi,Herb/Medicinal,121,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Papaya,Fruit,302,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Sunflower,Oilseed,110,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Lettuce,Vegetable,87,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Saffron,Spice,285,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+High-Yield Okra,Vegetable,95,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Jackfruit,Fruit,110,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Tobacco,Cash/Plantation,300,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Tea,Cash/Plantation,356,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Early-Maturing Sapota,Fruit,280,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Thyme,Herb/Medicinal,113,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Pear,Fruit,252,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Brinjal,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Garlic,Spice,147,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Ginger,Spice,194,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Mango,Fruit,258,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Sugarcane,Cash/Plantation,305,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Jute,Cash/Plantation,334,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Local Pomegranate,Fruit,365,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Onion,Vegetable,103,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Castor,Oilseed,158,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Castor,Oilseed,126,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Guava,Fruit,144,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Horse Gram,Vegetable,83,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Clove,Spice,242,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Bay Leaf,Vegetable,103,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dwarf Tulsi,Herb/Medicinal,47,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Linseed,Oilseed,145,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Hybrid Cucumber,Vegetable,67,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Horse Gram,Vegetable,96,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Lentil,Pulse,87,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Early-Maturing Cucumber,Vegetable,63,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Carrot,Vegetable,79,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Radish,Vegetable,113,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Coffee,Cash/Plantation,355,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Dwarf Chickpea,Pulse,106,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Mustard Seed,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Cinnamon,Spice,134,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Garlic,Spice,232,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Dwarf Cocoa,Cash/Plantation,335,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cumin,Spice,141,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Saffron,Spice,294,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Kidney Bean,Vegetable,105,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Dill,Herb/Medicinal,170,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Okra,Vegetable,75,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Mango,Fruit,133,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Barley,Grain,160,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Local Ginger,Spice,145,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Fenugreek,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Pearl Millet,Vegetable,50,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Coconut,Fruit,311,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Tea,Cash/Plantation,479,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Late-Maturing Linseed,Oilseed,108,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Pineapple,Fruit,163,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Kidney Bean,Vegetable,110,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Custard Apple,Fruit,167,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Organic Sunflower,Oilseed,154,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+High-Yield Black Gram,Vegetable,88,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Black Gram,Vegetable,52,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Clove,Spice,123,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Organic French Bean,Vegetable,115,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Okra,Vegetable,79,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bay Leaf,Vegetable,114,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Bitter Gourd,Vegetable,64,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Mulberry,Fruit,301,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Coffee,Cash/Plantation,448,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Cowpea,Pulse,87,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Apple,Fruit,261,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Mulberry,Fruit,256,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Okra,Vegetable,109,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cotton,Cash/Plantation,480,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Horse Gram,Vegetable,51,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Coriander,Herb/Medicinal,51,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Finger Millet,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Mint,Herb/Medicinal,36,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mulberry,Fruit,242,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cinnamon,Spice,243,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Tulsi,Herb/Medicinal,82,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Banana,Fruit,271,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Parsley,Herb/Medicinal,48,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Black Pepper,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Organic Maize,Grain,101,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Sesame,Oilseed,100,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Early-Maturing Ridge Gourd,Vegetable,60,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Mustard Seed,Vegetable,93,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mustard Seed,Vegetable,86,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Turmeric,Spice,274,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Groundnut,Oilseed,132,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Local Soybean,Oilseed,109,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Hybrid Pineapple,Fruit,128,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Basil,Herb/Medicinal,35,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Lettuce,Vegetable,95,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Cabbage,Vegetable,50,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Cowpea,Pulse,117,High,Yes,Protein source,Yes - fixes nitrogen; compatible with cereals or short-duration vegetables
+Mango,Fruit,305,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Peas,Vegetable,105,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mango,Fruit,92,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Tomato,Vegetable,100,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Mint,Herb/Medicinal,121,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Spinach,Vegetable,57,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cinnamon,Spice,267,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Orange,Fruit,174,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Lime,Fruit,225,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Hybrid Apple,Fruit,120,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Organic Black Gram,Vegetable,62,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Banana,Fruit,315,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Tomato,Vegetable,63,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Pomegranate,Fruit,293,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Dwarf Lemongrass,Herb/Medicinal,106,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cinnamon,Spice,221,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Pearl Millet,Vegetable,94,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Peas,Vegetable,93,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Hybrid Horse Gram,Vegetable,66,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Carrot,Vegetable,67,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Fenugreek,Vegetable,61,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Saffron,Spice,150,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+French Bean,Vegetable,96,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tea,Cash/Plantation,315,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+High-Yield Aloe Vera,Vegetable,76,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Heat-Tolerant Turmeric,Spice,131,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Cucumber,Vegetable,95,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+High-Yield Mango,Fruit,142,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Late-Maturing Mustard Seed,Vegetable,51,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Sesame,Oilseed,139,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Cold-Tolerant Fenugreek Seed,Vegetable,64,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Ridge Gourd,Vegetable,72,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Garlic,Spice,193,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Local Grapes,Fruit,216,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+High-Yield Tomato,Vegetable,52,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Radish,Vegetable,100,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Turmeric,Spice,279,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Early-Maturing Pomegranate,Fruit,90,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Heat-Tolerant Grapes,Fruit,102,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Oats,Grain,101,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Local Okra,Vegetable,89,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mustard,Oilseed,148,High,No,General nutrition,Yes - can be intercropped with legumes or low-growing vegetables
+Custard Apple,Fruit,94,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Coriander Seed,Vegetable,117,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Rice,Grain,103,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Jute,Cash/Plantation,350,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Hybrid Cocoa,Cash/Plantation,482,High,No,General nutrition,No - typically requires full spacing; not suitable for intercropping
+Snake Gourd,Vegetable,99,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cold-Tolerant Mint,Herb/Medicinal,59,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Mango,Fruit,155,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
+Cold-Tolerant Snake Gourd,Vegetable,61,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Local Rice,Grain,98,High,No,Staple carbohydrate,Yes - can be intercropped with legumes or low-growing vegetables
+Cumin,Spice,287,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Clove,Spice,175,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Peas,Vegetable,104,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Tomato,Vegetable,119,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Parsley,Herb/Medicinal,156,Medium,Yes,Medicinal / aromatic,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Late-Maturing Lettuce,Vegetable,110,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Early-Maturing Fenugreek Seed,Vegetable,54,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Lettuce,Vegetable,59,High,Yes,General nutrition,"Yes - can be intercropped with short-duration vegetables, legumes or leafy greens"
+Cumin,Spice,266,Medium,No,"Flavoring, some medicinal uses",Partial - can be grown with compatible vegetables or herbs
+Hybrid Pomegranate,Fruit,228,High,Yes,Vitamins and fiber,Partial - suitable with compatible vegetables or legumes as intercrop
