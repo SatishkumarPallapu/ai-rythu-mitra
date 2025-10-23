@@ -11,11 +11,12 @@ import Profile from "./pages/Profile";
 import CropHealth from "./pages/CropHealth";
 import CropRecommendations from "./pages/CropRecommendations";
 import CropRoadmap from "./pages/CropRoadmap";
+import VoiceAssistant from "./pages/VoiceAssistant";
+import MultiCropPlanner from "./pages/MultiCropPlanner";
+import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ProtectedRoute from "./components/ProtectedRoute";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -25,18 +26,19 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route element={<ProtectedRoute />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/soil" element={<SoilAnalysis />} />
-            <Route path="/moisture" element={<MoistureMonitor />} />
-            <Route path="/marketplace" element={<Marketplace />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/crop-health" element={<CropHealth />} />
-            <Route path="/crop-recommendations" element={<CropRecommendations />} />
-            <Route path="/crop-roadmap/:cropId" element={<CropRoadmap />} />
-          </Route>
+          <Route path="/soil" element={<SoilAnalysis />} />
+          <Route path="/moisture" element={<MoistureMonitor />} />
+          <Route path="/marketplace" element={<Marketplace />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/crop-health" element={<CropHealth />} />
+          <Route path="/crop-recommendations" element={<CropRecommendations />} />
+          <Route path="/crop-roadmap/:cropId" element={<CropRoadmap />} />
+          <Route path="/voice-assistant" element={<VoiceAssistant />} />
+          <Route path="/multi-crop-planner" element={<MultiCropPlanner />} />
+          <Route path="/calendar" element={<Calendar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

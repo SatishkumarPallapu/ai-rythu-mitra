@@ -1,4 +1,4 @@
-import { Droplets, Thermometer, Sun, TrendingUp, Upload, Camera } from "lucide-react";
+import { Droplets, Thermometer, Sun, TrendingUp, Upload, Camera, MessageCircle, Layers, Calendar as CalendarIcon, Sparkles } from "lucide-react";
 import DashboardCard from "@/components/DashboardCard";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
@@ -22,23 +22,41 @@ const Dashboard = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <div className="grid grid-cols-2 gap-3">
           <Button 
             size="lg" 
-            className="gap-2 flex-shrink-0"
-            onClick={() => navigate("/soil")}
+            className="gap-2 h-auto py-4 flex-col"
+            onClick={() => navigate("/crop-recommendations")}
           >
-            <Upload className="w-5 h-5" />
-            Upload Soil Report
+            <Sparkles className="w-6 h-6" />
+            <span className="text-sm">AI Recommendations</span>
           </Button>
           <Button 
             size="lg" 
-            variant="secondary" 
-            className="gap-2 flex-shrink-0"
-            onClick={() => navigate("/crop-health")}
+            variant="secondary"
+            className="gap-2 h-auto py-4 flex-col"
+            onClick={() => navigate("/voice-assistant")}
           >
-            <Camera className="w-5 h-5" />
-            Check Crop Health
+            <MessageCircle className="w-6 h-6" />
+            <span className="text-sm">Voice Chat</span>
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="gap-2 h-auto py-4 flex-col"
+            onClick={() => navigate("/multi-crop-planner")}
+          >
+            <Layers className="w-6 h-6" />
+            <span className="text-sm">Multi-Crop Plan</span>
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="gap-2 h-auto py-4 flex-col"
+            onClick={() => navigate("/calendar")}
+          >
+            <CalendarIcon className="w-6 h-6" />
+            <span className="text-sm">Calendar</span>
           </Button>
         </div>
 
