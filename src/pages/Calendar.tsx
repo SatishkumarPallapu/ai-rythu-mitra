@@ -107,40 +107,17 @@ const Calendar = () => {
     }
   };
 
-  const tasks = [
-    {
-      id: 1,
-      title: "Apply Fertilizer",
-      crop: "Tomato",
-      date: "2025-10-24",
-      status: "pending",
-      type: "fertilization"
-    },
-    {
-      id: 2,
-      title: "Pest Inspection",
-      crop: "Cotton",
-      date: "2025-10-25",
-      status: "pending",
-      type: "inspection"
-    },
-    {
-      id: 3,
-      title: "Irrigation",
-      crop: "Paddy",
-      date: "2025-10-23",
-      status: "completed",
-      type: "irrigation"
-    },
-    {
-      id: 4,
-      title: "Harvest Ready",
-      crop: "Okra",
-      date: "2025-10-28",
-      status: "upcoming",
-      type: "harvest"
-    }
-  ];
+
+  const getTaskStatus = (task: any) => {
+    if (task.is_completed) return 'completed';
+    const today = new Date();
+    const dueDate = new Date(task.due_date);
+    const diffDays = Math.floor((dueDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < 0) return 'overdue';
+    if (diffDays === 0) return 'pending';
+    return 'upcoming';
+  };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
@@ -148,6 +125,8 @@ const Calendar = () => {
         return <CheckCircle2 className="w-5 h-5 text-success" />;
       case 'pending':
         return <Clock className="w-5 h-5 text-warning" />;
+      case 'overdue':
+        return <AlertCircle className="w-5 h-5 text-destructive" />;
       case 'upcoming':
         return <AlertCircle className="w-5 h-5 text-primary" />;
       default:
@@ -159,9 +138,16 @@ const Calendar = () => {
     const variants: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
       completed: "default",
       pending: "secondary",
+      overdue: "destructive",
       upcoming: "outline"
     };
     return variants[status] || "default";
+  };
+
+  const taskStats = {
+    pending: tasks.filter(t => getTaskStatus(t) === 'pending').length,
+    completed: tasks.filter(t => t.is_completed).length,
+    overdue: tasks.filter(t => getTaskStatus(t) === 'overdue').length
   };
 
   return (
@@ -190,54 +176,71 @@ const Calendar = () => {
 
         <div className="space-y-4">
           <h3 className="font-semibold">Upcoming Tasks</h3>
-          {tasks.map((task) => (
-            <Card key={task.id} className="p-4">
-              <div className="flex items-start gap-3">
-                {getStatusIcon(task.status)}
-                <div className="flex-1">
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <h4 className="font-semibold">{task.title}</h4>
-                      <p className="text-sm text-muted-foreground">
-                        🌾 {task.crop}
-                      </p>
-                    </div>
-                    <Badge variant={getStatusBadge(task.status)}>
-                      {task.status}
-                    </Badge>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    📅 {new Date(task.date).toLocaleDateString('en-IN', {
-                      weekday: 'short',
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric'
-                    })}
-                  </p>
-                  {task.status === 'pending' && (
-                    <Button size="sm" className="w-full">
-                      Mark as Complete
-                    </Button>
-                  )}
-                </div>
-              </div>
+          {loading ? (
+            <div className="flex justify-center py-8">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            </div>
+          ) : tasks.length === 0 ? (
+            <Card className="p-6 text-center">
+              <p className="text-muted-foreground">No active crop plans. Start growing a crop to see tasks here!</p>
             </Card>
-          ))}
+          ) : (
+            tasks.map((task) => {
+              const status = getTaskStatus(task);
+              return (
+                <Card key={task.id} className="p-4">
+                  <div className="flex items-start gap-3">
+                    {getStatusIcon(status)}
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <h4 className="font-semibold">{task.task_name}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {task.task_description}
+                          </p>
+                        </div>
+                        <Badge variant={getStatusBadge(status)}>
+                          {status}
+                        </Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        📅 Day {task.day_number} • {new Date(task.due_date).toLocaleDateString('en-IN', {
+                          weekday: 'short',
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        })}
+                      </p>
+                      {!task.is_completed && (
+                        <Button 
+                          size="sm" 
+                          className="w-full"
+                          onClick={() => handleCompleteTask(task.id)}
+                        >
+                          Mark as Complete
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                </Card>
+              );
+            })
+          )}
         </div>
 
         <Card className="p-6 bg-gradient-subtle">
           <h3 className="font-semibold mb-3">Quick Stats</h3>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
-              <div className="text-2xl font-bold text-primary">5</div>
+              <div className="text-2xl font-bold text-primary">{taskStats.pending}</div>
               <div className="text-xs text-muted-foreground">Pending</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-success">12</div>
+              <div className="text-2xl font-bold text-success">{taskStats.completed}</div>
               <div className="text-xs text-muted-foreground">Completed</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-warning">3</div>
+              <div className="text-2xl font-bold text-destructive">{taskStats.overdue}</div>
               <div className="text-xs text-muted-foreground">Overdue</div>
             </div>
           </div>
