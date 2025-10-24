@@ -51,7 +51,15 @@ const MultiCropPlanner = () => {
       return;
     }
 
-    navigate('/crop-recommendations');
+    navigate('/crop-recommendations?mode=multi');
+  };
+
+  const handleViewDetails = (strategyId: number) => {
+    const strategy = strategies.find(s => s.id === strategyId);
+    if (strategy) {
+      // Navigate to a detailed strategy view
+      navigate(`/multi-crop-strategy/${strategyId}`);
+    }
   };
 
   return (
@@ -111,7 +119,11 @@ const MultiCropPlanner = () => {
                   </div>
                 </div>
 
-                <Button variant="outline" className="w-full">
+                <Button 
+                  variant="outline" 
+                  className="w-full"
+                  onClick={() => handleViewDetails(strategy.id)}
+                >
                   View Details
                 </Button>
               </div>

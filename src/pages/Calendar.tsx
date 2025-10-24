@@ -1,14 +1,111 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar as CalendarIcon, CheckCircle2, Clock, AlertCircle } from "lucide-react";
+import { 
+  Calendar as CalendarIcon, 
+  CheckCircle2, 
+  Clock, 
+  AlertCircle,
+  Loader2
+} from "lucide-react";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Calendar = () => {
+  const { toast } = useToast();
   const [date, setDate] = useState<Date | undefined>(new Date());
+  const [tasks, setTasks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const { data: plansData, error: plansError } = await supabase
+        .from('crop_plans')
+        .select(`
+          *,
+          crop_roadmap_tasks(*)
+        `)
+        .eq('user_id', user.id)
+        .eq('status', 'active');
+
+      if (plansError) throw plansError;
+
+      const allTasks: any[] = [];
+      plansData?.forEach(plan => {
+        plan.crop_roadmap_tasks?.forEach((task: any) => {
+          const taskDate = new Date(plan.start_date);
+          taskDate.setDate(taskDate.getDate() + task.day_number);
+          
+          allTasks.push({
+            ...task,
+            plan_id: plan.id,
+            due_date: taskDate,
+            crop_id: plan.crop_id
+          });
+        });
+      });
+
+      setTasks(allTasks.sort((a, b) => 
+        new Date(a.due_date).getTime() - new Date(b.due_date).getTime()
+      ));
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+      toast({
+        title: "Error loading tasks",
+        description: "Please try again",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCompleteTask = async (taskId: string) => {
+    try {
+      const { error } = await supabase
+        .from('crop_roadmap_tasks')
+        .update({
+          is_completed: true,
+          completed_at: new Date().toISOString()
+        })
+        .eq('id', taskId);
+
+      if (error) throw error;
+
+      setTasks(tasks.map(task => 
+        task.id === taskId 
+          ? { ...task, is_completed: true, completed_at: new Date().toISOString() }
+          : task
+      ));
+
+      toast({
+        title: "Task completed!",
+        description: "Great work on your cultivation journey"
+      });
+    } catch (error) {
+      console.error('Error completing task:', error);
+      toast({
+        title: "Error updating task",
+        description: "Please try again",
+        variant: "destructive"
+      });
+    }
+  };
 
   const tasks = [
     {
