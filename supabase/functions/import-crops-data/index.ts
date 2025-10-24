@@ -32,7 +32,7 @@ serve(async (req) => {
       );
     }
 
-    // Parse CSV
+    // Parse CSV - handle quoted fields properly
     const lines = csvContent.split('\n').filter(line => line.trim());
     const headers = lines[0].split(',').map(h => h.trim());
     
@@ -40,74 +40,58 @@ serve(async (req) => {
     console.log('Total lines:', lines.length);
 
     const crops: any[] = [];
-    const cultivationInstructions: any[] = [];
-    const seedRecommendations: any[] = [];
 
+    // Parse CSV with proper handling of quoted fields
     for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(',').map(v => v.trim().replace(/^"|"$/g, ''));
+      const line = lines[i];
+      const values: string[] = [];
+      let current = '';
+      let inQuotes = false;
+      
+      for (let j = 0; j < line.length; j++) {
+        const char = line[j];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          values.push(current.trim());
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      values.push(current.trim());
       
       if (values.length < headers.length) continue;
 
-      const cropData: any = {};
-      headers.forEach((header, idx) => {
-        cropData[header] = values[idx] || null;
-      });
+      // Map CSV columns to database schema
+      const cropName = values[0];
+      const category = values[1] || 'other';
+      const durationDays = parseInt(values[2]) || 90;
+      const marketDemand = values[3];
+      const homeGrowable = values[4] === 'Yes';
+      const healthBenefit = values[5];
+      const intercroppingPossibility = values[6];
 
-      // Create crop master entry
-      const cropId = crypto.randomUUID();
       crops.push({
-        id: cropId,
-        name: cropData['Crop Name'] || cropData['name'],
-        category: cropData['Category'] || cropData['category'] || 'other',
-        duration_days: parseInt(cropData['Duration (days)'] || cropData['duration_days']) || 90,
-        season: cropData['Season'] || cropData['season'] || 'year-round',
-        water_requirement: cropData['Water Requirement'] || cropData['water_requirement'] || 'medium',
-        profit_index: cropData['Profit Index'] || cropData['profit_index'] || 'medium',
-        soil_type: cropData['Soil Type'] ? cropData['Soil Type'].split(';').map((s: string) => s.trim()) : ['loamy'],
-        daily_market_crop: cropData['Daily Market Crop'] === 'Yes' || cropData['daily_market_crop'] === 'true',
-        home_growable: cropData['Home Growable'] === 'Yes' || cropData['home_growable'] === 'true',
-        market_demand_index: parseFloat(cropData['Market Demand Index'] || cropData['market_demand_index']) || 50,
-        restaurant_usage_index: parseFloat(cropData['Restaurant Usage Index'] || cropData['restaurant_usage_index']) || 30,
-        health_benefits: cropData['Health Benefits'] || cropData['health_benefits'],
-        medical_benefits: cropData['Medical Benefits'] || cropData['medical_benefits'],
-        vitamins: cropData['Vitamins'] || cropData['vitamins'],
-        proteins: cropData['Proteins'] || cropData['proteins'],
-        intercropping_possibility: cropData['Intercropping Possibility'] || cropData['intercropping_possibility'],
+        id: crypto.randomUUID(),
+        name: cropName,
+        category: category.toLowerCase(),
+        duration_days: durationDays,
+        season: 'all-season',
+        water_requirement: 'medium',
+        profit_index: 'medium',
+        soil_type: ['loamy', 'clay'],
+        climate_tolerance: ['tropical', 'subtropical'],
+        daily_market_crop: marketDemand === 'High',
+        home_growable: homeGrowable,
+        market_demand_index: marketDemand === 'High' ? 80 : marketDemand === 'Medium' ? 50 : 30,
+        restaurant_usage_index: 50,
+        health_benefits: healthBenefit,
+        medical_benefits: healthBenefit,
+        vitamins: 'Rich in vitamins A, C, and minerals',
+        proteins: 'Good source of plant protein',
+        intercropping_possibility: intercroppingPossibility
       });
-
-      // Create cultivation instructions if available
-      if (cropData['Cultivation Instructions']) {
-        const phases = cropData['Cultivation Instructions'].split(';');
-        phases.forEach((phase: string, phaseIdx: number) => {
-          const [range, details] = phase.split(':');
-          if (range && details) {
-            cultivationInstructions.push({
-              id: crypto.randomUUID(),
-              crop_id: cropId,
-              day_range: range.trim(),
-              cultivation_phase: `Phase ${phaseIdx + 1}`,
-              instructions: details.trim(),
-              tips: []
-            });
-          }
-        });
-      }
-
-      // Create seed recommendations if available
-      if (cropData['Seed Varieties']) {
-        const varieties = cropData['Seed Varieties'].split(';');
-        varieties.forEach((variety: string) => {
-          seedRecommendations.push({
-            id: crypto.randomUUID(),
-            crop_id: cropId,
-            seed_variety: variety.trim(),
-            best_season: cropData['Season'] || 'All',
-            avg_yield_per_acre: parseFloat(cropData['Expected Yield'] || '20'),
-            price_per_kg: parseFloat(cropData['Seed Price'] || '500'),
-            resistance_to_pests: []
-          });
-        });
-      }
     }
 
     console.log(`Prepared ${crops.length} crops for import`);
@@ -132,31 +116,11 @@ serve(async (req) => {
       console.log(`Imported ${imported}/${crops.length} crops`);
     }
 
-    // Insert cultivation instructions
-    if (cultivationInstructions.length > 0) {
-      for (let i = 0; i < cultivationInstructions.length; i += batchSize) {
-        const batch = cultivationInstructions.slice(i, i + batchSize);
-        await supabase.from('crop_cultivation_instructions').upsert(batch);
-      }
-      console.log(`Imported ${cultivationInstructions.length} cultivation instructions`);
-    }
-
-    // Insert seed recommendations
-    if (seedRecommendations.length > 0) {
-      for (let i = 0; i < seedRecommendations.length; i += batchSize) {
-        const batch = seedRecommendations.slice(i, i + batchSize);
-        await supabase.from('seed_recommendations').upsert(batch);
-      }
-      console.log(`Imported ${seedRecommendations.length} seed recommendations`);
-    }
-
     return new Response(
       JSON.stringify({
         success: true,
         imported: {
-          crops: imported,
-          instructions: cultivationInstructions.length,
-          seeds: seedRecommendations.length
+          crops: imported
         }
       }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }

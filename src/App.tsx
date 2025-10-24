@@ -13,6 +13,7 @@ import CropRecommendations from "./pages/CropRecommendations";
 import CropRoadmap from "./pages/CropRoadmap";
 import VoiceAssistant from "./pages/VoiceAssistant";
 import MultiCropPlanner from "./pages/MultiCropPlanner";
+import MultiCropStrategy from "./pages/MultiCropStrategy";
 import Calendar from "./pages/Calendar";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/crop-roadmap/:cropId" element={<CropRoadmap />} />
           <Route path="/voice-assistant" element={<VoiceAssistant />} />
           <Route path="/multi-crop-planner" element={<MultiCropPlanner />} />
+          <Route path="/multi-crop-strategy/:id" element={<MultiCropStrategy />} />
           <Route path="/calendar" element={<Calendar />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

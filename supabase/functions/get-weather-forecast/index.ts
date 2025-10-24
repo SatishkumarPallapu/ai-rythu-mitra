@@ -29,7 +29,7 @@ serve(async (req) => {
       .single();
 
     // Use AI to generate weather forecast and precautions
-    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const response = await fetch('https://api.lovable.app/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${lovableApiKey}`,
@@ -40,34 +40,27 @@ serve(async (req) => {
         messages: [
           {
             role: 'system',
-            content: 'You are an agricultural weather advisor. Provide realistic weather forecasts and farming precautions.'
+            content: 'You are a JSON API. Return ONLY pure JSON with no markdown, no code blocks, no backticks, and no explanatory text.'
           },
           {
             role: 'user',
-            content: `Generate a 7-day weather forecast for ${location}, India. ${activePlans ? `The farmer is currently growing ${activePlans.crops_master.name}.` : ''} 
+            content: `Generate realistic 7-day weather forecast for ${location}, India. ${activePlans ? `Farmer is growing ${activePlans.crops_master.name}.` : ''} 
             
-            Return JSON format:
-            {
-              "forecast": [
-                {
-                  "date": "YYYY-MM-DD",
-                  "temperature_high": 32,
-                  "temperature_low": 22,
-                  "condition": "Sunny",
-                  "precipitation_chance": 10,
-                  "humidity": 65,
-                  "wind_speed": 15,
-                  "farming_precautions": ["Ensure adequate irrigation", "Monitor for pests in warm weather"]
-                }
-              ]
-            }`
+            Return ONLY this JSON structure (no markdown formatting):
+            {"forecast":[{"date":"YYYY-MM-DD","temperature_high":32,"temperature_low":22,"condition":"Sunny","precipitation_chance":10,"humidity":65,"wind_speed":15,"farming_precautions":["Ensure irrigation","Monitor pests"]}]}`
           }
-        ]
+        ],
+        max_tokens: 1500
       }),
     });
 
     const data = await response.json();
-    const forecastData = JSON.parse(data.choices[0].message.content);
+    let content = data.choices[0].message.content.trim();
+    
+    // Remove markdown code blocks if AI adds them
+    content = content.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    
+    const forecastData = JSON.parse(content);
 
     // Store forecast in database
     const forecastRecords = forecastData.forecast.map((day: any) => ({
