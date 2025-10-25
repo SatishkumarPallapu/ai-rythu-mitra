@@ -1,336 +1,273 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Card } from "@/components/ui/card";
-import { Sparkles, ShoppingCart, Leaf, Loader2 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { Loader2, Search, Sprout, TrendingUp, Calendar, Droplets, Info } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import CropCard from "@/components/CropCard";
-import AuthModal from "@/components/AuthModal";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+interface Crop {
+  id: string;
+  name: string;
+  category: string;
+  duration_days: number;
+  season: string;
+  water_requirement: string;
+  profit_index: string;
+  daily_market_crop: boolean;
+  home_growable: boolean;
+  market_demand_index: number;
+  health_benefits: string;
+  medical_benefits: string;
+  vitamins: string;
+  proteins: string;
+  intercropping_possibility: string;
+}
 
 const CropRecommendations = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
-  const [loadingMore, setLoadingMore] = useState(false);
-  const [page, setPage] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
-  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [searchParams] = useSearchParams();
+  const mode = searchParams.get('mode');
+  
+  const [crops, setCrops] = useState<Crop[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [hoveredCrop, setHoveredCrop] = useState<string | null>(null);
 
-  const [formData, setFormData] = useState({
-    soilType: "",
-    season: "",
-    location: "",
-    dailyMarket: false,
-    multiCropping: false,
-  });
-
-  const [recommendations, setRecommendations] = useState<any[]>([]);
-  const [allCrops, setAllCrops] = useState<any[]>([]);
+  const categories = ["all", "vegetable", "fruit", "grain", "pulse", "spice", "oilseed", "plantation", "medicinal", "fodder", "flower"];
 
   useEffect(() => {
-    // Load initial crops on mount
-    loadMoreCrops();
-  }, []);
+    fetchCrops();
+  }, [selectedCategory]);
 
-  const loadMoreCrops = async () => {
-    setLoadingMore(true);
-    try {
-      const from = page * 50;
-      const to = from + 49;
-
-      const { data, error, count } = await supabase
-        .from('crops_master')
-        .select('*', { count: 'exact' })
-        .range(from, to)
-        .order('market_demand_index', { ascending: false });
-
-      if (error) throw error;
-
-      if (data) {
-        setAllCrops(prev => [...prev, ...data]);
-        setPage(prev => prev + 1);
-        setHasMore(data.length === 50);
-      }
-    } catch (error) {
-      console.error('Error loading crops:', error);
-    } finally {
-      setLoadingMore(false);
-    }
-  };
-
-  const handleGetRecommendations = async () => {
-    if (!formData.soilType || !formData.season || !formData.location) {
-      toast({
-        title: "Missing information",
-        description: "Please fill in all required fields",
-        variant: "destructive",
-      });
-      return;
-    }
-
+  const fetchCrops = async () => {
     setLoading(true);
-    
     try {
-      // Fetch recommendations from database based on criteria
       let query = supabase
         .from('crops_master')
         .select('*')
-        .contains('soil_type', [formData.soilType])
-        .order('market_demand_index', { ascending: false })
-        .limit(100);
+        .order('market_demand_index', { ascending: false });
 
-      if (formData.dailyMarket) {
-        query = query.eq('daily_market_crop', true);
+      if (selectedCategory !== "all") {
+        query = query.eq('category', selectedCategory);
       }
 
-      if (formData.multiCropping) {
-        query = query.not('intercropping_possibility', 'is', null);
+      if (mode === 'multi-crop') {
+        query = query.eq('home_growable', true);
       }
 
-      const { data, error } = await query;
+      const { data, error } = await query.limit(100);
 
       if (error) throw error;
 
-      // Calculate suitability scores
-      const scoredCrops = (data || []).map(crop => ({
-        ...crop,
-        suitability_score: calculateSuitabilityScore(crop, formData),
-        expected_yield: `${Math.floor(Math.random() * 10) + 15}-${Math.floor(Math.random() * 10) + 25} tons/acre`,
-        growth_duration: `${crop.duration_days} days`
-      })).sort((a, b) => b.suitability_score - a.suitability_score);
-
-      setRecommendations(scoredCrops);
+      setCrops(data || []);
+    } catch (error: any) {
+      console.error('Error fetching crops:', error);
       toast({
-        title: "Recommendations ready!",
-        description: `Found ${scoredCrops.length} matching crops`,
-      });
-    } catch (error) {
-      console.error('Error fetching recommendations:', error);
-      toast({
-        title: "Error loading recommendations",
-        description: "Please try again",
-        variant: "destructive",
+        title: "Error loading crops",
+        description: error.message,
+        variant: "destructive"
       });
     } finally {
       setLoading(false);
     }
   };
 
-  const calculateSuitabilityScore = (crop: any, criteria: any): number => {
-    let score = 70; // Base score
-    
-    if (crop.daily_market_crop && criteria.dailyMarket) score += 15;
-    if (crop.intercropping_possibility && criteria.multiCropping) score += 10;
-    if (crop.market_demand_index > 70) score += 5;
-    
-    return Math.min(score, 99);
+  const filteredCrops = crops.filter(crop =>
+    crop.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const getProfitColor = (profit: string) => {
+    switch (profit) {
+      case 'high': return 'text-success';
+      case 'medium': return 'text-warning';
+      default: return 'text-muted-foreground';
+    }
   };
 
-  const handleSelectCrop = async (cropId: string) => {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      setShowAuthModal(true);
-      return;
+  const getWaterColor = (water: string) => {
+    switch (water) {
+      case 'high': return 'text-blue-500';
+      case 'medium': return 'text-blue-400';
+      default: return 'text-blue-300';
     }
-    
-    navigate(`/crop-roadmap/${cropId}`);
   };
 
   return (
     <div className="min-h-screen bg-background pb-20">
       <Header />
-
-      <div className="p-4 space-y-6">
-        {/* Hero Section */}
-        <div className="gradient-primary rounded-2xl p-6 text-white animate-fadeIn">
-          <h1 className="text-2xl font-bold mb-2 flex items-center gap-2">
-            <Sparkles className="w-6 h-6" />
-            AI Crop Recommendations
-          </h1>
-          <p className="text-white/90">
-            Get personalized crop suggestions based on your soil, season, and market demand
+      
+      <main className="container px-4 py-6 space-y-6">
+        <div className="space-y-2">
+          <h2 className="text-2xl font-bold">
+            {mode === 'multi-crop' ? 'Select Crops for Multi-Cropping' : 'AI Crop Recommendations'}
+          </h2>
+          <p className="text-muted-foreground">
+            Discover {crops.length}+ crops suitable for your region
           </p>
         </div>
 
-        {/* Input Form */}
-        <Card className="p-6 space-y-4 animate-slideUp">
-          <h2 className="text-lg font-semibold mb-4">Your Farm Details</h2>
+        {/* Search Bar */}
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input
+            placeholder="Search crops..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="pl-10"
+          />
+        </div>
 
-          <div>
-            <Label htmlFor="soilType">Soil Type</Label>
-            <Select onValueChange={(value) => setFormData({ ...formData, soilType: value })}>
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Select soil type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="clay">Clay</SelectItem>
-                <SelectItem value="loamy">Loamy</SelectItem>
-                <SelectItem value="sandy">Sandy</SelectItem>
-                <SelectItem value="black">Black Soil</SelectItem>
-                <SelectItem value="red">Red Soil</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <Label htmlFor="season">Season</Label>
-            <Select onValueChange={(value) => setFormData({ ...formData, season: value })}>
-              <SelectTrigger className="mt-1">
-                <SelectValue placeholder="Select season" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="kharif">Kharif (Monsoon)</SelectItem>
-                <SelectItem value="rabi">Rabi (Winter)</SelectItem>
-                <SelectItem value="summer">Summer</SelectItem>
-                <SelectItem value="year-round">Year-round</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <Label htmlFor="location">Location</Label>
-            <Input
-              id="location"
-              placeholder="Enter your location (e.g., Guntur, AP)"
-              value={formData.location}
-              onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-              className="mt-1"
-            />
-          </div>
-
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="dailyMarket"
-              checked={formData.dailyMarket}
-              onCheckedChange={(checked) =>
-                setFormData({ ...formData, dailyMarket: checked as boolean })
-              }
-            />
-            <label
-              htmlFor="dailyMarket"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        {/* Category Filters */}
+        <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSelectedCategory(category)}
+              className="whitespace-nowrap"
             >
-              <ShoppingCart className="inline w-4 h-4 mr-1" />
-              Prefer daily market crops (fast-selling)
-            </label>
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </Button>
+          ))}
+        </div>
+
+        {/* Crops Grid */}
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>
-
-          <div className="flex items-center space-x-2">
-            <Checkbox
-              id="multiCropping"
-              checked={formData.multiCropping}
-              onCheckedChange={(checked) =>
-                setFormData({ ...formData, multiCropping: checked as boolean })
-              }
-            />
-            <label
-              htmlFor="multiCropping"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              <Leaf className="inline w-4 h-4 mr-1" />
-              Show multi-cropping strategies
-            </label>
-          </div>
-
-          <Button
-            onClick={handleGetRecommendations}
-            className="w-full gradient-success text-white"
-            disabled={loading}
-          >
-            {loading ? (
-              <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Analyzing...
-              </>
-            ) : (
-              "Get AI Recommendations"
-            )}
-          </Button>
-        </Card>
-
-        {/* Recommendations */}
-        {recommendations.length > 0 && (
-          <div className="space-y-4">
-            <h2 className="text-xl font-bold">Top {recommendations.length} Recommended Crops</h2>
-            {recommendations.map((crop, index) => (
-              <CropCard
-                key={crop.id}
-                crop={crop}
-                onSelect={handleSelectCrop}
-                animationDelay={index * 0.05}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* All Available Crops */}
-        {allCrops.length > 0 && recommendations.length === 0 && (
-          <div className="space-y-4">
-            <h2 className="text-xl font-bold">Available Crops ({allCrops.length})</h2>
-            <p className="text-sm text-muted-foreground">
-              Fill in your farm details above to get personalized recommendations
+        ) : filteredCrops.length === 0 ? (
+          <Card className="p-12 text-center">
+            <Sprout className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+            <h3 className="text-xl font-semibold mb-2">No crops found</h3>
+            <p className="text-muted-foreground mb-4">
+              Try adjusting your search or category filter
             </p>
-            {allCrops.map((crop, index) => (
-              <CropCard
+            <Button onClick={() => {
+              setSearchTerm("");
+              setSelectedCategory("all");
+            }}>
+              Clear Filters
+            </Button>
+          </Card>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredCrops.map((crop) => (
+              <Card
                 key={crop.id}
-                crop={{
-                  ...crop,
-                  growth_duration: `${crop.duration_days} days`,
-                  expected_yield: `${Math.floor(Math.random() * 10) + 15}-${Math.floor(Math.random() * 10) + 25} tons/acre`
-                }}
-                onSelect={handleSelectCrop}
-                animationDelay={index * 0.02}
-              />
-            ))}
-            
-            {hasMore && (
-              <Button 
-                onClick={loadMoreCrops}
-                disabled={loadingMore}
-                variant="outline"
-                className="w-full"
+                className="p-4 hover:shadow-lg transition-all cursor-pointer relative"
+                onMouseEnter={() => setHoveredCrop(crop.id)}
+                onMouseLeave={() => setHoveredCrop(null)}
               >
-                {loadingMore ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Loading more crops...
-                  </>
-                ) : (
-                  "Load More Crops"
+                <div className="space-y-3">
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg">{crop.name}</h3>
+                      <Badge variant="secondary" className="text-xs mt-1">
+                        {crop.category}
+                      </Badge>
+                    </div>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="w-4 h-4 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <div className="space-y-2 text-sm">
+                            <p><strong>Health Benefits:</strong> {crop.health_benefits}</p>
+                            <p><strong>Medical:</strong> {crop.medical_benefits}</p>
+                            <p><strong>Vitamins:</strong> {crop.vitamins}</p>
+                            <p><strong>Proteins:</strong> {crop.proteins}</p>
+                          </div>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4 text-muted-foreground" />
+                      <span>{crop.duration_days} days</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Droplets className={`w-4 h-4 ${getWaterColor(crop.water_requirement)}`} />
+                      <span className="capitalize">{crop.water_requirement}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <TrendingUp className={`w-4 h-4 ${getProfitColor(crop.profit_index)}`} />
+                      <span className="capitalize">{crop.profit_index} profit</span>
+                    </div>
+                    <div className="text-right">
+                      <Badge variant="outline" className="text-xs">
+                        {crop.season}
+                      </Badge>
+                    </div>
+                  </div>
+
+                  {crop.daily_market_crop && (
+                    <Badge variant="default" className="text-xs">
+                      Daily Market Crop
+                    </Badge>
+                  )}
+
+                  {crop.home_growable && (
+                    <Badge variant="secondary" className="text-xs">
+                      Home Growable
+                    </Badge>
+                  )}
+
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      className="flex-1"
+                      onClick={() => navigate(`/crop-roadmap/${crop.id}`)}
+                    >
+                      View Complete Roadmap
+                    </Button>
+                  </div>
+
+                  <div className="text-xs text-muted-foreground">
+                    <strong>Intercropping:</strong> {crop.intercropping_possibility}
+                  </div>
+                </div>
+
+                {/* Hover Card with Nutritional Info */}
+                {hoveredCrop === crop.id && (
+                  <div className="absolute inset-0 bg-background/95 backdrop-blur-sm p-4 rounded-lg border-2 border-primary animate-fade-in z-10">
+                    <div className="space-y-2 text-xs">
+                      <h4 className="font-semibold text-sm mb-2">Nutritional & Health Information</h4>
+                      <p><strong>Health Benefits:</strong> {crop.health_benefits.substring(0, 100)}...</p>
+                      <p><strong>Vitamins:</strong> {crop.vitamins}</p>
+                      <p><strong>Proteins:</strong> {crop.proteins}</p>
+                      <Button
+                        size="sm"
+                        className="w-full mt-2"
+                        onClick={() => navigate(`/crop-roadmap/${crop.id}`)}
+                      >
+                        View Full Details
+                      </Button>
+                    </div>
+                  </div>
                 )}
-              </Button>
-            )}
+              </Card>
+            ))}
           </div>
         )}
-      </div>
-
-      <AuthModal
-        open={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        onSuccess={() => {
-          setShowAuthModal(false);
-          toast({
-            title: "Welcome!",
-            description: "You can now access detailed crop roadmaps"
-          });
-        }}
-        title="Login to View Roadmap"
-        description="Create an account to track your crops and access detailed growing guides"
-      />
+      </main>
 
       <BottomNav />
     </div>

@@ -3,5 +3,5 @@ project_id = "bedrtkwvfkgrjerqllkg"
 [functions.get-weather-forecast]
 verify_jwt = false
 
-[functions.import-crops-data]
+[functions.seed-database]
 verify_jwt = false

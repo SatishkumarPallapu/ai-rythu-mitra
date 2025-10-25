@@ -12,15 +12,15 @@ export const AdminImportButton = () => {
   const handleImport = async () => {
     setImporting(true);
     try {
-      const { data, error } = await supabase.functions.invoke('import-crops-data');
+      const { data, error } = await supabase.functions.invoke('seed-database');
       
       if (error) throw error;
 
-      console.log('Import result:', data);
+      console.log('Seed result:', data);
       
       toast({
-        title: "Import Successful!",
-        description: `Imported ${data.imported.crops} crops successfully`,
+        title: "Database Seeded Successfully!",
+        description: `Imported ${data.summary.crops} crops, ${data.summary.seeds} seeds, and more!`,
       });
       setImported(true);
       
@@ -29,10 +29,10 @@ export const AdminImportButton = () => {
         window.location.reload();
       }, 2000);
     } catch (error: any) {
-      console.error('Import error:', error);
+      console.error('Seed error:', error);
       toast({
-        title: "Import Failed",
-        description: error.message || "Failed to import crops data",
+        title: "Seeding Failed",
+        description: error.message || "Failed to seed database",
         variant: "destructive"
       });
     } finally {
@@ -64,7 +64,7 @@ export const AdminImportButton = () => {
       ) : (
         <>
           <Database className="w-4 h-4" />
-          Import 1000+ Crops
+          Seed Database (1000+ Crops)
         </>
       )}
     </Button>
