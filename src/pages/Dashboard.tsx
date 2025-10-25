@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { AdminImportButton } from "@/components/AdminImportButton";
+
 
 interface WeatherDay {
   date: string;
@@ -59,15 +59,10 @@ const Dashboard = () => {
       <main className="container px-4 py-6 space-y-6 animate-fade-in">
         {/* Welcome Section */}
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold">Welcome, Farmer! 🌾</h2>
-              <p className="text-muted-foreground">
-                Monitor your farm and get AI-powered insights
-              </p>
-            </div>
-            <AdminImportButton />
-          </div>
+          <h2 className="text-2xl font-bold">Welcome, Farmer! 🌾</h2>
+          <p className="text-muted-foreground">
+            Monitor your farm and get AI-powered insights
+          </p>
         </div>
 
         {/* Weather Forecast Section */}
