@@ -17,25 +17,26 @@ export default defineConfig(({ mode }) => ({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt'],
       manifest: {
-        name: 'AI Rythu Mitra',
+        name: 'AI Rythu Mitra - Smart Farming Assistant',
         short_name: 'Rythu Mitra',
-        description: 'AI-powered farming assistant for Indian farmers',
+        description: 'AI-powered farming assistant for crop recommendations, intercropping, disease detection, and yield optimization for Indian farmers',
         theme_color: '#1E7A4B',
         background_color: '#F7FBF6',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',
+        scope: '/',
         icons: [
           {
-            src: '/placeholder.svg',
+            src: '/icon-192.png',
             sizes: '192x192',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'any maskable'
           },
           {
-            src: '/placeholder.svg',
+            src: '/icon-512.png',
             sizes: '512x512',
-            type: 'image/svg+xml',
+            type: 'image/png',
             purpose: 'any maskable'
           }
         ]
