@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User, MapPin, Phone, Settings, HelpCircle, LogOut } from "lucide-react";
 import Header from "@/components/Header";
@@ -6,47 +5,16 @@ import BottomNav from "@/components/BottomNav";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
-  const [userProfile, setUserProfile] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('user_id', user.id)
-          .single();
-        
-        setUserProfile({ ...user, ...profile });
-      }
-      setLoading(false);
-    };
-    fetchProfile();
-  }, []);
+  const handleLogout = () => {
+    // Clear user token from local storage
+    localStorage.removeItem("token");
 
-  const handleLogout = async () => {
-    try {
-      await supabase.auth.signOut();
-      toast({
-        title: "Logged out successfully",
-        description: "Come back soon!",
-      });
-      navigate("/login");
-    } catch (error: any) {
-      toast({
-        title: "Logout failed",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
+    // Redirect to login page
+    navigate("/login");
   };
 
   const menuItems = [
@@ -66,18 +34,16 @@ const Profile = () => {
             <div className="flex items-center gap-4">
               <Avatar className="w-20 h-20">
                 <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
-                  {userProfile?.full_name?.charAt(0)?.toUpperCase() || "F"}
+                  RF
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1">
-                <h2 className="text-xl font-bold">{userProfile?.full_name || "Farmer"}</h2>
-                <p className="text-sm text-muted-foreground">ID: {userProfile?.user_id?.slice(0, 8) || "N/A"}</p>
-                {userProfile?.location && (
-                  <div className="flex items-center gap-1 mt-1 text-sm text-muted-foreground">
-                    <MapPin className="w-4 h-4" />
-                    <span>{userProfile.location}</span>
-                  </div>
-                )}
+                <h2 className="text-xl font-bold">Raju Farmer</h2>
+                <p className="text-sm text-muted-foreground">Farmer ID: RF12345</p>
+                <div className="flex items-center gap-1 mt-1 text-sm text-muted-foreground">
+                  <MapPin className="w-4 h-4" />
+                  <span>Guntur, Andhra Pradesh</span>
+                </div>
               </div>
             </div>
           </CardContent>
@@ -93,7 +59,7 @@ const Profile = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Phone</p>
-                <p className="font-medium">{userProfile?.phone || "Not provided"}</p>
+                <p className="font-medium">+91 98765 43210</p>
               </div>
             </div>
           </CardContent>

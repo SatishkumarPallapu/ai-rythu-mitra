@@ -263,406 +263,67 @@ export type Database = {
         Row: {
           category: string
           climate_tolerance: string[] | null
-          companion_crops: string[] | null
           created_at: string | null
           daily_market_crop: boolean | null
-          disease_resistance_rating: number | null
           duration_days: number
           health_benefits: string | null
           home_growable: boolean | null
           id: string
           intercropping_possibility: string | null
-          intercropping_probability: number | null
           market_demand_index: number | null
           medical_benefits: string | null
           name: string
-          nutrient_demand: string | null
           profit_index: string | null
           proteins: string | null
           restaurant_usage_index: number | null
           season: string | null
           soil_type: string[] | null
-          spacing_requirement: string | null
           vitamins: string | null
           water_requirement: string | null
         }
         Insert: {
           category: string
           climate_tolerance?: string[] | null
-          companion_crops?: string[] | null
           created_at?: string | null
           daily_market_crop?: boolean | null
-          disease_resistance_rating?: number | null
           duration_days: number
           health_benefits?: string | null
           home_growable?: boolean | null
           id?: string
           intercropping_possibility?: string | null
-          intercropping_probability?: number | null
           market_demand_index?: number | null
           medical_benefits?: string | null
           name: string
-          nutrient_demand?: string | null
           profit_index?: string | null
           proteins?: string | null
           restaurant_usage_index?: number | null
           season?: string | null
           soil_type?: string[] | null
-          spacing_requirement?: string | null
           vitamins?: string | null
           water_requirement?: string | null
         }
         Update: {
           category?: string
           climate_tolerance?: string[] | null
-          companion_crops?: string[] | null
           created_at?: string | null
           daily_market_crop?: boolean | null
-          disease_resistance_rating?: number | null
           duration_days?: number
           health_benefits?: string | null
           home_growable?: boolean | null
           id?: string
           intercropping_possibility?: string | null
-          intercropping_probability?: number | null
           market_demand_index?: number | null
           medical_benefits?: string | null
           name?: string
-          nutrient_demand?: string | null
           profit_index?: string | null
           proteins?: string | null
           restaurant_usage_index?: number | null
           season?: string | null
           soil_type?: string[] | null
-          spacing_requirement?: string | null
           vitamins?: string | null
           water_requirement?: string | null
         }
         Relationships: []
-      }
-      cultivation_tips: {
-        Row: {
-          application_day_range: string | null
-          cost_effectiveness: string | null
-          created_at: string | null
-          crop_id: string | null
-          environmental_impact: string | null
-          expected_benefit: string | null
-          id: string
-          season_specific: string | null
-          tip_category: string
-          tip_description: string
-          tip_title: string
-        }
-        Insert: {
-          application_day_range?: string | null
-          cost_effectiveness?: string | null
-          created_at?: string | null
-          crop_id?: string | null
-          environmental_impact?: string | null
-          expected_benefit?: string | null
-          id?: string
-          season_specific?: string | null
-          tip_category: string
-          tip_description: string
-          tip_title: string
-        }
-        Update: {
-          application_day_range?: string | null
-          cost_effectiveness?: string | null
-          created_at?: string | null
-          crop_id?: string | null
-          environmental_impact?: string | null
-          expected_benefit?: string | null
-          id?: string
-          season_specific?: string | null
-          tip_category?: string
-          tip_description?: string
-          tip_title?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "cultivation_tips_crop_id_fkey"
-            columns: ["crop_id"]
-            isOneToOne: false
-            referencedRelation: "crops_master"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      daily_tasks: {
-        Row: {
-          alert_sent_at: string | null
-          chemical_option: string | null
-          completed_at: string | null
-          created_at: string | null
-          crop_plan_id: string | null
-          detailed_instructions: string | null
-          dosage_info: string | null
-          estimated_duration: string | null
-          id: string
-          importance_level: string | null
-          is_completed: boolean | null
-          organic_alternative: string | null
-          task_category: string
-          task_date: string | null
-          task_day: number
-          task_description: string | null
-          task_title: string
-          timing_preference: string | null
-          tools_required: string[] | null
-          weather_condition: string | null
-          whatsapp_alert_sent: boolean | null
-        }
-        Insert: {
-          alert_sent_at?: string | null
-          chemical_option?: string | null
-          completed_at?: string | null
-          created_at?: string | null
-          crop_plan_id?: string | null
-          detailed_instructions?: string | null
-          dosage_info?: string | null
-          estimated_duration?: string | null
-          id?: string
-          importance_level?: string | null
-          is_completed?: boolean | null
-          organic_alternative?: string | null
-          task_category: string
-          task_date?: string | null
-          task_day: number
-          task_description?: string | null
-          task_title: string
-          timing_preference?: string | null
-          tools_required?: string[] | null
-          weather_condition?: string | null
-          whatsapp_alert_sent?: boolean | null
-        }
-        Update: {
-          alert_sent_at?: string | null
-          chemical_option?: string | null
-          completed_at?: string | null
-          created_at?: string | null
-          crop_plan_id?: string | null
-          detailed_instructions?: string | null
-          dosage_info?: string | null
-          estimated_duration?: string | null
-          id?: string
-          importance_level?: string | null
-          is_completed?: boolean | null
-          organic_alternative?: string | null
-          task_category?: string
-          task_date?: string | null
-          task_day?: number
-          task_description?: string | null
-          task_title?: string
-          timing_preference?: string | null
-          tools_required?: string[] | null
-          weather_condition?: string | null
-          whatsapp_alert_sent?: boolean | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "daily_tasks_crop_plan_id_fkey"
-            columns: ["crop_plan_id"]
-            isOneToOne: false
-            referencedRelation: "crop_plans"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      disease_forecasts: {
-        Row: {
-          chemical_treatment: string[] | null
-          created_at: string | null
-          crop_id: string | null
-          crop_plan_id: string | null
-          diagnosis_procedure: string | null
-          disease_name: string
-          disease_type: string | null
-          expected_week: number | null
-          id: string
-          organic_treatment: string[] | null
-          preventive_measures: string[] | null
-          probability_percent: number | null
-          reference_images: string[] | null
-          risk_level: string
-          symptoms: string[] | null
-          treatment_timeline: Json | null
-          weather_dependency: string | null
-        }
-        Insert: {
-          chemical_treatment?: string[] | null
-          created_at?: string | null
-          crop_id?: string | null
-          crop_plan_id?: string | null
-          diagnosis_procedure?: string | null
-          disease_name: string
-          disease_type?: string | null
-          expected_week?: number | null
-          id?: string
-          organic_treatment?: string[] | null
-          preventive_measures?: string[] | null
-          probability_percent?: number | null
-          reference_images?: string[] | null
-          risk_level: string
-          symptoms?: string[] | null
-          treatment_timeline?: Json | null
-          weather_dependency?: string | null
-        }
-        Update: {
-          chemical_treatment?: string[] | null
-          created_at?: string | null
-          crop_id?: string | null
-          crop_plan_id?: string | null
-          diagnosis_procedure?: string | null
-          disease_name?: string
-          disease_type?: string | null
-          expected_week?: number | null
-          id?: string
-          organic_treatment?: string[] | null
-          preventive_measures?: string[] | null
-          probability_percent?: number | null
-          reference_images?: string[] | null
-          risk_level?: string
-          symptoms?: string[] | null
-          treatment_timeline?: Json | null
-          weather_dependency?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "disease_forecasts_crop_id_fkey"
-            columns: ["crop_id"]
-            isOneToOne: false
-            referencedRelation: "crops_master"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "disease_forecasts_crop_plan_id_fkey"
-            columns: ["crop_plan_id"]
-            isOneToOne: false
-            referencedRelation: "crop_plans"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      intercrop_plans: {
-        Row: {
-          created_at: string | null
-          crop_plan_id: string | null
-          expected_yield_increase: number | null
-          fertilizer_schedule: Json | null
-          id: string
-          instructions: string | null
-          intercrop_crops: string[]
-          intercrop_type: string
-          irrigation_plan: Json | null
-          parent_crop_id: string | null
-          probability_score: number | null
-          row_arrangement: string | null
-          sowing_schedule: Json | null
-          spacing_ratio: string | null
-          updated_at: string | null
-        }
-        Insert: {
-          created_at?: string | null
-          crop_plan_id?: string | null
-          expected_yield_increase?: number | null
-          fertilizer_schedule?: Json | null
-          id?: string
-          instructions?: string | null
-          intercrop_crops: string[]
-          intercrop_type: string
-          irrigation_plan?: Json | null
-          parent_crop_id?: string | null
-          probability_score?: number | null
-          row_arrangement?: string | null
-          sowing_schedule?: Json | null
-          spacing_ratio?: string | null
-          updated_at?: string | null
-        }
-        Update: {
-          created_at?: string | null
-          crop_plan_id?: string | null
-          expected_yield_increase?: number | null
-          fertilizer_schedule?: Json | null
-          id?: string
-          instructions?: string | null
-          intercrop_crops?: string[]
-          intercrop_type?: string
-          irrigation_plan?: Json | null
-          parent_crop_id?: string | null
-          probability_score?: number | null
-          row_arrangement?: string | null
-          sowing_schedule?: Json | null
-          spacing_ratio?: string | null
-          updated_at?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "intercrop_plans_crop_plan_id_fkey"
-            columns: ["crop_plan_id"]
-            isOneToOne: false
-            referencedRelation: "crop_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "intercrop_plans_parent_crop_id_fkey"
-            columns: ["parent_crop_id"]
-            isOneToOne: false
-            referencedRelation: "crops_master"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      market_demand_history: {
-        Row: {
-          avg_price_per_quintal: number
-          created_at: string | null
-          crop_id: string | null
-          demand_index: number | null
-          id: string
-          market_location: string | null
-          month: number
-          peak_demand: boolean | null
-          price_trend: string | null
-          supply_volume: number | null
-          year: number
-        }
-        Insert: {
-          avg_price_per_quintal: number
-          created_at?: string | null
-          crop_id?: string | null
-          demand_index?: number | null
-          id?: string
-          market_location?: string | null
-          month: number
-          peak_demand?: boolean | null
-          price_trend?: string | null
-          supply_volume?: number | null
-          year: number
-        }
-        Update: {
-          avg_price_per_quintal?: number
-          created_at?: string | null
-          crop_id?: string | null
-          demand_index?: number | null
-          id?: string
-          market_location?: string | null
-          month?: number
-          peak_demand?: boolean | null
-          price_trend?: string | null
-          supply_volume?: number | null
-          year?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "market_demand_history_crop_id_fkey"
-            columns: ["crop_id"]
-            isOneToOne: false
-            referencedRelation: "crops_master"
-            referencedColumns: ["id"]
-          },
-        ]
       }
       marketplace_crop_prices: {
         Row: {
@@ -913,62 +574,35 @@ export type Database = {
         Row: {
           avg_yield_per_acre: number | null
           best_season: string | null
-          climate_zones: string[] | null
           created_at: string | null
           crop_id: string | null
-          district: string | null
-          five_year_avg_yield: number | null
-          germination_rate: number | null
           id: string
-          maturity_days: number | null
           price_per_kg: number | null
           resistance_to_pests: string[] | null
           seed_variety: string
-          soil_suitability: string[] | null
           source: string | null
-          state: string | null
-          water_efficiency_rating: number | null
-          yield_history: Json | null
         }
         Insert: {
           avg_yield_per_acre?: number | null
           best_season?: string | null
-          climate_zones?: string[] | null
           created_at?: string | null
           crop_id?: string | null
-          district?: string | null
-          five_year_avg_yield?: number | null
-          germination_rate?: number | null
           id?: string
-          maturity_days?: number | null
           price_per_kg?: number | null
           resistance_to_pests?: string[] | null
           seed_variety: string
-          soil_suitability?: string[] | null
           source?: string | null
-          state?: string | null
-          water_efficiency_rating?: number | null
-          yield_history?: Json | null
         }
         Update: {
           avg_yield_per_acre?: number | null
           best_season?: string | null
-          climate_zones?: string[] | null
           created_at?: string | null
           crop_id?: string | null
-          district?: string | null
-          five_year_avg_yield?: number | null
-          germination_rate?: number | null
           id?: string
-          maturity_days?: number | null
           price_per_kg?: number | null
           resistance_to_pests?: string[] | null
           seed_variety?: string
-          soil_suitability?: string[] | null
           source?: string | null
-          state?: string | null
-          water_efficiency_rating?: number | null
-          yield_history?: Json | null
         }
         Relationships: [
           {
@@ -1090,82 +724,6 @@ export type Database = {
           user_id?: string | null
         }
         Relationships: []
-      }
-      yield_predictions: {
-        Row: {
-          created_at: string | null
-          crop_id: string | null
-          crop_plan_id: string | null
-          estimated_revenue: number | null
-          factors_considered: Json | null
-          id: string
-          intercrop_yield: number | null
-          optimal_harvest_date: string | null
-          predicted_market_price: number | null
-          predicted_yield_per_acre: number
-          prediction_confidence: number | null
-          seed_id: string | null
-          single_crop_yield: number | null
-          updated_at: string | null
-          yield_improvement_percent: number | null
-        }
-        Insert: {
-          created_at?: string | null
-          crop_id?: string | null
-          crop_plan_id?: string | null
-          estimated_revenue?: number | null
-          factors_considered?: Json | null
-          id?: string
-          intercrop_yield?: number | null
-          optimal_harvest_date?: string | null
-          predicted_market_price?: number | null
-          predicted_yield_per_acre: number
-          prediction_confidence?: number | null
-          seed_id?: string | null
-          single_crop_yield?: number | null
-          updated_at?: string | null
-          yield_improvement_percent?: number | null
-        }
-        Update: {
-          created_at?: string | null
-          crop_id?: string | null
-          crop_plan_id?: string | null
-          estimated_revenue?: number | null
-          factors_considered?: Json | null
-          id?: string
-          intercrop_yield?: number | null
-          optimal_harvest_date?: string | null
-          predicted_market_price?: number | null
-          predicted_yield_per_acre?: number
-          prediction_confidence?: number | null
-          seed_id?: string | null
-          single_crop_yield?: number | null
-          updated_at?: string | null
-          yield_improvement_percent?: number | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "yield_predictions_crop_id_fkey"
-            columns: ["crop_id"]
-            isOneToOne: false
-            referencedRelation: "crops_master"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "yield_predictions_crop_plan_id_fkey"
-            columns: ["crop_plan_id"]
-            isOneToOne: false
-            referencedRelation: "crop_plans"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "yield_predictions_seed_id_fkey"
-            columns: ["seed_id"]
-            isOneToOne: false
-            referencedRelation: "seed_recommendations"
-            referencedColumns: ["id"]
-          },
-        ]
       }
     }
     Views: {
