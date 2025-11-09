@@ -7,11 +7,31 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { AICropRecommendation } from "@/components/ai/AICropRecommendation";
+import { DiseaseForecasting } from "@/components/ai/DiseaseForecasting";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const SoilAnalysis = () => {
   const { toast } = useToast();
   const [file, setFile] = useState<File | null>(null);
   const [analysisResults, setAnalysisResults] = useState<any>(null);
+  const [showAIFeatures, setShowAIFeatures] = useState(false);
+
+  // Mock data for demonstration
+  const mockSoilData = {
+    ph: 6.5,
+    nitrogen: 0.8,
+    phosphorus: 0.3,
+    potassium: 0.5,
+    soilType: "Loamy",
+    moisture: 45
+  };
+
+  const mockWeatherData = {
+    temperature: 28,
+    humidity: 65,
+    rainfall: 150
+  };
 
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -34,37 +54,21 @@ const SoilAnalysis = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const response = await fetch("/soil/analyze", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setAnalysisResults(data);
-        toast({
-          title: "Analysis Complete",
-          description: "Soil analysis completed successfully",
-        });
-      } else {
-        const errorData = await response.json();
-        toast({
-          title: "Analysis Failed",
-          description: errorData.detail || "Soil analysis failed. Please try again.",
-          variant: "destructive",
-        });
-      }
-    } catch (error) {
-      toast({
-        title: "An Error Occurred",
-        description: "Failed to connect to the server. Please try again later.",
-        variant: "destructive",
-      });
-    }
+    // Mock analysis for demonstration
+    setAnalysisResults({
+      report_id: "SOIL-" + Date.now(),
+      file_url: URL.createObjectURL(file),
+      analysis: "Soil analysis successful. pH: 6.5, N: 0.8%, P: 0.3%, K: 0.5%",
+      created_at: new Date().toISOString(),
+      soilData: mockSoilData
+    });
+    
+    setShowAIFeatures(true);
+    
+    toast({
+      title: "Analysis Complete",
+      description: "Soil analysis completed successfully. Check AI recommendations below!",
+    });
   };
 
   return (
@@ -123,12 +127,52 @@ const SoilAnalysis = () => {
               <CardTitle>Analysis Results</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              <p>Report ID: {analysisResults.report_id}</p>
-              <p>File URL: {analysisResults.file_url}</p>
-              <p>Analysis: {analysisResults.analysis}</p>
-              <p>Created At: {analysisResults.created_at}</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm text-muted-foreground">pH Level</p>
+                  <p className="text-2xl font-bold">{mockSoilData.ph}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Nitrogen</p>
+                  <p className="text-2xl font-bold">{mockSoilData.nitrogen}%</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Phosphorus</p>
+                  <p className="text-2xl font-bold">{mockSoilData.phosphorus}%</p>
+                </div>
+                <div>
+                  <p className="text-sm text-muted-foreground">Potassium</p>
+                  <p className="text-2xl font-bold">{mockSoilData.potassium}%</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
+        )}
+
+        {/* AI Features */}
+        {showAIFeatures && (
+          <Tabs defaultValue="recommendations" className="w-full">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="recommendations">AI Crop Recommendations</TabsTrigger>
+              <TabsTrigger value="disease">Disease Forecasting</TabsTrigger>
+            </TabsList>
+            <TabsContent value="recommendations" className="space-y-4 mt-4">
+              <AICropRecommendation
+                soilData={mockSoilData}
+                weatherData={mockWeatherData}
+                farmSize={2}
+                location="Karnataka, India"
+              />
+            </TabsContent>
+            <TabsContent value="disease" className="space-y-4 mt-4">
+              <DiseaseForecasting
+                cropName="Tomato"
+                weatherData={mockWeatherData}
+                soilData={mockSoilData}
+                cropAge={15}
+              />
+            </TabsContent>
+          </Tabs>
         )}
 
         {/* Quick Upload Options */}

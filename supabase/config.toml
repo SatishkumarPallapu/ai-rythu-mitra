@@ -5,3 +5,12 @@ verify_jwt = false
 
 [functions.seed-database]
 verify_jwt = false
+
+[functions.ai-crop-recommendation]
+verify_jwt = false
+
+[functions.ai-disease-forecast]
+verify_jwt = false
+
+[functions.ai-generate-tasks]
+verify_jwt = false
