@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Leaf, Sprout, ArrowLeft } from "lucide-react";
 
 const Login = () => {
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -28,10 +28,10 @@ const Login = () => {
   const handleSendOTP = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (phone.length < 10) {
+    if (!email || !email.includes('@')) {
       toast({
-        title: "Invalid Phone Number",
-        description: "Please enter a valid 10-digit phone number",
+        title: "Invalid Email",
+        description: "Please enter a valid email address",
         variant: "destructive",
       });
       return;
@@ -40,9 +40,11 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const formattedPhone = `+91${phone}`;
       const { error } = await supabase.auth.signInWithOtp({
-        phone: formattedPhone,
+        email: email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/`,
+        },
       });
 
       if (error) throw error;
@@ -50,7 +52,7 @@ const Login = () => {
       setOtpSent(true);
       toast({
         title: "OTP Sent!",
-        description: "Please check your phone for the verification code",
+        description: "Please check your email for the verification code",
       });
     } catch (error: any) {
       toast({
@@ -78,11 +80,10 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const formattedPhone = `+91${phone}`;
       const { data, error } = await supabase.auth.verifyOtp({
-        phone: formattedPhone,
+        email: email,
         token: otp,
-        type: 'sms',
+        type: 'email',
       });
 
       if (error) throw error;
@@ -98,7 +99,7 @@ const Login = () => {
         if (!existingProfile) {
           await supabase.from('profiles').insert({
             user_id: data.user.id,
-            phone: formattedPhone,
+            email: email,
           });
         }
       }
@@ -141,26 +142,21 @@ const Login = () => {
 
         {/* Login Card */}
         <div className="glass rounded-2xl p-8 shadow-lg animate-slideUp">
-          <h2 className="text-2xl font-semibold mb-6 text-center">Login with Phone</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-center">Login with Email</h2>
 
           {!otpSent ? (
             <form onSubmit={handleSendOTP} className="space-y-4">
               <div>
-                <Label htmlFor="phone">Phone Number</Label>
-                <div className="flex gap-2 mt-1">
-                  <span className="flex items-center justify-center px-3 border rounded-lg bg-muted text-muted-foreground font-medium">
-                    +91
-                  </span>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="Enter 10-digit number"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value.replace(/\D/g, '').slice(0, 10))}
-                    maxLength={10}
-                    required
-                  />
-                </div>
+                <Label htmlFor="email">Email Address</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="mt-1"
+                  required
+                />
               </div>
 
               <Button
@@ -193,7 +189,7 @@ const Login = () => {
                   className="mt-1 text-center text-2xl tracking-widest"
                 />
                 <p className="text-xs text-muted-foreground mt-2">
-                  OTP sent to +91{phone}
+                  OTP sent to {email}
                 </p>
               </div>
 
@@ -223,7 +219,7 @@ const Login = () => {
                 disabled={loading}
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
-                Change Phone Number
+                Change Email
               </Button>
             </form>
           )}
