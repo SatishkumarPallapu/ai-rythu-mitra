@@ -9,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { getCropIcon } from "@/utils/cropIcons";
+import CropLifecycle from "@/components/CropLifecycle";
+import SatelliteMonitoring from "@/components/SatelliteMonitoring";
 import {
   Calendar,
   Droplets,
@@ -18,7 +20,11 @@ import {
   CheckCircle2,
   Clock,
   Sprout,
-  Loader2
+  Loader2,
+  Heart,
+  Pill,
+  Sparkles,
+  Satellite
 } from "lucide-react";
 
 const CropRoadmap = () => {
@@ -28,8 +34,10 @@ const CropRoadmap = () => {
   const [crop, setCrop] = useState<any>(null);
   const [instructions, setInstructions] = useState<any[]>([]);
   const [seeds, setSeeds] = useState<any[]>([]);
+  const [aiSeeds, setAiSeeds] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [starting, setStarting] = useState(false);
+  const [loadingSeeds, setLoadingSeeds] = useState(false);
 
   useEffect(() => {
     if (cropId) {
@@ -226,9 +234,11 @@ const CropRoadmap = () => {
         </Card>
 
         <Tabs defaultValue="roadmap" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="roadmap">Roadmap</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-5">
+            <TabsTrigger value="roadmap">Guide</TabsTrigger>
             <TabsTrigger value="seeds">Seeds</TabsTrigger>
+            <TabsTrigger value="lifecycle">Lifecycle</TabsTrigger>
+            <TabsTrigger value="satellite">Satellite</TabsTrigger>
             <TabsTrigger value="benefits">Benefits</TabsTrigger>
           </TabsList>
 

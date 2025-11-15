@@ -3,6 +3,7 @@ import { Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const VoiceChatTelugu = () => {
   const [isListening, setIsListening] = useState(false);
@@ -45,15 +46,24 @@ const VoiceChatTelugu = () => {
   const handleVoiceCommand = async (text: string) => {
     try {
       setIsSpeaking(true);
-      // TODO: Integrate with AI to process Telugu voice commands
-      // For now, just echo back
-      const response = `మీరు చెప్పారు: ${text}`;
+      
+      // Call AI voice assistant
+      const { data, error } = await supabase.functions.invoke('ai-voice-assistant', {
+        body: {
+          message: text,
+          language: 'te'
+        }
+      });
+
+      if (error) throw error;
+      
+      const response = data.response || `మీరు చెప్పారు: ${text}`;
       speakText(response);
     } catch (error) {
       console.error('Error processing voice command:', error);
       toast({
-        title: "Error",
-        description: "Failed to process voice command",
+        title: "లోపం",
+        description: "వాయిస్ కమాండ్ ప్రాసెస్ చేయడంలో విఫలమైంది",
         variant: "destructive",
       });
     } finally {
