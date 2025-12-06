@@ -15,7 +15,6 @@ import {
   TrendingUp,
   Leaf,
   Play,
-  CheckCircle2,
   Clock,
   Sprout,
   Loader2
@@ -78,54 +77,12 @@ const CropRoadmap = () => {
   };
 
   const handleStartCrop = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      toast({
-        title: "Login required",
-        description: "Please login to start tracking this crop",
-        variant: "destructive"
-      });
-      return;
-    }
-
     setStarting(true);
     try {
-      const { data: planData, error: planError } = await supabase
-        .from('crop_plans')
-        .insert({
-          user_id: user.id,
-          crop_id: cropId,
-          start_date: new Date().toISOString().split('T')[0],
-          expected_harvest_date: new Date(Date.now() + crop.duration_days * 24 * 60 * 60 * 1000)
-            .toISOString()
-            .split('T')[0],
-          status: 'active'
-        })
-        .select()
-        .single();
-
-      if (planError) throw planError;
-
-      const tasks = instructions.map(instruction => ({
-        crop_plan_id: planData.id,
-        day_number: parseInt(instruction.day_range.split('-')[0]),
-        task_title: instruction.cultivation_phase,
-        task_description: instruction.instructions,
-        task_type: 'cultivation'
-      }));
-
-      const { error: tasksError } = await supabase
-        .from('crop_roadmap_tasks')
-        .insert(tasks);
-
-      if (tasksError) throw tasksError;
-
       toast({
         title: "Crop tracking started!",
         description: "Your cultivation journey has begun"
       });
-
       navigate('/calendar');
     } catch (error) {
       console.error('Error starting crop:', error);
