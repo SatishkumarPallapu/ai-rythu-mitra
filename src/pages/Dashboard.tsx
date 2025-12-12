@@ -1,54 +1,46 @@
-import { Droplets, Thermometer, Sun, TrendingUp, AlertTriangle, MessageCircle, Layers, Calendar as CalendarIcon, Sparkles, CloudRain } from "lucide-react";
+import { Droplets, Thermometer, Sun, TrendingUp, AlertTriangle, MessageCircle, Layers, Calendar as CalendarIcon, Sparkles, Brain, Satellite } from "lucide-react";
 import DashboardCard from "@/components/DashboardCard";
+import WeatherWidget from "@/components/WeatherWidget";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
-
-
-interface WeatherDay {
-  date: string;
-  temperature_high: number;
-  temperature_low: number;
-  condition: string;
-  precipitation_chance: number;
-  farming_precautions: string[];
-}
+import { cropTrackingService, TrackedCrop } from "@/services/cropTrackingService";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
-  const [weather, setWeather] = useState<WeatherDay[]>([]);
-  const [currentCrop, setCurrentCrop] = useState<string>("");
   const [loading, setLoading] = useState(true);
+  const [trackedCrops, setTrackedCrops] = useState<TrackedCrop[]>([]);
 
   useEffect(() => {
-    fetchWeatherForecast();
+    // Load tracked crops and simulate data loading
+    const loadData = () => {
+      const crops = cropTrackingService.getActiveCrops();
+      setTrackedCrops(crops);
+      setLoading(false);
+    };
+    
+    setTimeout(loadData, 500);
   }, []);
 
-  const fetchWeatherForecast = async () => {
-    try {
-      const { data, error } = await supabase.functions.invoke('get-weather-forecast', {
-        body: { location: 'Guntur, Andhra Pradesh' }
-      });
+  const handleRemoveCrop = (cropId: string) => {
+    if (cropTrackingService.removeCropFromTracking(cropId)) {
+      setTrackedCrops(trackedCrops.filter(crop => crop.id !== cropId));
+    }
+  };
 
-      if (error) throw error;
-
-      setWeather(data.forecast || []);
-      setCurrentCrop(data.current_crop || '');
-    } catch (error) {
-      console.error('Error fetching weather:', error);
-      toast({
-        title: "Weather update unavailable",
-        description: "Using cached forecast data",
-        variant: "destructive"
-      });
-    } finally {
-      setLoading(false);
+  const getPhaseColor = (phase: string) => {
+    switch (phase) {
+      case 'preparation': return 'bg-gray-500';
+      case 'sowing': return 'bg-blue-500';
+      case 'vegetative': return 'bg-green-500';
+      case 'flowering': return 'bg-pink-500';
+      case 'fruiting': return 'bg-orange-500';
+      case 'harvest': return 'bg-yellow-500';
+      default: return 'bg-gray-500';
     }
   };
 
@@ -66,66 +58,120 @@ const Dashboard = () => {
         </div>
 
         {/* Weather Forecast Section */}
-        <Card className="p-6 bg-gradient-subtle">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="font-semibold text-lg flex items-center gap-2">
-              <CloudRain className="w-5 h-5 text-primary" />
-              7-Day Weather Forecast
-            </h3>
-            {currentCrop && (
-              <span className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">
-                Growing: {currentCrop}
-              </span>
-            )}
-          </div>
+        <WeatherWidget />
 
-          {loading ? (
-            <div className="text-center py-4 text-muted-foreground">Loading forecast...</div>
-          ) : weather.length > 0 ? (
+        {/* Tracked Crops Section */}
+        {trackedCrops.length > 0 && (
+          <Card className="p-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-semibold flex items-center gap-2">
+                <Layers className="w-5 h-5 text-green-500" />
+                My Crops ({trackedCrops.length})
+              </h3>
+              <Button variant="ghost" size="sm" onClick={() => navigate("/calendar")}>
+                View Calendar
+              </Button>
+            </div>
             <div className="space-y-3">
-              {weather.slice(0, 3).map((day, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-background rounded-lg border">
-                  <div className="flex-1">
-                    <p className="font-medium">{new Date(day.date).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' })}</p>
-                    <p className="text-sm text-muted-foreground">{day.condition}</p>
+              {trackedCrops.map((crop) => (
+                <div 
+                  key={crop.id}
+                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
+                  onClick={() => navigate(`/crop-roadmap/${crop.id}`)}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">{crop.emoji}</span>
+                    <div>
+                      <h4 className="font-medium">{crop.name}</h4>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Badge 
+                          variant="secondary" 
+                          className={`${getPhaseColor(crop.currentPhase)} text-white text-xs`}
+                        >
+                          {crop.currentPhase}
+                        </Badge>
+                        <span>•</span>
+                        <span>{crop.daysRemaining > 0 ? `${crop.daysRemaining} days left` : 'Ready to harvest!'}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="font-bold">{day.temperature_high}°C / {day.temperature_low}°C</p>
-                    <p className="text-xs text-muted-foreground">{day.precipitation_chance}% rain</p>
+                  <div className="flex items-center gap-2">
+                    <div className="text-right text-sm">
+                      <div className="font-medium text-green-600">{crop.profitProjection}</div>
+                      <div className="text-xs text-muted-foreground">{crop.progress}% complete</div>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="text-red-500 hover:text-red-700"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRemoveCrop(crop.id);
+                      }}
+                    >
+                      ×
+                    </Button>
                   </div>
                 </div>
               ))}
-              
-              {weather[0]?.farming_precautions && weather[0].farming_precautions.length > 0 && (
-                <div className="mt-4 p-4 bg-warning/10 border border-warning/20 rounded-lg">
-                  <div className="flex items-start gap-2">
-                    <AlertTriangle className="w-5 h-5 text-warning flex-shrink-0 mt-0.5" />
-                    <div>
-                      <p className="font-medium text-sm mb-2">Today's Farming Precautions:</p>
-                      <ul className="text-sm space-y-1">
-                        {weather[0].farming_precautions.map((precaution, idx) => (
-                          <li key={idx} className="text-muted-foreground">• {precaution}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
-          ) : (
-            <div className="text-center py-4 text-muted-foreground">No forecast data available</div>
-          )}
+          </Card>
+        )}
+
+        {/* Latest Alerts */}
+        <Card className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-semibold flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5 text-orange-500" />
+              Latest Alerts
+            </h3>
+            <Button variant="ghost" size="sm" onClick={() => navigate("/alerts")}>
+              View All
+            </Button>
+          </div>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg border-l-4 border-l-orange-400">
+              <Droplets className="w-4 h-4 text-blue-500" />
+              <div className="flex-1">
+                <p className="text-sm font-medium">Low Soil Moisture</p>
+                <p className="text-xs text-muted-foreground">Consider irrigation for tomato crops</p>
+              </div>
+              <Badge variant="secondary" className="text-xs">2h ago</Badge>
+            </div>
+            <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border-l-4 border-l-green-400">
+              <TrendingUp className="w-4 h-4 text-green-500" />
+              <div className="flex-1">
+                <p className="text-sm font-medium">Price Alert</p>
+                <p className="text-xs text-muted-foreground">Tomato prices increased 25% - Good time to sell!</p>
+              </div>
+              <Badge variant="secondary" className="text-xs">4h ago</Badge>
+            </div>
+          </div>
         </Card>
 
         {/* Quick Actions */}
         <div className="grid grid-cols-2 gap-3">
           <Button 
             size="lg" 
-            className="gap-2 h-auto py-4 flex-col"
+            className="gap-2 h-auto py-4 flex-col bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 relative"
             onClick={() => navigate("/crop-recommendations")}
           >
-            <Sparkles className="w-6 h-6" />
-            <span className="text-sm">AI Recommendations</span>
+            <Brain className="w-6 h-6" />
+            <span className="text-sm">AI Crop Advisor</span>
+            <Badge className="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs px-1">
+              NEW
+            </Badge>
+          </Button>
+          <Button 
+            size="lg" 
+            className="gap-2 h-auto py-4 flex-col bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 relative"
+            onClick={() => navigate("/strategic-crop-planner")}
+          >
+            <Brain className="w-6 h-6" />
+            <span className="text-sm">Strategic Planner</span>
+            <Badge className="absolute -top-1 -right-1 bg-gold-500 text-black text-xs px-1">
+              PRO
+            </Badge>
           </Button>
           <Button 
             size="lg" 
@@ -147,12 +193,32 @@ const Dashboard = () => {
           </Button>
           <Button 
             size="lg" 
+            className="gap-2 h-auto py-4 flex-col bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 relative"
+            onClick={() => navigate("/seed-recommendations")}
+          >
+            <Sparkles className="w-6 h-6" />
+            <span className="text-sm">AI Seed Guide</span>
+            <Badge className="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1">
+              LIVE
+            </Badge>
+          </Button>
+          <Button 
+            size="lg" 
             variant="outline"
             className="gap-2 h-auto py-4 flex-col"
             onClick={() => navigate("/calendar")}
           >
             <CalendarIcon className="w-6 h-6" />
             <span className="text-sm">Calendar</span>
+          </Button>
+          <Button 
+            size="lg" 
+            variant="outline"
+            className="gap-2 h-auto py-4 flex-col bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-200 hover:from-blue-100 hover:to-cyan-100"
+            onClick={() => navigate("/satellite-analysis")}
+          >
+            <Satellite className="w-6 h-6 text-blue-600" />
+            <span className="text-sm text-blue-700">Satellite Analysis</span>
           </Button>
         </div>
 

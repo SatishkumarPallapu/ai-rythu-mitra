@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Search, Plus, Filter } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
@@ -19,6 +20,7 @@ import {
 } from "@/components/ui/select";
 
 const Marketplace = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [crops, setCrops] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,22 +34,164 @@ const Marketplace = () => {
   const fetchCrops = async () => {
     setLoading(true);
     try {
-      let query = supabase
-        .from('crops_master')
-        .select('*')
-        .order('market_demand_index', { ascending: false });
+      // Quick-Income Crop Marketplace Data (30-120 days)
+      let mockCrops = [
+        {
+          id: '1',
+          name: 'Coriander',
+          category: 'leafy',
+          suitability_score: 98,
+          expected_yield: '8-12 tons/acre',
+          growth_duration: '30-45 days',
+          duration_days: 45,
+          water_requirement: 'low',
+          profit_index: 'very_high',
+          market_demand_index: 9.5,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Excellent with spinach, radish, fenugreek',
+          health_benefits: 'Rich in antioxidants, aids digestion, lowers cholesterol.',
+          vitamins: 'A, C, K, Folate',
+          season: 'Winter'
+        },
+        {
+          id: '2',
+          name: 'Spinach',
+          category: 'leafy',
+          suitability_score: 95,
+          expected_yield: '6-10 tons/acre',
+          growth_duration: '25-35 days',
+          duration_days: 35,
+          water_requirement: 'low',
+          profit_index: 'high',
+          market_demand_index: 9.0,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Good with radish, carrot, onion',
+          health_benefits: 'High iron, folate, vitamin K. Boosts immunity.',
+          vitamins: 'A, C, E, K, Folate, Iron',
+          season: 'Winter'
+        },
+        {
+          id: '3',
+          name: 'Radish',
+          category: 'root',
+          suitability_score: 92,
+          expected_yield: '15-20 tons/acre',
+          growth_duration: '30-35 days',
+          duration_days: 35,
+          water_requirement: 'low',
+          profit_index: 'high',
+          market_demand_index: 9.0,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Excellent with carrot, beetroot, turnip',
+          health_benefits: 'Aids digestion, detoxifies liver, vitamin C rich.',
+          vitamins: 'C, Folate, Potassium',
+          season: 'Winter'
+        },
+        {
+          id: '4',
+          name: 'Okra',
+          category: 'vegetable',
+          suitability_score: 94,
+          expected_yield: '15-20 tons/acre',
+          growth_duration: '60-70 days',
+          duration_days: 70,
+          water_requirement: 'medium',
+          profit_index: 'very_high',
+          market_demand_index: 9.5,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Good with tomato, chili, marigold',
+          health_benefits: 'High fiber, controls diabetes, heart healthy.',
+          vitamins: 'A, C, K, Folate',
+          season: 'Summer'
+        },
+        {
+          id: '5',
+          name: 'Fenugreek',
+          category: 'leafy',
+          suitability_score: 88,
+          expected_yield: '4-8 tons/acre',
+          growth_duration: '30-40 days',
+          duration_days: 40,
+          water_requirement: 'low',
+          profit_index: 'high',
+          market_demand_index: 8.8,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Excellent with coriander, spinach',
+          health_benefits: 'Controls blood sugar, aids lactation, digestive health.',
+          vitamins: 'A, C, Iron, Calcium',
+          season: 'Winter'
+        },
+        {
+          id: '6',
+          name: 'Microgreens',
+          category: 'microgreens',
+          suitability_score: 99,
+          expected_yield: '1-2 kg/sq.ft',
+          growth_duration: '10-20 days',
+          duration_days: 20,
+          water_requirement: 'low',
+          profit_index: 'ultra_high',
+          market_demand_index: 9.8,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Indoor controlled environment',
+          health_benefits: 'Concentrated nutrients, antioxidants, enzymes.',
+          vitamins: 'All vitamins concentrated',
+          season: 'Year-round'
+        },
+        {
+          id: '7',
+          name: 'Beetroot',
+          category: 'root',
+          suitability_score: 90,
+          expected_yield: '10-15 tons/acre',
+          growth_duration: '21-45 days',
+          duration_days: 35,
+          water_requirement: 'low',
+          profit_index: 'high',
+          market_demand_index: 8.5,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Good with radish, carrot, onion',
+          health_benefits: 'Improves blood flow, lowers blood pressure, brain health.',
+          vitamins: 'A, C, Folate, Iron',
+          season: 'Winter'
+        },
+        {
+          id: '8',
+          name: 'Cucumber',
+          category: 'vegetable',
+          suitability_score: 91,
+          expected_yield: '20-25 tons/acre',
+          growth_duration: '50-60 days',
+          duration_days: 60,
+          water_requirement: 'medium',
+          profit_index: 'high',
+          market_demand_index: 9.2,
+          daily_market_crop: true,
+          home_growable: true,
+          intercropping_possibility: 'Good with radish, lettuce, marigold',
+          health_benefits: 'Hydrating, aids weight loss, skin health.',
+          vitamins: 'C, K, Potassium',
+          season: 'Summer'
+        }
+      ];
 
       if (categoryFilter !== 'all') {
-        query = query.eq('category', categoryFilter);
+        mockCrops = mockCrops.filter(crop => crop.category === categoryFilter);
       }
 
-      const { data, error } = await query.limit(100);
+      // Sort by market demand
+      mockCrops.sort((a, b) => b.market_demand_index - a.market_demand_index);
 
-      if (error) throw error;
-
-      setCrops(data || []);
+      setCrops(mockCrops);
     } catch (error) {
-      console.error('Error fetching crops:', error);
+      console.error('Error loading crops:', error);
       toast({
         title: "Error loading marketplace",
         description: "Please try again",
@@ -119,7 +263,7 @@ const Marketplace = () => {
               <CropCard
                 key={crop.id}
                 crop={crop}
-                onSelect={(id) => console.log('View crop details:', id)}
+                onSelect={(id) => navigate(`/crop-roadmap/${id}`)}
                 animationDelay={index * 0.02}
               />
             ))

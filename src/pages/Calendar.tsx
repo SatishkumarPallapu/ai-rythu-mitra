@@ -26,38 +26,26 @@ const Calendar = () => {
   }, []);
 
   const fetchTasks = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      setLoading(false);
-      return;
-    }
-
     try {
-      const { data: plansData, error: plansError } = await supabase
-        .from('crop_plans')
-        .select(`
-          *,
-          crop_roadmap_tasks(*)
-        `)
-        .eq('user_id', user.id)
-        .eq('status', 'active');
-
-      if (plansError) throw plansError;
-
+      // Get active crops from localStorage
+      const activeCrops = JSON.parse(localStorage.getItem('activeCrops') || '[]');
+      
       const allTasks: any[] = [];
-      plansData?.forEach(plan => {
-        plan.crop_roadmap_tasks?.forEach((task: any) => {
-          const taskDate = new Date(plan.start_date);
-          taskDate.setDate(taskDate.getDate() + task.day_number);
-          
-          allTasks.push({
-            ...task,
-            plan_id: plan.id,
-            due_date: taskDate,
-            crop_id: plan.crop_id
+      activeCrops.forEach((crop: any) => {
+        if (crop.status === 'active' && crop.tasks) {
+          crop.tasks.forEach((task: any) => {
+            const taskDate = new Date(crop.startDate);
+            taskDate.setDate(taskDate.getDate() + (task.day_number || 0));
+            
+            allTasks.push({
+              ...task,
+              plan_id: crop.cropId,
+              due_date: taskDate,
+              crop_id: crop.cropId,
+              crop_name: crop.cropName
+            });
           });
-        });
+        }
       });
 
       setTasks(allTasks.sort((a, b) => 
@@ -77,19 +65,21 @@ const Calendar = () => {
 
   const handleCompleteTask = async (taskId: string) => {
     try {
-      const { error } = await supabase
-        .from('crop_roadmap_tasks')
-        .update({
-          is_completed: true,
-          completed_at: new Date().toISOString()
-        })
-        .eq('id', taskId);
-
-      if (error) throw error;
+      // Update localStorage data
+      const activeCrops = JSON.parse(localStorage.getItem('activeCrops') || '[]');
+      const updatedCrops = activeCrops.map((crop: any) => ({
+        ...crop,
+        tasks: crop.tasks.map((task: any) => 
+          task.id === taskId 
+            ? { ...task, completed: true, completed_at: new Date().toISOString() }
+            : task
+        )
+      }));
+      localStorage.setItem('activeCrops', JSON.stringify(updatedCrops));
 
       setTasks(tasks.map(task => 
         task.id === taskId 
-          ? { ...task, is_completed: true, completed_at: new Date().toISOString() }
+          ? { ...task, completed: true, completed_at: new Date().toISOString() }
           : task
       ));
 
@@ -109,7 +99,7 @@ const Calendar = () => {
 
 
   const getTaskStatus = (task: any) => {
-    if (task.is_completed) return 'completed';
+    if (task.completed) return 'completed';
     const today = new Date();
     const dueDate = new Date(task.due_date);
     const diffDays = Math.floor((dueDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
@@ -146,7 +136,7 @@ const Calendar = () => {
 
   const taskStats = {
     pending: tasks.filter(t => getTaskStatus(t) === 'pending').length,
-    completed: tasks.filter(t => t.is_completed).length,
+    completed: tasks.filter(t => t.completed).length,
     overdue: tasks.filter(t => getTaskStatus(t) === 'overdue').length
   };
 
@@ -211,7 +201,7 @@ const Calendar = () => {
                           day: 'numeric'
                         })}
                       </p>
-                      {!task.is_completed && (
+                      {!task.completed && (
                         <Button 
                           size="sm" 
                           className="w-full"

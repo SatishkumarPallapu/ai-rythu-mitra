@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
 
-from routes import auth, soil, crops, iot, marketplace, notifications, reports
+from routes import soil, crops, iot, marketplace, notifications, reports
 from config.database import Base, engine
 
 Base.metadata.create_all(bind=engine)
@@ -31,7 +31,6 @@ os.makedirs("uploads", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 # Include routers
-app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(soil.router, prefix="/soil", tags=["Soil Analysis"])
 app.include_router(crops.router, prefix="/crops", tags=["Crops"])
 app.include_router(iot.router, prefix="/iot", tags=["IoT Data"])

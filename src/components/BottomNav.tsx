@@ -1,4 +1,4 @@
-import { Home, Droplet, ShoppingBag, User } from "lucide-react";
+import { Home, Droplet, ShoppingBag, User, Cloud } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -7,6 +7,7 @@ const BottomNav = () => {
   
   const navItems = [
     { icon: Home, label: "Home", path: "/" },
+    { icon: Cloud, label: "Weather", path: "/weather" },
     { icon: Droplet, label: "Moisture", path: "/moisture" },
     { icon: ShoppingBag, label: "Market", path: "/marketplace" },
     { icon: User, label: "Profile", path: "/profile" },

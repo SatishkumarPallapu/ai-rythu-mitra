@@ -49,27 +49,48 @@ export const DiseaseForecasting = ({
   const getForecast = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke('ai-disease-forecast', {
-        body: { cropId, cropName, weatherData, soilData, cropAge }
-      });
-
-      if (error) throw error;
-
-      if (data.error) {
-        throw new Error(data.error);
-      }
-
-      setForecasts(data.forecasts || []);
+      // Generate mock disease forecasts for demo
+      const mockForecasts = [
+        {
+          disease: 'Early Blight',
+          risk_level: 'medium',
+          probability: 65,
+          prevention: 'Apply fungicide spray, ensure proper plant spacing, avoid overhead irrigation',
+          timeline: 'Next 7-14 days',
+          symptoms: 'Dark spots with concentric rings on leaves'
+        },
+        {
+          disease: 'Powdery Mildew',
+          risk_level: 'low',
+          probability: 30,
+          prevention: 'Maintain good air circulation, avoid high humidity conditions',
+          timeline: 'Next 2-3 weeks',
+          symptoms: 'White powdery coating on leaves'
+        },
+        {
+          disease: 'Bacterial Spot',
+          risk_level: 'high',
+          probability: 80,
+          prevention: 'Use copper-based bactericides, practice crop rotation, use drip irrigation',
+          timeline: 'Next 5-10 days',
+          symptoms: 'Small dark spots on leaves and fruits'
+        }
+      ];
+      
+      // Simulate AI processing delay
+      await new Promise(resolve => setTimeout(resolve, 1200));
+      
+      setForecasts(mockForecasts);
       
       toast({
         title: "Disease Forecast Ready!",
-        description: `Analyzed risks for next ${data.forecasts?.length || 0} weeks`,
+        description: `Analyzed risks for next ${mockForecasts.length} weeks`,
       });
     } catch (error: any) {
-      console.error('Error getting forecast:', error);
+      console.error('Error generating forecast:', error);
       toast({
         title: "Forecast Failed",
-        description: error.message || "Failed to get disease forecast",
+        description: error.message || "Failed to generate disease forecast",
         variant: "destructive",
       });
     } finally {

@@ -16,13 +16,8 @@ const Login = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        navigate("/");
-      }
-    };
-    checkAuth();
+    // Auto-redirect to dashboard since no authentication required
+    navigate("/");
   }, [navigate]);
 
   const handleSendOTP = async (e: React.FormEvent) => {

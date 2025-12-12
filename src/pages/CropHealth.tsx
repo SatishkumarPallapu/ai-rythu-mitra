@@ -6,25 +6,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
-import AuthModal from "@/components/AuthModal";
-import { supabase } from "@/integrations/supabase/client";
 
 const CropHealth = () => {
   const { toast } = useToast();
-  const [showAuthModal, setShowAuthModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    // Check if user is logged in
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      setShowAuthModal(true);
-      return;
-    }
 
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -39,13 +28,6 @@ const CropHealth = () => {
   };
 
   const handleCapture = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      setShowAuthModal(true);
-      return;
-    }
-
     toast({
       title: "Camera opened",
       description: "Take a photo of your crop",
@@ -91,10 +73,13 @@ const CropHealth = () => {
                 </div>
 
                 <div>
-                  <h4 className="font-medium mb-2">Similar Issues - Select to Confirm:</h4>
+                  <h4 className="font-medium mb-2 flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    Similar Issues - Click to Confirm Diagnosis:
+                  </h4>
                   <div className="grid grid-cols-3 gap-2">
                     {similarIssues.map((issue) => (
-                      <Card key={issue.id} className="p-3 cursor-pointer hover:border-primary transition-colors">
+                      <Card key={issue.id} className="p-3 cursor-pointer hover:border-primary transition-colors border-2 hover:shadow-md">
                         <div className="text-center">
                           <div className="text-3xl mb-1">{issue.image}</div>
                           <div className="text-xs font-medium">{issue.name}</div>
@@ -105,25 +90,80 @@ const CropHealth = () => {
                   </div>
                 </div>
 
-                <div className="bg-success/10 p-4 rounded-lg border border-success/20">
-                  <h4 className="font-medium flex items-center gap-2 mb-2">
-                    <CheckCircle className="w-4 h-4 text-success" />
-                    Treatment Recommendations
-                  </h4>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Remove affected leaves immediately</li>
-                    <li>• Apply copper-based fungicide (2g per liter)</li>
-                    <li>• Spray early morning or evening</li>
-                    <li>• Repeat treatment after 7 days</li>
-                    <li>• Improve air circulation around plants</li>
-                  </ul>
-                </div>
+                <div className="space-y-4">
+                  <h4 className="font-medium text-lg">Treatment Options</h4>
+                  
+                  {/* Natural Treatment */}
+                  <Card className="p-4 border-green-200 bg-green-50">
+                    <h5 className="font-medium flex items-center gap-2 mb-3 text-green-800">
+                      🌿 Natural & Organic Treatment (Recommended First)
+                    </h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="bg-white p-3 rounded-lg">
+                        <p className="font-medium mb-2">Neem Oil Solution:</p>
+                        <ul className="space-y-1 text-green-700">
+                          <li>• Mix 10ml neem oil + 2ml liquid soap in 1 liter water</li>
+                          <li>• Spray in evening hours (avoid midday sun)</li>
+                          <li>• Apply every 3-4 days for 2 weeks</li>
+                          <li>• Safe for beneficial insects</li>
+                        </ul>
+                      </div>
+                      <div className="bg-white p-3 rounded-lg">
+                        <p className="font-medium mb-2">Companion Planting:</p>
+                        <ul className="space-y-1 text-green-700">
+                          <li>• Plant marigold flowers on field borders</li>
+                          <li>• Grow basil or mint between crop rows</li>
+                          <li>• These naturally repel harmful insects</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </Card>
 
-                <div className="bg-primary/5 p-4 rounded-lg border border-primary/20">
-                  <h4 className="font-medium mb-2">🌿 Natural Prevention</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Mix neem oil (5ml) with water (1 liter) and spray weekly as a preventive measure. Plant marigold flowers around the field to naturally deter pests.
-                  </p>
+                  {/* Chemical Treatment */}
+                  <Card className="p-4 border-orange-200 bg-orange-50">
+                    <h5 className="font-medium flex items-center gap-2 mb-3 text-orange-800">
+                      ⚗️ Chemical Treatment (If Natural Methods Fail)
+                    </h5>
+                    <div className="space-y-2 text-sm">
+                      <div className="bg-white p-3 rounded-lg">
+                        <p className="font-medium mb-2">Copper-based Fungicide:</p>
+                        <ul className="space-y-1 text-orange-700">
+                          <li>• Dosage: 2-3g per liter of water</li>
+                          <li>• Spray in early morning or evening</li>
+                          <li>• Repeat after 7-10 days if needed</li>
+                          <li>• Use protective equipment</li>
+                        </ul>
+                      </div>
+                      <div className="bg-yellow-100 p-2 rounded text-xs text-yellow-800">
+                        ⚠️ Wait 15 days before harvest after chemical spray
+                      </div>
+                    </div>
+                  </Card>
+
+                  {/* Prevention */}
+                  <Card className="p-4 border-blue-200 bg-blue-50">
+                    <h5 className="font-medium flex items-center gap-2 mb-3 text-blue-800">
+                      🛡️ Prevention for Future Crops
+                    </h5>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                      <div className="bg-white p-3 rounded-lg">
+                        <p className="font-medium mb-2">Cultural Practices:</p>
+                        <ul className="space-y-1 text-blue-700">
+                          <li>• Ensure proper plant spacing</li>
+                          <li>• Remove crop debris after harvest</li>
+                          <li>• Rotate crops annually</li>
+                        </ul>
+                      </div>
+                      <div className="bg-white p-3 rounded-lg">
+                        <p className="font-medium mb-2">Water Management:</p>
+                        <ul className="space-y-1 text-blue-700">
+                          <li>• Avoid overhead watering</li>
+                          <li>• Water at base of plants</li>
+                          <li>• Ensure good drainage</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
               </div>
 
@@ -242,19 +282,6 @@ const CropHealth = () => {
           </Card>
         </div>
       </main>
-
-      <AuthModal
-        open={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        onSuccess={() => {
-          toast({
-            title: "Login Successful",
-            description: "You can now upload and save crop diagnoses",
-          });
-        }}
-        title="Login to Save Diagnosis"
-        description="Login to save your crop health records and track progress"
-      />
 
       <BottomNav />
     </div>

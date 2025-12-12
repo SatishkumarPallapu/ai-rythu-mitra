@@ -1,58 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User, MapPin, Phone, Settings, HelpCircle, LogOut } from "lucide-react";
+import { MapPin, Phone, Settings, HelpCircle } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
-  const [userProfile, setUserProfile] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchProfile = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('user_id', user.id)
-          .single();
-        
-        setUserProfile({ ...user, ...profile });
-      }
-      setLoading(false);
-    };
-    fetchProfile();
-  }, []);
-
-  const handleLogout = async () => {
-    try {
-      await supabase.auth.signOut();
-      toast({
-        title: "Logged out successfully",
-        description: "Come back soon!",
-      });
-      navigate("/login");
-    } catch (error: any) {
-      toast({
-        title: "Logout failed",
-        description: error.message,
-        variant: "destructive",
-      });
-    }
-  };
+  const [userProfile] = useState<any>({ full_name: "Farmer", phone: "Not provided" });
 
   const menuItems = [
     { icon: Settings, label: "Settings", path: "/settings" },
     { icon: HelpCircle, label: "Help & Support", path: "/help" },
-    { icon: LogOut, label: "Logout", action: handleLogout, variant: "destructive" },
   ];
 
   return (
@@ -71,7 +31,7 @@ const Profile = () => {
               </Avatar>
               <div className="flex-1">
                 <h2 className="text-xl font-bold">{userProfile?.full_name || "Farmer"}</h2>
-                <p className="text-sm text-muted-foreground">ID: {userProfile?.user_id?.slice(0, 8) || "N/A"}</p>
+                <p className="text-sm text-muted-foreground">User Profile</p>
                 {userProfile?.location && (
                   <div className="flex items-center gap-1 mt-1 text-sm text-muted-foreground">
                     <MapPin className="w-4 h-4" />

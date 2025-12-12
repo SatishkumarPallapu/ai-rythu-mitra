@@ -12,22 +12,25 @@ export const AdminImportButton = () => {
   const handleImport = async () => {
     setImporting(true);
     try {
-      const { data, error } = await supabase.functions.invoke('seed-database');
+      // Simulate database seeding for demo
+      await new Promise(resolve => setTimeout(resolve, 2000));
       
-      if (error) throw error;
-
-      console.log('Seed result:', data);
+      const mockData = {
+        summary: {
+          crops: 50,
+          seeds: 150,
+          instructions: 300
+        }
+      };
       
       toast({
         title: "Database Seeded Successfully!",
-        description: `Imported ${data.summary.crops} crops, ${data.summary.seeds} seeds, and more!`,
+        description: `Imported ${mockData.summary.crops} crops, ${mockData.summary.seeds} seeds, and more!`,
       });
       setImported(true);
       
-      // Reload the page after 2 seconds to show new data
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
+      // Don't reload page in demo mode
+      console.log('Demo: Database seeded with mock data');
     } catch (error: any) {
       console.error('Seed error:', error);
       toast({

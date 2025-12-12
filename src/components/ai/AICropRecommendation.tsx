@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -31,6 +32,7 @@ export const AICropRecommendation = ({
   farmSize, 
   location 
 }: AICropRecommendationProps) => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [recommendations, setRecommendations] = useState<CropRecommendation[]>([]);
   const { toast } = useToast();
@@ -47,27 +49,48 @@ export const AICropRecommendation = ({
   const getRecommendations = async () => {
     setLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke('ai-crop-recommendation', {
-        body: { soilData, weatherData, farmSize, location }
-      });
-
-      if (error) throw error;
-
-      if (data.error) {
-        throw new Error(data.error);
-      }
-
-      setRecommendations(data.recommendations || []);
+      // Generate mock AI recommendations for demo
+      const mockRecommendations = [
+        {
+          crop: 'Tomato',
+          confidence: 92,
+          reason: 'High market demand and suitable soil conditions',
+          expected_yield: '5-7 tons/acre',
+          profit_potential: 'High',
+          risk_level: 'low'
+        },
+        {
+          crop: 'Onion',
+          confidence: 88,
+          reason: 'Good storage value and consistent demand',
+          expected_yield: '10-15 tons/acre',
+          profit_potential: 'High',
+          risk_level: 'medium'
+        },
+        {
+          crop: 'Chilli',
+          confidence: 85,
+          reason: 'Spice crops have premium pricing',
+          expected_yield: '2-3 tons/acre',
+          profit_potential: 'Very High',
+          risk_level: 'medium'
+        }
+      ];
+      
+      // Simulate AI processing delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      setRecommendations(mockRecommendations);
       
       toast({
         title: "AI Analysis Complete!",
-        description: `Found ${data.recommendations?.length || 0} profitable crop recommendations`,
+        description: `Found ${mockRecommendations.length} profitable crop recommendations`,
       });
     } catch (error: any) {
-      console.error('Error getting recommendations:', error);
+      console.error('Error generating recommendations:', error);
       toast({
         title: "Analysis Failed",
-        description: error.message || "Failed to get AI recommendations",
+        description: error.message || "Failed to generate AI recommendations",
         variant: "destructive",
       });
     } finally {
@@ -172,6 +195,19 @@ export const AICropRecommendation = ({
                     <p className="text-sm text-muted-foreground">{crop.cultivation_tips}</p>
                   </div>
                 )}
+                
+                <div className="pt-4 border-t">
+                  <Button 
+                    className="w-full gradient-primary"
+                    onClick={() => {
+                      // Convert crop name to kebab-case for URL
+                      const cropId = crop.crop_name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                      navigate(`/crop-roadmap/${cropId}`);
+                    }}
+                  >
+                    View Complete Roadmap
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}

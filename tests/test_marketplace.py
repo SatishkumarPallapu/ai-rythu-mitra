@@ -3,25 +3,7 @@ from tests.test_main import client, test_db, db_session
 import pytest
 
 
-@pytest.fixture
-def create_test_user(db_session):
-    # Create a test user in the database
-    user_data = {
-        "name": "Test User",
-        "email": "testmarket@example.com",
-        "password": "testpassword",
-        "phone": "1234567890",
-        "farm_location": "Test Location",
-        "farm_size": 10.0,
-    }
-    response = client.post("/auth/register", json=user_data)
-    assert response.status_code == status.HTTP_200_OK
-    user = response.json()
-    return user
-
-
-def test_create_listing(test_db, create_test_user):
-    user = create_test_user
+def test_create_listing(test_db):
     response = client.post(
         "/marketplace/listings",
         json={
@@ -33,16 +15,13 @@ def test_create_listing(test_db, create_test_user):
             "description": "High-quality wheat",
             "contact": "1234567890",
             "images": [],
-        },
-         headers={"Authorization": f"Bearer {user['access_token']}"}
+        }
     )
     assert response.status_code == status.HTTP_200_OK
     assert response.json()["crop_name"] == "Wheat"
 
 
-def test_get_listings(test_db, create_test_user):
-    user = create_test_user
-
+def test_get_listings(test_db):
     # First, create a listing
     client.post(
         "/marketplace/listings",
@@ -55,8 +34,7 @@ def test_get_listings(test_db, create_test_user):
             "description": "High-quality rice",
             "contact": "1234567890",
             "images": [],
-        },
-         headers={"Authorization": f"Bearer {user['access_token']}"}
+        }
     )
 
     # Retrieve listings
@@ -65,8 +43,7 @@ def test_get_listings(test_db, create_test_user):
     assert len(response.json()) > 0
 
 
-def test_get_listing(test_db, create_test_user):
-    user = create_test_user
+def test_get_listing(test_db):
     # First, create a listing
     create_response = client.post(
         "/marketplace/listings",
@@ -79,8 +56,7 @@ def test_get_listing(test_db, create_test_user):
             "description": "High-quality corn",
             "contact": "1234567890",
             "images": [],
-        },
-         headers={"Authorization": f"Bearer {user['access_token']}"}
+        }
     )
     listing_id = create_response.json()["id"]
     # Retrieve a specific listing
@@ -90,8 +66,7 @@ def test_get_listing(test_db, create_test_user):
 
 
 
-def test_update_listing(test_db, create_test_user):
-    user = create_test_user
+def test_update_listing(test_db):
     # First, create a listing
     create_response = client.post(
         "/marketplace/listings",
@@ -104,15 +79,13 @@ def test_update_listing(test_db, create_test_user):
             "description": "High-quality barley",
             "contact": "1234567890",
             "images": [],
-        },
-         headers={"Authorization": f"Bearer {user['access_token']}"}
+        }
     )
     listing_id = create_response.json()["id"]
     # Update the listing
     response = client.put(
         f"/marketplace/listings/{listing_id}",
-        json={"price_per_unit": 30.0, "description": "Updated description"},
-         headers={"Authorization": f"Bearer {user['access_token']}"}
+        json={"price_per_unit": 30.0, "description": "Updated description"}
     )
     assert response.status_code == status.HTTP_200_OK
     assert response.json()["price_per_unit"] == 30.0
@@ -120,8 +93,7 @@ def test_update_listing(test_db, create_test_user):
 
 
 
-def test_delete_listing(test_db, create_test_user):
-    user = create_test_user
+def test_delete_listing(test_db):
     # First, create a listing
     create_response = client.post(
         "/marketplace/listings",
@@ -134,11 +106,10 @@ def test_delete_listing(test_db, create_test_user):
             "description": "High-quality oats",
             "contact": "1234567890",
             "images": [],
-        },
-         headers={"Authorization": f"Bearer {user['access_token']}"}
+        }
     )
     listing_id = create_response.json()["id"]
     # Delete the listing
-    response = client.delete(f"/marketplace/listings/{listing_id}",  headers={"Authorization": f"Bearer {user['access_token']}"})
+    response = client.delete(f"/marketplace/listings/{listing_id}")
     assert response.status_code == status.HTTP_200_OK
     assert response.json()["message"] == "Listing deleted successfully"
