@@ -1,19 +1,58 @@
-import { User, MapPin, Phone, Settings, HelpCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { User, MapPin, Phone, Settings, HelpCircle, LogOut } from "lucide-react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Profile = () => {
-  const userProfile = {
-    full_name: "Farmer",
-    location: "Andhra Pradesh",
-    phone: "9876543210"
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [userProfile, setUserProfile] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('user_id', user.id)
+          .single();
+        
+        setUserProfile({ ...user, ...profile });
+      }
+      setLoading(false);
+    };
+    fetchProfile();
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+      toast({
+        title: "Logged out successfully",
+        description: "Come back soon!",
+      });
+      navigate("/login");
+    } catch (error: any) {
+      toast({
+        title: "Logout failed",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
   };
 
   const menuItems = [
     { icon: Settings, label: "Settings", path: "/settings" },
     { icon: HelpCircle, label: "Help & Support", path: "/help" },
+    { icon: LogOut, label: "Logout", action: handleLogout, variant: "destructive" },
   ];
 
   return (
@@ -27,15 +66,18 @@ const Profile = () => {
             <div className="flex items-center gap-4">
               <Avatar className="w-20 h-20">
                 <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
-                  F
+                  {userProfile?.full_name?.charAt(0)?.toUpperCase() || "F"}
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1">
-                <h2 className="text-xl font-bold">{userProfile.full_name}</h2>
-                <div className="flex items-center gap-1 mt-1 text-sm text-muted-foreground">
-                  <MapPin className="w-4 h-4" />
-                  <span>{userProfile.location}</span>
-                </div>
+                <h2 className="text-xl font-bold">{userProfile?.full_name || "Farmer"}</h2>
+                <p className="text-sm text-muted-foreground">ID: {userProfile?.user_id?.slice(0, 8) || "N/A"}</p>
+                {userProfile?.location && (
+                  <div className="flex items-center gap-1 mt-1 text-sm text-muted-foreground">
+                    <MapPin className="w-4 h-4" />
+                    <span>{userProfile.location}</span>
+                  </div>
+                )}
               </div>
             </div>
           </CardContent>
@@ -51,7 +93,7 @@ const Profile = () => {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Phone</p>
-                <p className="font-medium">{userProfile.phone}</p>
+                <p className="font-medium">{userProfile?.phone || "Not provided"}</p>
               </div>
             </div>
           </CardContent>
@@ -85,13 +127,34 @@ const Profile = () => {
             <Card 
               key={index} 
               className="cursor-pointer hover:shadow-md transition-shadow"
+              onClick={item.action ? item.action : () => navigate(item.path)}
             >
               <CardContent className="p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <item.icon className="w-5 h-5 text-primary" />
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                      item.variant === "destructive"
+                        ? "bg-destructive/10"
+                        : "bg-primary/10"
+                    }`}
+                  >
+                    <item.icon
+                      className={`w-5 h-5 ${
+                        item.variant === "destructive"
+                          ? "text-destructive"
+                          : "text-primary"
+                      }`}
+                    />
                   </div>
-                  <span className="font-medium">{item.label}</span>
+                  <span
+                    className={`font-medium ${
+                      item.variant === "destructive"
+                        ? "text-destructive"
+                        : ""
+                    }`}
+                  >
+                    {item.label}
+                  </span>
                 </div>
                 <span className="text-muted-foreground">›</span>
               </CardContent>

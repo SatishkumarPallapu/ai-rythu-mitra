@@ -1,12 +1,16 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Layers, TrendingUp, Calendar } from "lucide-react";
+import AuthModal from "@/components/AuthModal";
 import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 const MultiCropPlanner = () => {
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const navigate = useNavigate();
 
   const strategies = [
@@ -39,12 +43,23 @@ const MultiCropPlanner = () => {
     }
   ];
 
-  const handleCreatePlan = () => {
+  const handleCreatePlan = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+
     navigate('/crop-recommendations?mode=multi');
   };
 
   const handleViewDetails = (strategyId: number) => {
-    navigate(`/multi-crop-strategy/${strategyId}`);
+    const strategy = strategies.find(s => s.id === strategyId);
+    if (strategy) {
+      // Navigate to a detailed strategy view
+      navigate(`/multi-crop-strategy/${strategyId}`);
+    }
   };
 
   return (
@@ -127,6 +142,14 @@ const MultiCropPlanner = () => {
           </ul>
         </Card>
       </main>
+
+      <AuthModal
+        open={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onSuccess={() => navigate('/crop-recommendations')}
+        title="Login to Create Multi-Crop Plan"
+        description="Save your plan and get personalized recommendations"
+      />
 
       <BottomNav />
     </div>

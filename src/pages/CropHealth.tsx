@@ -2,18 +2,29 @@ import { Camera, Upload, Image as ImageIcon, Sparkles, CheckCircle } from "lucid
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import AuthModal from "@/components/AuthModal";
+import { supabase } from "@/integrations/supabase/client";
 
 const CropHealth = () => {
   const { toast } = useToast();
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
+    // Check if user is logged in
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
 
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -27,7 +38,14 @@ const CropHealth = () => {
     });
   };
 
-  const handleCapture = () => {
+  const handleCapture = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      setShowAuthModal(true);
+      return;
+    }
+
     toast({
       title: "Camera opened",
       description: "Take a photo of your crop",
@@ -224,6 +242,19 @@ const CropHealth = () => {
           </Card>
         </div>
       </main>
+
+      <AuthModal
+        open={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onSuccess={() => {
+          toast({
+            title: "Login Successful",
+            description: "You can now upload and save crop diagnoses",
+          });
+        }}
+        title="Login to Save Diagnosis"
+        description="Login to save your crop health records and track progress"
+      />
 
       <BottomNav />
     </div>

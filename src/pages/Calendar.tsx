@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import { Card } from "@/components/ui/card";
@@ -8,42 +8,105 @@ import {
   Calendar as CalendarIcon, 
   CheckCircle2, 
   Clock, 
-  AlertCircle
+  AlertCircle,
+  Loader2
 } from "lucide-react";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Calendar = () => {
+  const { toast } = useToast();
   const [date, setDate] = useState<Date | undefined>(new Date());
+  const [tasks, setTasks] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Mock tasks for demo
-  const tasks = [
-    {
-      id: '1',
-      task_name: 'Prepare soil for sowing',
-      task_description: 'Till the land and add organic compost',
-      day_number: 1,
-      due_date: new Date(),
-      is_completed: false
-    },
-    {
-      id: '2',
-      task_name: 'Sow seeds',
-      task_description: 'Plant seeds at proper spacing',
-      day_number: 3,
-      due_date: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
-      is_completed: false
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  const fetchTasks = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      setLoading(false);
+      return;
     }
-  ];
 
-  const [taskList, setTaskList] = useState(tasks);
+    try {
+      const { data: plansData, error: plansError } = await supabase
+        .from('crop_plans')
+        .select(`
+          *,
+          crop_roadmap_tasks(*)
+        `)
+        .eq('user_id', user.id)
+        .eq('status', 'active');
 
-  const handleCompleteTask = (taskId: string) => {
-    setTaskList(taskList.map(task => 
-      task.id === taskId 
-        ? { ...task, is_completed: true }
-        : task
-    ));
+      if (plansError) throw plansError;
+
+      const allTasks: any[] = [];
+      plansData?.forEach(plan => {
+        plan.crop_roadmap_tasks?.forEach((task: any) => {
+          const taskDate = new Date(plan.start_date);
+          taskDate.setDate(taskDate.getDate() + task.day_number);
+          
+          allTasks.push({
+            ...task,
+            plan_id: plan.id,
+            due_date: taskDate,
+            crop_id: plan.crop_id
+          });
+        });
+      });
+
+      setTasks(allTasks.sort((a, b) => 
+        new Date(a.due_date).getTime() - new Date(b.due_date).getTime()
+      ));
+    } catch (error) {
+      console.error('Error fetching tasks:', error);
+      toast({
+        title: "Error loading tasks",
+        description: "Please try again",
+        variant: "destructive"
+      });
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const handleCompleteTask = async (taskId: string) => {
+    try {
+      const { error } = await supabase
+        .from('crop_roadmap_tasks')
+        .update({
+          is_completed: true,
+          completed_at: new Date().toISOString()
+        })
+        .eq('id', taskId);
+
+      if (error) throw error;
+
+      setTasks(tasks.map(task => 
+        task.id === taskId 
+          ? { ...task, is_completed: true, completed_at: new Date().toISOString() }
+          : task
+      ));
+
+      toast({
+        title: "Task completed!",
+        description: "Great work on your cultivation journey"
+      });
+    } catch (error) {
+      console.error('Error completing task:', error);
+      toast({
+        title: "Error updating task",
+        description: "Please try again",
+        variant: "destructive"
+      });
+    }
+  };
+
 
   const getTaskStatus = (task: any) => {
     if (task.is_completed) return 'completed';
@@ -82,9 +145,9 @@ const Calendar = () => {
   };
 
   const taskStats = {
-    pending: taskList.filter(t => getTaskStatus(t) === 'pending').length,
-    completed: taskList.filter(t => t.is_completed).length,
-    overdue: taskList.filter(t => getTaskStatus(t) === 'overdue').length
+    pending: tasks.filter(t => getTaskStatus(t) === 'pending').length,
+    completed: tasks.filter(t => t.is_completed).length,
+    overdue: tasks.filter(t => getTaskStatus(t) === 'overdue').length
   };
 
   return (
@@ -113,46 +176,56 @@ const Calendar = () => {
 
         <div className="space-y-4">
           <h3 className="font-semibold">Upcoming Tasks</h3>
-          {taskList.map((task) => {
-            const status = getTaskStatus(task);
-            return (
-              <Card key={task.id} className="p-4">
-                <div className="flex items-start gap-3">
-                  {getStatusIcon(status)}
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h4 className="font-semibold">{task.task_name}</h4>
-                        <p className="text-sm text-muted-foreground">
-                          {task.task_description}
-                        </p>
+          {loading ? (
+            <div className="flex justify-center py-8">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            </div>
+          ) : tasks.length === 0 ? (
+            <Card className="p-6 text-center">
+              <p className="text-muted-foreground">No active crop plans. Start growing a crop to see tasks here!</p>
+            </Card>
+          ) : (
+            tasks.map((task) => {
+              const status = getTaskStatus(task);
+              return (
+                <Card key={task.id} className="p-4">
+                  <div className="flex items-start gap-3">
+                    {getStatusIcon(status)}
+                    <div className="flex-1">
+                      <div className="flex items-start justify-between mb-2">
+                        <div>
+                          <h4 className="font-semibold">{task.task_name}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {task.task_description}
+                          </p>
+                        </div>
+                        <Badge variant={getStatusBadge(status)}>
+                          {status}
+                        </Badge>
                       </div>
-                      <Badge variant={getStatusBadge(status)}>
-                        {status}
-                      </Badge>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        📅 Day {task.day_number} • {new Date(task.due_date).toLocaleDateString('en-IN', {
+                          weekday: 'short',
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric'
+                        })}
+                      </p>
+                      {!task.is_completed && (
+                        <Button 
+                          size="sm" 
+                          className="w-full"
+                          onClick={() => handleCompleteTask(task.id)}
+                        >
+                          Mark as Complete
+                        </Button>
+                      )}
                     </div>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      📅 Day {task.day_number} • {new Date(task.due_date).toLocaleDateString('en-IN', {
-                        weekday: 'short',
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
-                      })}
-                    </p>
-                    {!task.is_completed && (
-                      <Button 
-                        size="sm" 
-                        className="w-full"
-                        onClick={() => handleCompleteTask(task.id)}
-                      >
-                        Mark as Complete
-                      </Button>
-                    )}
                   </div>
-                </div>
-              </Card>
-            );
-          })}
+                </Card>
+              );
+            })
+          )}
         </div>
 
         <Card className="p-6 bg-gradient-subtle">
